@@ -1,0 +1,60 @@
+<?php
+
+namespace too\sistemadeventasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Inventario
+ *
+ * @ORM\Table(name="inventario", uniqueConstraints={@ORM\UniqueConstraint(name="inventario_pk", columns={"id_inventario"})}, indexes={@ORM\Index(name="descarga_fk", columns={"id_compra"}), @ORM\Index(name="tiene_fk", columns={"id_producto"})})
+ * @ORM\Entity
+ */
+class Inventario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_inventario", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="inventario_id_inventario_seq", allocationSize=1, initialValue=1)
+     */
+    private $idInventario;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidad_inicial", type="integer", nullable=true)
+     */
+    private $cantidadInicial;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidad_disponible", type="integer", nullable=true)
+     */
+    private $cantidadDisponible;
+
+    /**
+     * @var \Compra
+     *
+     * @ORM\ManyToOne(targetEntity="Compra")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_compra", referencedColumnName="id_compra")
+     * })
+     */
+    private $idCompra;
+
+    /**
+     * @var \Producto
+     *
+     * @ORM\ManyToOne(targetEntity="Producto")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_producto", referencedColumnName="id_producto")
+     * })
+     */
+    private $idProducto;
+
+
+}

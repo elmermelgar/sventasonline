@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Producto" table="producto">
+    <indexes>
+      <index name="compuesto_fk" columns="id_categoria"/>
+    </indexes>
+    <id name="idProducto" type="integer" column="id_producto">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombreProd" type="string" column="nombre_prod" length="50" nullable="true"/>
+    <field name="descripcionProd" type="string" column="descripcion_prod" length="200" nullable="true"/>
+    <field name="cantidadProd" type="integer" column="cantidad_prod" nullable="true"/>
+    <field name="precioUnitario" type="decimal" column="precio_unitario" precision="10" scale="2" nullable="true"/>
+    <many-to-one field="idCategoria" target-entity="Categoria">
+      <join-columns>
+        <join-column name="id_categoria" referenced-column-name="id_categoria"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Compra" table="compra">
+    <indexes>
+      <index name="contiene_fk" columns="id_proveedor"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="compra_pk" columns="id_compra"/>
+    </unique-constraints>
+    <id name="idCompra" type="integer" column="id_compra">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaComp" type="date" column="fecha_comp" nullable="true"/>
+    <field name="numeroFacturaCompra" type="integer" column="numero_factura_compra" nullable="true"/>
+    <many-to-one field="idProveedor" target-entity="Proveedor">
+      <join-columns>
+        <join-column name="id_proveedor" referenced-column-name="id_proveedor"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

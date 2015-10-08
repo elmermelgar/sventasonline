@@ -1,0 +1,64 @@
+<?php
+
+namespace too\sistemadeventasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Cliente
+ *
+ * @ORM\Table(name="cliente", uniqueConstraints={@ORM\UniqueConstraint(name="cliente_pk", columns={"id_cliente"})}, indexes={@ORM\Index(name="relationship_10_fk", columns={"id_usuario"})})
+ * @ORM\Entity
+ */
+class Cliente
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_cliente", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="cliente_id_cliente_seq", allocationSize=1, initialValue=1)
+     */
+    private $idCliente;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cuenta", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $cuenta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefono_cli", type="string", length=10, nullable=true)
+     */
+    private $telefonoCli;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pais", type="string", length=30, nullable=true)
+     */
+    private $pais;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="codigo_postal", type="integer", nullable=true)
+     */
+    private $codigoPostal;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario")
+     * })
+     */
+    private $idUsuario;
+
+
+}

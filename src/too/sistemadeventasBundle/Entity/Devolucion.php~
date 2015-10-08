@@ -1,0 +1,50 @@
+<?php
+
+namespace too\sistemadeventasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Devolucion
+ *
+ * @ORM\Table(name="devolucion", uniqueConstraints={@ORM\UniqueConstraint(name="devolucion_pk", columns={"id_devolucion"})}, indexes={@ORM\Index(name="sobre_fk", columns={"id_venta"})})
+ * @ORM\Entity
+ */
+class Devolucion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_devolucion", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="devolucion_id_devolucion_seq", allocationSize=1, initialValue=1)
+     */
+    private $idDevolucion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_dev", type="date", nullable=true)
+     */
+    private $fechaDev;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion_dev", type="string", length=200, nullable=true)
+     */
+    private $descripcionDev;
+
+    /**
+     * @var \Venta
+     *
+     * @ORM\ManyToOne(targetEntity="Venta")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_venta", referencedColumnName="id_venta")
+     * })
+     */
+    private $idVenta;
+
+
+}

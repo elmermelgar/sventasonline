@@ -1,0 +1,22 @@
+toosistemadeventas_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: toosistemadeventasBundle:Default:index }
+
+toosistemadeventas_inicio:
+    path:     /inicio
+    defaults: { _controller: toosistemadeventasBundle:Default:inicio }
+
+toosistemadeventas_promociones:
+    path:     /promociones
+    defaults: { _controller: toosistemadeventasBundle:Default:promociones }
+
+toosistemadeventas_registro:
+    path:     /registro
+    defaults: { _controller: toosistemadeventasBundle:Seguridad:registro }
+prueba:
+    path:     /prueba
+    defaults: { _controller: toosistemadeventasBundle:Prueba:prueba }
+
+prueba2:
+    path:     /prueba2
+    defaults: { _controller: toosistemadeventasBundle:Prueba:prueba2 }

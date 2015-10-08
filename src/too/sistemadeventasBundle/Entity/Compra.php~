@@ -1,0 +1,50 @@
+<?php
+
+namespace too\sistemadeventasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Compra
+ *
+ * @ORM\Table(name="compra", uniqueConstraints={@ORM\UniqueConstraint(name="compra_pk", columns={"id_compra"})}, indexes={@ORM\Index(name="contiene_fk", columns={"id_proveedor"})})
+ * @ORM\Entity
+ */
+class Compra
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_compra", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="compra_id_compra_seq", allocationSize=1, initialValue=1)
+     */
+    private $idCompra;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_comp", type="date", nullable=true)
+     */
+    private $fechaComp;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numero_factura_compra", type="integer", nullable=true)
+     */
+    private $numeroFacturaCompra;
+
+    /**
+     * @var \Proveedor
+     *
+     * @ORM\ManyToOne(targetEntity="Proveedor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_proveedor", referencedColumnName="id_proveedor")
+     * })
+     */
+    private $idProveedor;
+
+
+}

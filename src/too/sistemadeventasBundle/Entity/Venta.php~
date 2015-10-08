@@ -1,0 +1,70 @@
+<?php
+
+namespace too\sistemadeventasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Venta
+ *
+ * @ORM\Table(name="venta", uniqueConstraints={@ORM\UniqueConstraint(name="venta_pk", columns={"id_venta"})}, indexes={@ORM\Index(name="registra_fk", columns={"id_producto"}), @ORM\Index(name="aplica_fk", columns={"id_promocion"}), @ORM\Index(name="involucra_fk", columns={"id_cliente"})})
+ * @ORM\Entity
+ */
+class Venta
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_venta", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="venta_id_venta_seq", allocationSize=1, initialValue=1)
+     */
+    private $idVenta;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_ven", type="date", nullable=true)
+     */
+    private $fechaVen;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="total", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $total;
+
+    /**
+     * @var \Promocion
+     *
+     * @ORM\ManyToOne(targetEntity="Promocion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_promocion", referencedColumnName="id_promocion")
+     * })
+     */
+    private $idPromocion;
+
+    /**
+     * @var \Cliente
+     *
+     * @ORM\ManyToOne(targetEntity="Cliente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_cliente", referencedColumnName="id_cliente")
+     * })
+     */
+    private $idCliente;
+
+    /**
+     * @var \Producto
+     *
+     * @ORM\ManyToOne(targetEntity="Producto")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_producto", referencedColumnName="id_producto")
+     * })
+     */
+    private $idProducto;
+
+
+}

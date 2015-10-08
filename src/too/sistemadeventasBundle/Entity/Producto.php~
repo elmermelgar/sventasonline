@@ -1,0 +1,64 @@
+<?php
+
+namespace too\sistemadeventasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Producto
+ *
+ * @ORM\Table(name="producto", indexes={@ORM\Index(name="compuesto_fk", columns={"id_categoria"})})
+ * @ORM\Entity
+ */
+class Producto
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_producto", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="producto_id_producto_seq", allocationSize=1, initialValue=1)
+     */
+    private $idProducto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre_prod", type="string", length=50, nullable=true)
+     */
+    private $nombreProd;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion_prod", type="string", length=200, nullable=true)
+     */
+    private $descripcionProd;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidad_prod", type="integer", nullable=true)
+     */
+    private $cantidadProd;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="precio_unitario", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $precioUnitario;
+
+    /**
+     * @var \Categoria
+     *
+     * @ORM\ManyToOne(targetEntity="Categoria")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_categoria", referencedColumnName="id_categoria")
+     * })
+     */
+    private $idCategoria;
+
+
+}

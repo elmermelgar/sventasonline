@@ -1,0 +1,68 @@
+<?php
+
+namespace too\sistemadeventasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Usuario
+ *
+ * @ORM\Table(name="usuario")
+ * @ORM\Entity
+ */
+class Usuario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_usuario", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="usuario_id_usuario_seq", allocationSize=1, initialValue=1)
+     */
+    private $idUsuario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre_usu", type="string", length=50, nullable=true)
+     */
+    private $nombreUsu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellido_usu", type="string", length=50, nullable=true)
+     */
+    private $apellidoUsu;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rol", type="integer", nullable=true)
+     */
+    private $rol;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usuario", type="string", length=30, nullable=true)
+     */
+    private $usuario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=30, nullable=true)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="correo", type="string", length=30, nullable=true)
+     */
+    private $correo;
+
+
+}

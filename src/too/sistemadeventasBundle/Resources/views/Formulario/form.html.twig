@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <div class="content">
+        <div class="container">
+            <div class="register">
+                <form method="post" style="margin: 0 auto 0 auto;" action="{{ path('prueba2') }}" >
+                    <div class="register-top-grid"  >
+                        <h3>PERSONAL INFORMATION</h3>
+                        <div class="mation">
+                            <span>Nota<label>*</label></span>
+                            <input type="text" datatype="double" name="nota">
+
+                            <span>Porcentage<label>*</label></span>
+                            <input type="text" datatype="double" name="porcentaje">
+
+                        </div>
+                        <div class="clearfix"> </div>
+                        <button type="submit">Ingresar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

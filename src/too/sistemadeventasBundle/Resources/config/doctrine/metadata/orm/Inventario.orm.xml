@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Inventario" table="inventario">
+    <indexes>
+      <index name="descarga_fk" columns="id_compra"/>
+      <index name="tiene_fk" columns="id_producto"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="inventario_pk" columns="id_inventario"/>
+    </unique-constraints>
+    <id name="idInventario" type="integer" column="id_inventario">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="cantidadInicial" type="integer" column="cantidad_inicial" nullable="true"/>
+    <field name="cantidadDisponible" type="integer" column="cantidad_disponible" nullable="true"/>
+    <many-to-one field="idProducto" target-entity="Producto">
+      <join-columns>
+        <join-column name="id_producto" referenced-column-name="id_producto"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCompra" target-entity="Compra">
+      <join-columns>
+        <join-column name="id_compra" referenced-column-name="id_compra"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

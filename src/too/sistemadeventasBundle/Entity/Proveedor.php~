@@ -1,0 +1,47 @@
+<?php
+
+namespace too\sistemadeventasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Proveedor
+ *
+ * @ORM\Table(name="proveedor")
+ * @ORM\Entity
+ */
+class Proveedor
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_proveedor", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="proveedor_id_proveedor_seq", allocationSize=1, initialValue=1)
+     */
+    private $idProveedor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre_prov", type="string", length=30, nullable=true)
+     */
+    private $nombreProv;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="direccion", type="string", length=80, nullable=true)
+     */
+    private $direccion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefono_prov", type="string", length=10, nullable=true)
+     */
+    private $telefonoProv;
+
+
+}

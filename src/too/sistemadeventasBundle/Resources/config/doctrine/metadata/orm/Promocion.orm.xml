@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Promocion" table="promocion">
+    <unique-constraints>
+      <unique-constraint name="promocion_pk" columns="id_promocion"/>
+    </unique-constraints>
+    <id name="idPromocion" type="integer" column="id_promocion">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="tipo" type="string" column="tipo" length="30" nullable="true"/>
+    <field name="descuento" type="decimal" column="descuento" precision="10" scale="2" nullable="true"/>
+    <field name="fechaInicio" type="date" column="fecha_inicio" nullable="true"/>
+    <field name="fechaFin" type="date" column="fecha_fin" nullable="true"/>
+  </entity>
+</doctrine-mapping>

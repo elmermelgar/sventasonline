@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Proveedor" table="proveedor">
+    <id name="idProveedor" type="integer" column="id_proveedor">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombreProv" type="string" column="nombre_prov" length="30" nullable="true"/>
+    <field name="direccion" type="string" column="direccion" length="80" nullable="true"/>
+    <field name="telefonoProv" type="string" column="telefono_prov" length="10" nullable="true"/>
+  </entity>
+</doctrine-mapping>

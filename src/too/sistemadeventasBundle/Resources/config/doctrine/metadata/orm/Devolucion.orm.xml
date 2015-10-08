@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Devolucion" table="devolucion">
+    <indexes>
+      <index name="sobre_fk" columns="id_venta"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="devolucion_pk" columns="id_devolucion"/>
+    </unique-constraints>
+    <id name="idDevolucion" type="integer" column="id_devolucion">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaDev" type="date" column="fecha_dev" nullable="true"/>
+    <field name="descripcionDev" type="string" column="descripcion_dev" length="200" nullable="true"/>
+    <many-to-one field="idVenta" target-entity="Venta">
+      <join-columns>
+        <join-column name="id_venta" referenced-column-name="id_venta"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Categoria" table="categoria">
+    <unique-constraints>
+      <unique-constraint name="categoria_pk" columns="id_categoria"/>
+    </unique-constraints>
+    <id name="idCategoria" type="integer" column="id_categoria">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombreCat" type="string" column="nombre_cat" length="30" nullable="true"/>
+    <field name="descripcionCat" type="string" column="descripcion_cat" length="200" nullable="true"/>
+  </entity>
+</doctrine-mapping>

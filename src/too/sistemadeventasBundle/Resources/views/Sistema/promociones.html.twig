@@ -1,0 +1,139 @@
+{% extends '::base.html.twig' %}
+{% block title %}Promociones{% endblock %}
+{% block active2 %}class="active"{% endblock active2 %}
+{% block body %}
+    <div class="content">
+        <div class="container">
+            <div class="  col-m-on">
+                <!---->
+                <div class="in-line">
+                    <div class="para-all-in">
+                        <h3>PROMOCIONES</h3>
+                        <p>Aprovecha nuestras ofertas por tiempo limitado.</p>
+                    </div>
+                    <div class="lady-on">
+                        <div class="col-md-4 you-women">
+                            <a href="#"><img class="img-responsive pic-in" src="{{ asset('images/pi4.jpg')}}" alt=" " ></a>
+                            <div class=" you-two">
+                                <span>15<label>%</label></span>
+                                <small>off</small>
+                            </div>
+                            <p>Nombre del producto</p>
+                            <span>$0.00  | <label class="cat-in"> </label> <a href="#">Añadir a carrito </a></span>
+                        </div>
+                        <div class="col-md-4 you-women">
+                            <a href="single.html"><img class="img-responsive pic-in" src="{{ asset('images/pi5.jpg')}}" alt=" " ></a>
+                            <div class=" you-two">
+                                <span>15<label>%</label></span>
+                                <small>off</small>
+                            </div>
+                            <p>Nombre del producto</p>
+                            <span>$0.00  | <label class="cat-in"> </label> <a href="#">Añadir a carrito </a></span>
+                        </div>
+                        <div class="col-md-4 you-women para-grid">
+                            <a href="single.html"><img class="img-responsive pic-in" src="{{ asset('images/pi6.jpg')}}" alt=" " ></a>
+                            <div class=" you-two">
+                                <span>15<label>%</label></span>
+                                <small>off</small>
+                            </div>
+                            <p>Nombre del producto</p>
+                            <span>$0.00  | <label class="cat-in"> </label> <a href="#">Añadir a carrito </a></span>
+                        </div>
+                        <div class="col-md-4 you-women">
+                            <a href="single.html"><img class="img-responsive pic-in" src="{{ asset('images/pi.jpg')}}" alt=" " ></a>
+                            <div class="you-in you-two">
+                                <span>15<label>%</label></span>
+                                <small>off</small>
+                            </div>
+                            <p>Nombre del producto</p>
+                            <span>$0.00  | <label class="cat-in"> </label> <a href="#">Añadir a carrito </a></span>
+                        </div>
+                        <div class="col-md-4 you-women">
+                            <a href="single.html"><img class="img-responsive pic-in" src="{{ asset('images/pi2.jpg')}}" alt=" " ></a>
+                            <div class="you-in you-two">
+                                <span>15<label>%</label></span>
+                                <small>off</small>
+                            </div>
+                            <p>Nombre del producto</p>
+                            <span>$0.00  | <label class="cat-in"> </label> <a href="#">Añadir a carrito </a></span>
+                        </div>
+                        <div class="col-md-4 you-women para-grid">
+                            <a href="single.html"><img class="img-responsive pic-in" src="{{ asset('images/pi3.jpg')}}" alt=" " ></a>
+                            <div class=" you-two">
+                                <span>15<label>%</label></span>
+                                <small>off</small>
+                            </div>
+                            <p>Nombre del producto</p>
+                            <span>$0.00  | <label class="cat-in"> </label> <a href="#">Añadir a carrito </a></span>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+            <!---->
+            <div class="lady-in-on">
+                <div class="buy-an">
+                    <h3>OTROS PRODUCTOS</h3>
+                    <p>Sobre los productos...</p>
+                </div>
+                <ul id="flexiselDemo1">
+                    <li><a href="#"><img class="img-responsive women" src="{{ asset('images/pic.jpg')}}" alt=""></a>
+                        <div class="hide-in">
+                            <p>Nombre del producto</p>
+                            <span>$0.00  |  <a href="#">Comprar ahora </a></span>
+                        </div></li>
+                    <li><a href="#"><img class="img-responsive women" src="{{ asset('images/pic1.jpg')}}" alt=""></a>
+                        <div class="hide-in">
+                            <p>Nombre del producto</p>
+                            <span>$0.00  |  <a href="#">Comprar ahora </a></span>
+                        </div></li>
+                    <li><a href="#"><img class="img-responsive women" src="{{ asset('images/pic3.jpg')}}" alt=""></a>
+                        <div class="hide-in">
+                            <p>Nombre del producto</p>
+                            <span>$0.00  |  <a href="#">Comprar ahora </a></span>
+                        </div></li>
+                    <li><a href="#"><img class="img-responsive women" src="{{ asset('images/pic4.jpg')}}" alt=""></a>
+                        <div class="hide-in">
+                            <p>Nombre del producto</p>
+                            <span>$0.00  |  <a href="#">Comprar ahora </a></span>
+                        </div></li>
+                    <li><a href="#"><img class="img-responsive women" src="{{ asset('images/pic2.jpg')}}" alt=""></a>
+                        <div class="hide-in">
+                            <p>Nombre del producto</p>
+                            <span>$0.00  |  <a href="#">Comprar ahora </a></span>
+                        </div></li>
+                </ul>
+
+                <script type="text/javascript">
+                    $(window).load(function() {
+                        $("#flexiselDemo1").flexisel({
+                            visibleItems: 4,
+                            animationSpeed: 1000,
+                            autoPlay: true,
+                            autoPlaySpeed: 3000,
+                            pauseOnHover: true,
+                            enableResponsiveBreakpoints: true,
+                            responsiveBreakpoints: {
+                                portrait: {
+                                    changePoint:480,
+                                    visibleItems: 1
+                                },
+                                landscape: {
+                                    changePoint:640,
+                                    visibleItems: 2
+                                },
+                                tablet: {
+                                    changePoint:768,
+                                    visibleItems: 3
+                                }
+                            }
+                        });
+
+                    });
+                </script>
+                <script type="text/javascript" src="{{ asset('js/jquery.flexisel.js')}}"></script>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

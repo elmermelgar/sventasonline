@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+{% block title %}Registro{% endblock %}
+{% block body %}
+    <div class="content">
+        <div class="container">
+            <div class="register">
+                <form method="post" style="margin: 0 auto 0 auto;" action="{{ path('toosistemadeventas_registro') }}">
+                    <div class="  register-top-grid"  style="margin: 0 auto 0 auto; text-align: center;">
+                        <h3>REGISTRO DE USUARIO</h3>
+                        <div class="mation">
+                            <span>Nombres<label>*</label></span>
+                            <input type="text" name="nombre">
+
+                            <span>Apellidos<label>*</label></span>
+                            <input type="text" name="apellido">
+
+                            <span>Email<label>*</label></span>
+                            <input type="email" name="email">
+
+                            <span>Usuario<label>*</label></span>
+                            <input type="text" name="usuario">
+
+                            <span>Contraseña<label>*</label></span>
+                            <input type="password" name="pass">
+
+
+
+                        </div>
+                        <div class="clearfix"> </div>
+                        <button type="submit">Registrar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
