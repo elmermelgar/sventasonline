@@ -25,7 +25,7 @@ class SeguridadController extends Controller
             $em->persist($usuario);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('prueba'));
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }
 
         return $this->render('@toosistemadeventas/Sistema/registro.html.twig');
