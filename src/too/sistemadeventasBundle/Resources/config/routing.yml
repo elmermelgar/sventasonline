@@ -20,3 +20,6 @@ prueba:
 prueba2:
     path:     /prueba2
     defaults: { _controller: toosistemadeventasBundle:Prueba:prueba2 }
+fer:
+    path:     /fer
+    defaults: { _controller: toosistemadeventasBundle:Fer:index }
