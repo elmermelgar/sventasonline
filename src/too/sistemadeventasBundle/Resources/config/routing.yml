@@ -20,6 +20,15 @@ prueba:
 prueba2:
     path:     /prueba2
     defaults: { _controller: toosistemadeventasBundle:Prueba:prueba2 }
-fer:
-    path:     /fer
-    defaults: { _controller: toosistemadeventasBundle:Fer:index }
+
+login_form:
+    path:     /login
+    defaults: { _controller: toosistemadeventasBundle:Security:login }
+    
+logout:
+    path:     /logout
+    defaults: { _controller: toosistemadeventasBundle:Security:logout }
+
+catalogo:
+    path:     /catalogo
+    defaults: { _controller: toosistemadeventasBundle:Default:catalogo }
