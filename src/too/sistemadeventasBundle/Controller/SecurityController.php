@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use too\sistemadeventasBundle\Modals\Login;
 
 class SecurityController extends Controller
 {
@@ -24,17 +25,33 @@ class SecurityController extends Controller
             array('last_username' => $session->get(SecurityContextInterface::LAST_USERNAME),
                   'error'         => $error));*/
         $em=$this->getDoctrine()->getEntityManager();
+
         if($request->isMethod("POST")){
+            //Cerrando Sesion anterior si hay una nueva
+            $session=$request->getSession();
+            $session->clear();
+            //Parametrisacion
             $user=$request->get("_username");
             $pass=$request->get("_password");
             $usuario=$em->getRepository('toosistemadeventasBundle:Usuario')->findOneBy(array('usuario'=>$user,'password'=>$pass));
             if($usuario){
-                //return $this->redirect($this->generateUrl('toosistemadeventas_inicio',array('log' =>$usuario)));
-                return new Response('Eres Bienvenido '.$user);
+                //Creando la session
+                $login=new Login();
+                $login->setUsername($user);
+                $login->setPassword($pass);
+                $session->set('login',$login);
+                return $this->redirect($this->generateUrl('prueba'));
             }
             else{
-                return new Response('No entre :/ ');
+                return new Response('Credenciales incorrectas');
+                //return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
             }
         }
+    }
+
+    public function logoutAction(Request $request){
+        $session=$request->getSession();
+        $session->clear();
+        return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
     }
 }
