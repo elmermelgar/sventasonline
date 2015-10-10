@@ -40,13 +40,15 @@ class SecurityController extends Controller
                 $login->setUsername($user);
                 $login->setPassword($pass);
                 $session->set('login',$login);
-                return $this->redirect($this->generateUrl('prueba'));
+                return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
+                //return $this->redirect($this->generateUrl('prueba'));
             }
             else{
                 return new Response('Credenciales incorrectas');
                 //return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
             }
         }
+        //Aqui creo me falta
     }
 
     public function logoutAction(Request $request){

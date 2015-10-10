@@ -3,6 +3,7 @@
 namespace too\sistemadeventasBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -11,22 +12,33 @@ class DefaultController extends Controller
         return $this->render('toosistemadeventasBundle:Default:index.html.twig', array('name' => $name));
     }
 
-    public function inicioAction()
+    public function inicioAction(Request $request)
     {
-        return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('log'=>''));
+        $user=$this->enviarSesion($request);
+        return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
     }
 
-    public function promocionesAction()
+    public function promocionesAction(Request $request)
     {
-        return $this->render('toosistemadeventasBundle:Sistema:promociones.html.twig');
+        $user=$this->enviarSesion($request);
+        return $this->render('toosistemadeventasBundle:Sistema:promociones.html.twig',array('user'=>$user));
     }
 
-    public function registroAction()
+    public function registroAction(Request $request)
     {
-        return $this->render('toosistemadeventasBundle:Sistema:registro.html.twig');
+        $user=$this->enviarSesion($request);
+        return $this->render('toosistemadeventasBundle:Sistema:registro.html.twig',array('user'=>$user));
     }
-    public function catalogoAction()
+    public function catalogoAction(Request $request)
     {
-        return $this->render('toosistemadeventasBundle:Sistema:catalogo.html.twig');
+        $user=$this->enviarSesion($request);
+        return $this->render('toosistemadeventasBundle:Sistema:catalogo.html.twig',array('user'=>$user));
+    }
+    private function enviarSesion($request){
+        $session=$request->getSession();
+        if($session->has('login')){
+            $login=$session->get('login');
+            return $login->getUsername();
+        }
     }
 }

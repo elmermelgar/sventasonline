@@ -38,6 +38,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
 
                 <div class="header-grid-right">
+                    {% if user %}
+                        <h3>Bienvenido {{ user }}</h3>
+                        <br>
+                        <a href="{{ path('logout') }}">Logout</a>
+                    {% else %}
                         <a href="#" class="sign-in">Login</a>
                         <form method='post' action="{{ path('login_form') }}">
                             <input type="text" name="_username" value="Username" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';} " required>
@@ -46,6 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </form>
                         <label>|</label>
                         <a href="{{ path('toosistemadeventas_registro') }}" class="sign-up">Registrarse</a>
+                    {% endif %}
 
                 </div>
                 <div class="clearfix"> </div>

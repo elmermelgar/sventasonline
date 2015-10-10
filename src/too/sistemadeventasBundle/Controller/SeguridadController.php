@@ -28,7 +28,9 @@ class SeguridadController extends Controller
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }
 
-        return $this->render('@toosistemadeventas/Sistema/registro.html.twig');
+
+
+        return $this->render('@toosistemadeventas/Sistema/registro.html.twig',array('user'=>''));
     }
     private function loginAction(){
 
