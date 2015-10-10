@@ -90,7 +90,9 @@
                             <div class="tab_desc1">
                                 <h3><a href="#">Nombre P</a></h3>
                                 <p>$0.00</p>
-                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
+                                {% if user %}
+                                    <a href="#" class="to-cart"><span>Add To Cart</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-md-4 grid-4 grid-in">

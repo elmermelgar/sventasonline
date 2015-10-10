@@ -60,7 +60,7 @@ h2,h3,h4,h5,h6,p{
 .header-grid-right{
 	float:right;
 	padding:15px 0;
-	width: 47.4%;
+	width: 57.4%;
 }
 .header-grid-right label{
 	color:#fff;
@@ -72,7 +72,16 @@ a.sign-in{
 	font-size: 1.1em;
 	text-decoration: none;
 	float: left;
-	width: 11%;
+	width: 12%;
+	padding: 4px 0;
+	font-weight: 600;
+}
+a.sign-ini{
+	color: #fff;
+	font-size: 1.1em;
+	text-decoration: none;
+	float: left;
+	width: 79%;
 	padding: 4px 0;
 	font-weight: 600;
 }
@@ -108,6 +117,16 @@ a.sign-up{
 	color: #ea6a53;
 	width: 14%;
 	padding: 4px 0px 4px 13px;
+}
+a.sign-upi{
+	font-size: 1.1em;
+	text-decoration: none;
+	float: left;
+	padding: 4px 0;
+	font-weight: 600;
+	color: #ea6a53;
+	width: 15%;
+	padding: 4px 0px 4px -100px;
 }
 a.sign-up:hover{
 	color:#FD1E01;
@@ -1937,7 +1956,7 @@ list-style: none;
 	margin-right:8px;
 }
 .header-grid-right {
-	width: 55%;
+	width: 100%;
 }
 }
 @media(max-width:1024px){
@@ -1997,6 +2016,9 @@ width: 40%;
 a.sign-up {
 	padding: 4px 0px 4px 4px;
 }
+a.sign-upi {
+	padding: 4px auto 4px auto;
+}
 .header-grid-right input[type="submit"] {
 	width: 9%;
 	margin-right: 12px;
@@ -2009,6 +2031,9 @@ a.sign-up {
 	margin:1em 0.8em 1em 0;
 }
 a.sign-in {
+	width: 14%;
+}
+a.sign-ini {
 	width: 14%;
 }
 .search input[type="submit"] {
@@ -2094,7 +2119,13 @@ a.sign-in {
 a.sign-in {
 	width: 44%
 }
+a.sign-ini {
+	width: 44%
+}
 a.sign-up {
+	width: 44%;
+}
+a.sign-upi {
 	width: 44%;
 }
 .header-grid-right input[type="text"], .header-grid-right input[type="submit"] {
@@ -2202,6 +2233,10 @@ a.sign-up {
 	font-size: 1em;
 	width:100%;
 }
+a.sign-upi {
+	font-size: 1em;
+	width:100%;
+}
 .header-grid {
 	width: 54%;
 }
@@ -2212,6 +2247,9 @@ a.sign-up {
 	width: 15%;
 }
 a.sign-in {
+	display:none;
+}
+a.sign-ini {
 	display:none;
 }
 .header-grid-right label {
