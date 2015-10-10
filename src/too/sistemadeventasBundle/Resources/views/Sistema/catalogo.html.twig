@@ -4,56 +4,11 @@
 {% block body %}
     <div class="content">
         <div class="container">
-            <div class="product_banner">
 
-                <div class="in-product">
-                    <div class="wmuSlider example1" style="height: 452px;">
-                        <div class="wmuSliderWrapper">
-                            <article style="position: absolute; width: 100%; opacity: 0;">
-                                <div class="banner-wrap">
-                                    <div class="banner_left">
-                                        <img src="images/13.png" class="img-responsive" alt="">
-                                    </div>
-                                </div>
-                            </article>
-                            <article style="position: absolute; width: 100%; opacity: 0;">
-                                <div class="banner-wrap">
-                                    <div class="banner_left">
-                                        <img src="images/13.png" class="img-responsive" alt="">
-                                    </div>
-                                </div>
-                            </article>
-                            <article style="position: relative; width: 100%; opacity: 1;">
-                                <div class="banner-wrap">
-                                    <div class="banner_left">
-                                        <img src="images/13.png" class="img-responsive" alt="">
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <a class="wmuSliderPrev">Previous</a>
-                        <a class="wmuSliderNext">Next</a>
-                    </div>
-                    <script src="js/jquery.wmuSlider.js"></script>
-                    <script>
-                        $('.example1').wmuSlider({
-                            pagination:false,
-                        });
-                    </script>
-                    <!---->
-                </div>
-                <div class="banner_right">
-                    <h3>Lorem ipsum dolor</h3>
-                    <p class="nine">$13.95</p>
-                    <p class="sit-in">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim</p>
-                    <a href="#" class="to-cart"><span>Add To Cart</span><img src="images/plus.png" alt=""></a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
             <!---->
-            <div class="products_top">
+            <div class="products_top" style="margin: 0 auto 0 auto; float: right;">
 
-                <div class="col-md-9 price-on">
+                <div class="col-md-12 price-on" style="margin: 0 auto 0 auto;">
                     <!---->
                     <div class="mens-toolbar">
                         <div class="sort">
@@ -67,12 +22,12 @@
                                     <option value="">
                                         Price                </option>
                                 </select>
-                                <a href=""><img src="images/arrow2.gif" alt="" class="v-middle"></a>
+                                <a href=""><img src="{{ asset('images/arrow2.gif') }}" alt="" class="v-middle"></a>
                             </div>
                         </div>
                         <div class="pages">
                             <div class="limiter visible-desktop">
-                                <label>Showing 1-12 of 347 results</label>
+                                <label>Mostrando 1-12 de 54 resultados</label>
                             </div>
                             <ul class="dc_pagination dc_paginationA dc_paginationA06">
                                 <li><a href="#">1</a></li>
@@ -86,96 +41,97 @@
                     </div>
                     <!---->
                     <div class="product_box1">
-                        <div class="col-md-4 grid-4">
-                            <a href="single.html">
-                                <img src="images/po.jpg" class="img-responsive" alt="">
+                        <div class="col-md-4 grid-4 grid-in" style="margin: 0 auto 0 auto;">
+                            <a href="">
+                                <img src="{{ asset('images/po4.jpg') }}" class="img-responsive" alt="">
                             </a>
                             <div class="tab_desc1">
-                                <h3><a href="#">Feel Tank</a></h3>
-                                <p>$59.95</p>
-                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="images/plus.png" alt=""></a>
+                                <h3><a href="#">Nombre Producto</a></h3>
+                                <p>$0.00</p>
+                                <a href="#" class="to-cart"><span>Añadir a carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
                             </div>
                         </div>
-                        <div class="col-md-4 grid-4">
-                            <a href="single.html">
-                                <img src="images/po5.jpg" class="img-responsive" alt="">
+                        <div class="col-md-4 grid-4 grid-in" style="align-content: center">
+                            <a href="#">
+                                <img src="{{ asset('images/po4.jpg') }}" class="img-responsive" alt="">
                             </a>
-                            <div class="tab_desc1">
-                                <h3><a href="#">Feel Tank</a></h3>
-                                <p>$59.95</p>
-                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="images/plus.png" alt=""></a>
+                            <div class="tab_desc1" s>
+                                <h3><a href="#">Nombre P</a></h3>
+                                <p>$0.00</p>
+                                <a href="#" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-4 grid-4 grid-in">
-                            <a href="single.html">
-                                <img src="images/po1.jpg" class="img-responsive" alt="">
+                            <a href="#">
+                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
                             </a>
                             <div class="tab_desc1">
-                                <h3><a href="#">Feel Tank</a></h3>
-                                <p>$59.95</p>
-                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="images/plus.png" alt=""></a>
+                                <h3><a href="#">Nombre P</a></h3>
+                                <p>$0.00</p>
+                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
                             </div>
                         </div>
 
-                        <div class="col-md-4 grid-4">
-                            <a href="single.html">
-                                <img src="images/po6.jpg" class="img-responsive" alt="">
-                            </a>
-                            <div class="tab_desc1">
-                                <h3><a href="#">Feel Tank</a></h3>
-                                <p>$59.95</p>
-                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="images/plus.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 grid-4">
-                            <a href="single.html">
-                                <img src="images/po2.jpg" class="img-responsive" alt="">
-                            </a>
-                            <div class="tab_desc1">
-                                <h3><a href="#">Feel Tank</a></h3>
-                                <p>$59.95</p>
-                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="images/plus.png" alt=""></a>
-                            </div>
-                        </div>
                         <div class="col-md-4 grid-4 grid-in">
-                            <a href="single.html">
-                                <img src="images/po3.jpg" class="img-responsive" alt="">
+                            <a href="#">
+                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
                             </a>
                             <div class="tab_desc1">
-                                <h3><a href="#">Feel Tank</a></h3>
-                                <p>$59.95</p>
-                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="images/plus.png" alt=""></a>
+                                <h3><a href="#">Nombre P</a></h3>
+                                <p>$0.00</p>
+                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
                             </div>
                         </div>
 
-                        <div class="col-md-4 grid-4">
-                            <a href="single.html">
-                                <img src="images/po4.jpg" class="img-responsive" alt="">
+                        <div class="col-md-4 grid-4 grid-in">
+                            <a href="#">
+                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
                             </a>
                             <div class="tab_desc1">
-                                <h3></a><a href="#">Feel Tank</a></h3>
-                                <p>$59.95</p>
-                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="images/plus.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 grid-4">
-                            <a href="single.html">
-                                <img src="images/po5.jpg" class="img-responsive" alt="">
-                            </a>
-                            <div class="tab_desc1">
-                                <h3><a href="#">Feel Tank</a></h3>
-                                <p>$59.95</p>
-                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="images/plus.png" alt=""></a>
+                                <h3><a href="#">Nombre P</a></h3>
+                                <p>$0.00</p>
+                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-4 grid-4 grid-in">
-                            <a href="single.html">
-                                <img src="images/po.jpg" class="img-responsive" alt="">
+                            <a href="#">
+                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
                             </a>
                             <div class="tab_desc1">
-                                <h3><a href="#">Feel Tank</a></h3>
-                                <p>$59.95</p>
-                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="images/plus.png" alt=""></a>
+                                <h3><a href="#">Nombre P</a></h3>
+                                <p>$0.00</p>
+                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid-4 grid-in">
+                            <a href="#">
+                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
+                            </a>
+                            <div class="tab_desc1">
+                                <h3><a href="#">Nombre P</a></h3>
+                                <p>$0.00</p>
+                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 grid-4 grid-in">
+                            <a href="#">
+                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
+                            </a>
+                            <div class="tab_desc1">
+                                <h3><a href="#">Nombre P</a></h3>
+                                <p>$0.00</p>
+                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid-4 grid-in">
+                            <a href="#">
+                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
+                            </a>
+                            <div class="tab_desc1">
+                                <h3><a href="#">Nombre P</a></h3>
+                                <p>$0.00</p>
+                                <a href="#" class="to-cart"><span>Add To Cart</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -184,7 +140,7 @@
                     <!---->
                     <div class="pages">
                         <div class="limiter visible-desktop">
-                            <label>Showing 1-12 of 347 results</label>
+                            <label>Mostrando 1-12 de 54 resultados</label>
                         </div>
                         <ul class="dc_pagination dc_paginationA dc_paginationA06">
                             <li><a href="#">1</a></li>
@@ -196,63 +152,7 @@
                     </div>
                     <!---->
                 </div>
-                <div class="col-md-3 product_right">
-                    <h3 class="m_1">On Sale</h3>
-                    <div class="sale_grid">
-                        <ul class="grid_1">
-                            <li class="grid_1-img"><img src="images/s1.jpg" class="img-responsive" alt=""></li>
-                            <li class="grid_1-desc">
-                                <h4><a href="#">Pintuck Tank</a></h4>
-                                <p>$45.55</p>
-                            </li>
-                            <div class="clearfix"> </div>
-                        </ul>
-                        <ul class="grid_1">
-                            <li class="grid_1-img"><img src="images/s2.jpg" class="img-responsive" alt=""></li>
-                            <li class="grid_1-desc">
-                                <h4><a href="#">Pintuck Tank</a></h4>
-                                <p>$45.55</p>
-                            </li>
-                            <div class="clearfix"> </div>
-                        </ul>
-                        <ul class="grid_1">
-                            <li class="grid_1-img"><img src="images/s3.jpg" class="img-responsive" alt=""></li>
-                            <li class="grid_1-desc">
-                                <h4><a href="#">Pintuck Tank</a></h4>
-                                <p>$45.55</p>
-                            </li>
-                            <div class="clearfix"> </div>
-                        </ul>
-                    </div>
-                    <h3 class="m_1">Featured Products</h3>
-                    <div class="sale_grid">
-                        <ul class="grid_1">
-                            <li class="grid_1-img"><img src="images/s2.jpg" class="img-responsive" alt=""></li>
-                            <li class="grid_1-desc">
-                                <h4><a href="#">Pintuck Tank</a></h4>
-                                <p>$45.55</p>
-                            </li>
-                            <div class="clearfix"> </div>
-                        </ul>
-                        <ul class="grid_1">
-                            <li class="grid_1-img"><img src="images/s4.jpg" class="img-responsive" alt=""></li>
-                            <li class="grid_1-desc">
-                                <h4><a href="#">Pintuck Tank</a></h4>
-                                <p>$45.55</p>
-                            </li>
-                            <div class="clearfix"> </div>
-                        </ul>
-                        <ul class="grid_1">
-                            <li class="grid_1-img"><img src="images/s3.jpg" class="img-responsive" alt=""></li>
-                            <li class="grid_1-desc">
-                                <h4><a href="#">Pintuck Tank</a></h4>
-                                <p>$45.55</p>
-                            </li>
-                            <div class="clearfix"> </div>
-                        </ul>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
+
                 <div class="clearfix"> </div>
             </div>
         </div>
