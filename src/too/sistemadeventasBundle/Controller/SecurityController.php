@@ -44,7 +44,9 @@ class SecurityController extends Controller
                 //return $this->redirect($this->generateUrl('prueba'));
             }
             else{
-                return new Response('Credenciales incorrectas');
+                $this->MensajeFlash('Credenciales incorrectas!');
+                return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+                //return new Response('Credenciales incorrectas');
                 //return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
             }
         }
@@ -57,5 +59,11 @@ class SecurityController extends Controller
         $session=$request->getSession();
         $session->clear();
         return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+    }
+    private function MensajeFlash($m){
+        $this->get('session')->getFlashBag()->add(
+            'mensaje',
+            ''.$m
+        );
     }
 }

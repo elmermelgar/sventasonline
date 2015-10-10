@@ -46,6 +46,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <a href="{{ path('logout') }}" class="sign-upi">Cerrar Sesión</a>
                         </div>
                     {% else %}
+                        {% for flashMessage in app.session.flashbag.get('mensaje') %}
+                            <br>
+                            <div class="alert alert-danger fade in">
+                            <span class="close" data-dismiss="alert">
+                            &times;
+                            </span>
+                                {{ flashMessage }}
+                            </div>
+                        {% endfor %}
                         <a href="#" class="sign-in">Login</a>
                         <form method='post' action="{{ path('login_form') }}">
                             <input type="text" name="_username" value="Username" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';} " required>
@@ -93,7 +102,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 
-        {% block body %}{% endblock %}
+        {% block body %}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
 
     <div class="footer">
