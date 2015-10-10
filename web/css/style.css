@@ -965,6 +965,8 @@ ul.grid-4 li.grid-4_last {
 }
 .product_box1{
 	margin-bottom:2em;
+	margin: 0 auto 0 auto;
+	float: right;
 }
 h3.m_1 {
 	color: #fff;
@@ -2301,6 +2303,9 @@ p.nine {
 .grid-4 {
 	margin-right: 2%;
 	width: 48%;
+	margin: 0 auto 0 auto;
+	text-align: center;
+	text-align: center;
 }
 .grid-4:nth-child(9){
 	display:none;
@@ -2551,6 +2556,8 @@ a.to-cart img {
 }
 .product_box1{
 	margin:0;
+	text-align: center;
+
 }
 .products_top {
 	padding: 1em 0 0;

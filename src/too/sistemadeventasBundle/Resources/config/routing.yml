@@ -24,7 +24,7 @@ prueba2:
 login_form:
     path:     /login
     defaults: { _controller: toosistemadeventasBundle:Security:login }
-    
+
 logout:
     path:     /logout
     defaults: { _controller: toosistemadeventasBundle:Security:logout }
