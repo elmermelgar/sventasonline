@@ -30,7 +30,7 @@ class SecurityController extends Controller
             $usuario=$em->getRepository('toosistemadeventasBundle:Usuario')->findOneBy(array('usuario'=>$user,'password'=>$pass));
             if($usuario){
                 //return $this->redirect($this->generateUrl('toosistemadeventas_inicio',array('log' =>$usuario)));
-                return new Response('Bienvenido '.$usuario);
+                return new Response('Eres Bienvenido '.$user);
             }
             else{
                 return new Response('No entre :/ ');
