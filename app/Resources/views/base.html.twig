@@ -39,9 +39,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 <div class="header-grid-right">
                     {% if user %}
-                        <h3>Bienvenido {{ user }}</h3>
-                        <br>
-                        <a href="{{ path('logout') }}">Logout</a>
+                        <div style="float: right; width: 60%;">
+                            <a href="#" class="sign-ini">Bienvenido ({{ user }})</a>
+                            <form method='post' action="{{ path('login_form') }}">
+
+                            </form>
+                            <label>|</label>
+                            <a href="{{ path('logout') }}" class="sign-upi">Cerrar Sesión</a>
+                        </div>
                     {% else %}
                         <a href="#" class="sign-in">Login</a>
                         <form method='post' action="{{ path('login_form') }}">
