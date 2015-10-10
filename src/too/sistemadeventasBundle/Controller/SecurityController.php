@@ -50,7 +50,9 @@ class SecurityController extends Controller
                 //return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
             }
         }
-        //Aqui creo me falta
+        else{
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+        }
     }
 
     public function logoutAction(Request $request){
