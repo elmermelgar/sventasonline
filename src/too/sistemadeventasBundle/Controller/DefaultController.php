@@ -13,7 +13,7 @@ class DefaultController extends Controller
 
     public function inicioAction()
     {
-        return $this->render('toosistemadeventasBundle:Sistema:index.html.twig');
+        return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('log'=>''));
     }
 
     public function promocionesAction()
@@ -24,5 +24,9 @@ class DefaultController extends Controller
     public function registroAction()
     {
         return $this->render('toosistemadeventasBundle:Sistema:registro.html.twig');
+    }
+    public function catalogoAction()
+    {
+        return $this->render('toosistemadeventasBundle:Sistema:catalogo.html.twig');
     }
 }

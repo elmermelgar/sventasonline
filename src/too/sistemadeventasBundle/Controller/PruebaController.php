@@ -14,7 +14,7 @@ use too\sistemadeventasBundle\Entity\usuarios;
 class PruebaController extends Controller
 {
 
-    public function pruebaAction()
+    public function pruebaAction(Request $request)
     {
         /*$em=$this->getDoctrine()->getEntityManager();
         $asig=new Asignatura();
@@ -23,7 +23,13 @@ class PruebaController extends Controller
 
         $em->persist($asig);
         $em->flush();*/
-        return new Response('Insertado');
+        $session=$request->getSession();
+        if($session->has('login')){
+            $login=$session->get('login');
+            return $this->render('toosistemadeventasBundle::inicio.html.twig',array('nombre'=>$login->getUsername()));
+        }
+        else
+            return new Response('Por gusto');
     }
     public function  prueba2Action(Request $request){
         $em=$this->getDoctrine()->getEntityManager();

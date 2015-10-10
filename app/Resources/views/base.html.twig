@@ -36,15 +36,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a href="#"><img src="{{ asset('images/logo.png') }}" alt=" " ></a>
                     </div>
                 </div>
+
                 <div class="header-grid-right">
-                    <a href="#" class="sign-in">Login</a>
-                    <form>
-                        <input type="text" value="Username" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-                        <input type="text" value="Password" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-                        <input type="submit" value="Ir" >
-                    </form>
-                    <label>|</label>
-                    <a href="{{ path('toosistemadeventas_registro') }}" class="sign-up">Registrarse</a>
+                        <a href="#" class="sign-in">Login</a>
+                        <form method='post' action="{{ path('login_form') }}">
+                            <input type="text" name="_username" value="Username" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';} " required>
+                            <input type="text" name="_password" value="Password" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}" required>
+                            <input type="submit" value="Ir" >
+                        </form>
+                        <label>|</label>
+                        <a href="{{ path('toosistemadeventas_registro') }}" class="sign-up">Registrarse</a>
+
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -59,7 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul>
                         <li {% block active1 %}{% endblock active1 %}><a href="{{ path('toosistemadeventas_inicio') }}">INICIO </a></li>
                         <li {% block active2 %}{% endblock active2 %}><a href="{{ path('toosistemadeventas_promociones') }}" >PROMOCIONES</a></li>
-                        <li {% block active3 %}{% endblock active3 %}><a href="#" >PRODUCTO2</a></li>
+                        <li {% block active3 %}{% endblock active3 %}><a href="{{ path('catalogo') }}" >CATÁLOGO</a></li>
                         <li {% block active4 %}{% endblock active4 %}><a href="#" >PRODUCTO3</a></li>
                     </ul>
                     <script>

@@ -30,4 +30,7 @@ class SeguridadController extends Controller
 
         return $this->render('@toosistemadeventas/Sistema/registro.html.twig');
     }
+    private function loginAction(){
+
+    }
 }
