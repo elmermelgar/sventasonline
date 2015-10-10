@@ -44,7 +44,9 @@ class SecurityController extends Controller
                 //return $this->redirect($this->generateUrl('prueba'));
             }
             else{
-                return new Response('Credenciales incorrectas');
+                $url=$this->generateUrl('toosistemadeventas_inicio');
+                //var_dump($url);
+                return new Response('<script>alert("Usuario o contrasena invalido")</script><script>location.href=$url</script>');
                 //return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
             }
         }

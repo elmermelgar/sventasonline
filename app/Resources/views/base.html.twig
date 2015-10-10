@@ -93,7 +93,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 
-        {% block body %}{% endblock %}
+        {% block body %}
+            {% for type, flashMessage in app.session.flashbag.all() %}
+                <div class="alert alert-{{ type }} fade in">
+                    <button class="close" data-dismiss="alert" type="button">×</button>
+                    {% if flashMessage.title is defined %}
+                        <strong>{{ flashMessage.title }}</strong>
+                        {{ flashMessage.message }}
+                    {% else %}
+                        {{ type }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
 
     <div class="footer">
