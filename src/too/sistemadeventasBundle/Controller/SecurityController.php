@@ -47,7 +47,6 @@ class SecurityController extends Controller
                 $this->MensajeFlash('Credenciales incorrectas!');
                 return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
                 //return new Response('Credenciales incorrectas');
-                //return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
             }
         }
         else{
