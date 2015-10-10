@@ -34,7 +34,7 @@
                                 <small>desc.</small>
                             </div>
                             <p>Nombre del producto</p>
-                            <span>$0.00  | <label class="cat-in"> </label> <a href="#">Añadir a carrito</a></span>
+                            <span>$0.00  |{% if user %} <label class="cat-in"> </label> <a href="#">Añadir a carrito</a></span>{% endif %}
                         </div>
                         <div class="col-md-4 you-para">
                             <a href="single.html"><img class="img-responsive pic-in" src="{{ asset('images/pi4.jpg')}}" alt=" " ></a>
