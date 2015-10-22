@@ -1,8 +1,6 @@
-/*--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
+/*--Sistema de Ventas TOO-115
+Author: Elmer Melgar
+License: Universidad de El Salvador
 --*/
 body{
 	background:#f6f6f4;
@@ -85,7 +83,7 @@ a.sign-ini{
 	padding: 4px 0;
 	font-weight: 600;
 }
-.header-grid-right input[type="text"],.header-grid-right input[type="submit"]{
+.header-grid-right input[type="text"],.header-grid-right input[type="submit"], .header-grid-right input[type="password"]{
 	outline: none;
 	border: none;
 	background: #fff;
@@ -1353,7 +1351,7 @@ padding: 2em;
 	color:#555;
 	font-size: 0.9em;
 	padding-bottom: 0.2em;
-	display: block;
+	display: inline-block;
 	text-transform: uppercase;
 }
 .register-top-grid input[type="text"] {
@@ -1363,6 +1361,8 @@ padding: 2em;
 	font-size: 1em;
 	padding: 0.5em;
 	margin: 0.5em 0;
+	padding: 5px 8px;
+	display: inline-block;
 }
 .register-top-grid input[type="email"] {
 	border: 1px solid #EEE;
@@ -1371,6 +1371,8 @@ padding: 2em;
 	font-size: 1em;
 	padding: 0.5em;
 	margin: 0.5em 0;
+	padding: 5px 8px;
+	display: inline-block;
 }
 .register-top-grid input[type="password"] {
 	border: 1px solid #EEE;
@@ -1379,6 +1381,8 @@ padding: 2em;
 	font-size: 1em;
 	padding: 0.5em;
 	margin: 0.5em 0;
+	padding: 5px 8px;
+	display: inline-block;
 }
 .register-top-grid button[type="submit"] {
 	border: 1px solid #EEE;
@@ -1387,20 +1391,34 @@ padding: 2em;
 	font-size: 1em;
 	padding: 0.5em;
 	margin: 0.5em 0;
-	border-radius: 10px;
-	background:#046a38;
-	color: #fff;
+	background-color: #68b12f;
+    background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
+    background: -webkit-linear-gradient(top, #68b12f, #50911e);
+    background: -moz-linear-gradient(top, #68b12f, #50911e);
+    background: -ms-linear-gradient(top, #68b12f, #50911e);
+    background: -o-linear-gradient(top, #68b12f, #50911e);
+    background: linear-gradient(top, #68b12f, #50911e);
+    border: 1px solid #509111;
+    border-bottom: 1px solid #5b992b;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 #9fd574;
+    -webkit-box-shadow: 0 1px 0 0 #9fd574 inset ;
+    -moz-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -ms-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -o-box-shadow: 0 1px 0 0 #9fd574 inset;
+    color: white;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-align: center;
+    text-shadow: 0 -1px 0 #396715;
 }
 .register-top-grid button[type="submit"]:hover {
-	border: 1px solid #EEE;
-	outline-color:#fff;
-	width: 20%;
-	font-size: 1em;
-	padding: 0.5em;
-	margin: 0.5em 0;
-	border-radius: 10px;
-	background:#1d428a;
-	color: #fff;
+	opacity:.85;
+    cursor: pointer; 
 }
 .checkbox {
 	margin-bottom: 4px;
@@ -1473,6 +1491,7 @@ padding: 2em;
 .register {
 	padding: 4em 0;
 	margin: 0 auto 0 auto;
+	
 }
 /*--privacy--*/
 .privacy-top h3{
@@ -2722,3 +2741,151 @@ a.to-cart img {
 	padding: 1em 0;
 }
 }
+
+
+/*+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/*/
+
+.contact_form {
+	margin: 0 auto 0 auto;
+	display: block;
+	width: 100%;
+	text-align: center;
+	border-style: hidden;
+}
+.contact_form h2, 
+ .contact_form label { 
+ 	font-family: Georgia, Times, "Times New Roman", serif; 
+ } 
+
+ 	/* === List Styles === */ 
+ .contact_form ul { 
+ 	width: 750px; 
+ 	list-style-type: none; 
+ 	list-style-position: outside;
+ 	 margin: 0px; 
+ 	 padding: 0px; 
+ 	} 
+ .contact_form li { 
+ 	padding: 2%; 
+ 	border-bottom: 1px solid #eee; 
+ 	position: relative; 
+ }
+  .contact_form li:first-child, .contact_form li:last-child { 
+  	border-bottom: 1px solid #777;
+  	} 
+  	/* === Form Header === */ 
+  .contact_form h2 { 
+  	margin: 0; 
+  	display: inline; 
+  } 
+  	/* === Form Elements === */
+  .contact_form label { 
+  	width: 20%; 
+  	margin-top: 3px; 
+  	display: inline-block; 
+  	float: left; 
+  	padding: 3px; 
+  } 
+  .contact_form input { 
+  	height: 30px; 
+  	width: 50%;
+  	padding: 5px 8px; 
+  } 
+  .contact_form textarea { 
+  	padding: 8px; 
+  	width: 30%; 
+  } 
+  .contact_form button { margin-left: 156px; } /* form element visual styles */ 
+  .contact_form input, .contact_form textarea { 
+  	border: 1px solid #aaa; 
+  	box-shadow: 0px 0px 3px #1a1a1a, 0 10px 15px #eee inset;
+  	border-radius: 2px; 
+  	padding-right: 2%; 
+  	-moz-transition: padding .25s; 
+  	-webkit-transition: padding .25s; 
+  	-o-transition: padding .25s; 
+  	transition: padding .25s; 
+  } 
+  .contact_form input:focus, .contact_form textarea:focus { 
+  	background: #fff; 
+  	border: 1px solid #555; 
+  	box-shadow: 0 0 3px #aaa; 
+  	padding-right: 3%; 
+  	} 
+  	/* === HTML5 validation styles === */ 
+  .contact_form input:required, .contact_form textarea:required { 
+  	background: #fff url(images/red_asterisk.png) no-repeat 98% center; 
+  } 
+  .contact_form input:required:valid, .contact_form textarea:required:valid { 
+  	background: #fff url(images/valid.png) no-repeat 98% center; 
+  	box-shadow: 0 0 5px #5cd053; 
+  	border-color: #28921f; 
+  } 
+  .contact_form input:focus:invalid, .contact_form textarea:focus:invalid { 
+  	background: #fff url(images/invalid.png) no-repeat 98% center; 
+  	box-shadow: 0 0 5px #d45252; border-color: #b03535; 
+  	} 
+  	/* === Form hints === */ 
+  .form_hint { 
+  	background: #d45252; 
+  	border-radius: 3px 3px 3px 3px; 
+  	color: white; 
+  	margin-left: 8px; 
+  	padding: 1px 6px; 
+  	z-index: 999; 
+  	/* hints stay above all other elements */ 
+  	position: absolute; 
+  	/* allows proper formatting if hint is two lines */ 
+  	display: none; 
+  } 
+  .form_hint::before { 
+  	content: "\25C0"; 
+  	color: #d45252; 
+  	position: absolute; 
+  	top: 1px; 
+  	left: -6px; 
+  } 
+  .contact_form input:focus + .form_hint { display: inline; } 
+  .contact_form input:required:valid + 
+  .form_hint { background: #28921f; } 
+  .contact_form input:required:valid + 
+  .form_hint::before { color: #28921f; } /* === Button Style === */ 
+  button.submit { 
+  	background-color: #68b12f; 
+  	background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e)); 
+  	background: -webkit-linear-gradient(top, #68b12f, #50911e); 
+  	background: -moz-linear-gradient(top, #68b12f, #50911e); 
+  	background: -ms-linear-gradient(top, #68b12f, #50911e); 
+  	background: -o-linear-gradient(top, #68b12f, #50911e); 
+  	background: linear-gradient(top, #68b12f, #50911e); 
+  	border: 1px solid #509111; 
+  	border-bottom: 1px solid #5b992b; 
+  	border-radius: 3px; 
+  	-webkit-border-radius: 3px; 
+  	-moz-border-radius: 3px; 
+  	-ms-border-radius: 3px; 
+  	-o-border-radius: 3px; 
+  	box-shadow: inset 0 1px 0 0 #9fd574; 
+  	-webkit-box-shadow: 0 1px 0 0 #9fd574 inset; 
+  	-moz-box-shadow: 0 1px 0 0 #9fd574 inset; 
+  	-ms-box-shadow: 0 1px 0 0 #9fd574 inset; 
+  	-o-box-shadow: 0 1px 0 0 #9fd574 inset; 
+  	color: white; 
+  	font-weight: bold; 
+  	padding: 6px 20px; 
+  	text-align: center; 
+  	text-shadow: 0 -1px 0 #396715; 
+  	} 
+  	button.submit:hover { 
+  		opacity: .85; 
+  		cursor: pointer; 
+  		} 
+  	button.submit:active { 
+  		border: 1px solid #20911e; 
+  		box-shadow: 0 0 10px 5px #356b0b inset; 
+  		-webkit-box-shadow: 0 0 10px 5px #356b0b inset; 
+  		-moz-box-shadow: 0 0 10px 5px #356b0b inset; 
+  		-ms-box-shadow: 0 0 10px 5px #356b0b inset; 
+  		-o-box-shadow: 0 0 10px 5px #356b0b inset; 
+  	} 
+

@@ -5,26 +5,44 @@
         <div class="container">
             <div class="register">
                 <form method="post" style="margin: 0 auto 0 auto;" action="{{ path('toosistemadeventas_registro') }}">
-                    <div class="  register-top-grid"  style="margin: 0 auto 0 auto; text-align: center;">
-                        <h3>REGISTRO DE USUARIO</h3>
-                        <div class="mation">
-                            <span>Nombres<label>*</label></span>
-                            <input type="text" name="nombre">
+                    <div class="register-top-grid"  style="margin: 0 auto 0 auto; text-align: center;">
 
-                            <span>Apellidos<label>*</label></span>
-                            <input type="text" name="apellido">
 
-                            <span>Email<label>*</label></span>
-                            <input type="email" name="email">
+                        <div class="contact_form" id="contact_form"  >
+                            <ul style="margin: 0 auto 0 auto;">
+                                <li>
+                                    <h2>REGISTRO DE USUARIO</h2>
 
-                            <span>Usuario<label>*</label></span>
-                            <input type="text" name="usuario">
+                                </li>
 
-                            <span>Contraseña<label>*</label></span>
-                            <input type="password" name="pass">
+                                <li>
+                                    <label><span>Nombres*</span></label>
+                                    <input type="text" required name="nombre">
+                                </li>
+                                <li>
+                                    <label><span>Apellidos*</span></label>
+                                    <input type="text" required name="apellido">
+                                </li>
+                                <li>
+                                    <label><span>Email*</span></label>
+                                    <input type="email" required name="email">
+                                </li>
+                                <li>
+                                    <label> <span>Usuario*</span></label>
+                                    <input type="text" required name="usuario">
+                                </li>
+                                <li>
+                                    <label><span>Contraseña*</span></label>
+                                    <input type="password" required name="pass">
+                                </li>
+                            </ul>
+                            <div class="clearfix"> </div>
+                            <button type="submit">Registrar</button>
+
                         </div>
-                        <div class="clearfix"> </div>
-                        <button type="submit">Registrar</button>
+
+
+
                     </div>
 
                 </form>

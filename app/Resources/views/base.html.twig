@@ -41,7 +41,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="header-grid-right">
                     {% if user %}
                         <div style="float: right; width: 40%;">
-                            <a href="#" class="sign-ini">Bienvenido ({{ user }})</a>
+                            <a href="#" class="sign-ini">Bienvenido  @{{ user }}</a>
 
                             <label>|</label>
                             <a href="{{ path('logout') }}" class="sign-upi">Cerrar Sesión</a>
@@ -61,7 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a href="#" class="sign-in">Login</a>
                         <form method='post' action="{{ path('login_form') }}">
                             <input type="text" name="_username" value="Username" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';} " required>
-                            <input type="text" name="_password" value="Password" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}" required>
+                            <input type="password" name="_password" value="Password" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}" required>
                             <input type="submit" value="Ir" id="ir">
                         </form>
                         <label>|</label>
