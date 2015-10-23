@@ -11,23 +11,15 @@
                         <div class="contact_form" id="contact_form"  >
                             <ul style="margin: 0 auto 0 auto;">
                                 {% for flashMessage in app.session.flashbag.get('credencial') %}
-                                    <script>
-                                        window.onload = function error(){
-                                            alertify.error("{{ flashMessage }}.");
-                                            return false;
-                                        }
-                                    </script>
-                                {% endfor %}
-                                {% for flashMessage in app.session.flashbag.get('exito') %}
-                                    <script>
-                                        window.onload = function notificacion(){
-                                            alertify.log("{{ flashMessage }}.");
-                                            return false;
-                                        }
-                                    </script>
+                                    <div class="alert alert-danger fade in">
+                                    <span class="close" data-dismiss="alert">
+                                    &times;
+                                    </span>
+                                        {{ flashMessage }}
+                                    </div>
                                 {% endfor %}
                                 <li>
-                                    <h2>REGISTRO DE USUARIO</h2>
+                                    <h2>REGISTRO DE ADMINISTRADOR</h2>
 
                                 </li>
 
