@@ -25,6 +25,13 @@ class Producto
     /**
      * @var string
      *
+     * @ORM\Column(name="imagen", type="string", length=200, nullable=true)
+     */
+    private $imagen;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="nombre_prod", type="string", length=50, nullable=true)
      */
     private $nombreProd;
@@ -51,6 +58,13 @@ class Producto
     private $precioUnitario;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="estado", type="integer", nullable=true)
+     */
+    private $estado;
+
+    /**
      * @var \Categoria
      *
      * @ORM\ManyToOne(targetEntity="Categoria")
@@ -70,6 +84,29 @@ class Producto
     public function getIdProducto()
     {
         return $this->idProducto;
+    }
+
+    /**
+     * Set imagen
+     *
+     * @param string $imagen
+     * @return Producto
+     */
+    public function setImagen($imagen)
+    {
+        $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    /**
+     * Get imagen
+     *
+     * @return string 
+     */
+    public function getImagen()
+    {
+        return $this->imagen;
     }
 
     /**
@@ -165,6 +202,29 @@ class Producto
     }
 
     /**
+     * Set estado
+     *
+     * @param integer $estado
+     * @return Producto
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return integer 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
      * Set idCategoria
      *
      * @param \too\sistemadeventasBundle\Entity\Categoria $idCategoria
@@ -185,5 +245,44 @@ class Producto
     public function getIdCategoria()
     {
         return $this->idCategoria;
+    }
+
+    //SUBIDAS
+    public function getAbsolutePath() {
+        return null === $this->image ? null : $this->getUploadRootDir() . '/' . $this->image;
+    }
+
+    public function getWebPath() {
+        return null === $this->image ? null : $this->getUploadDir() . '/' . $this->image;
+    }
+
+    public function getUploadRootDir() {
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+    }
+
+    protected function getUploadDir() {
+        return 'uploads';
+    }
+
+    public function upload() {
+
+        if (null === $this->getImagen()) {
+            return;
+        }
+
+        $this->getImagen()->move(
+            $this->getUploadRootDir(), $this->getImagen()->getClientOriginalName()
+        );
+
+        $this->imagen = $this->getImagen()->getClientOriginalName();
+
+        $this->file = null;
+    }
+
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
     }
 }

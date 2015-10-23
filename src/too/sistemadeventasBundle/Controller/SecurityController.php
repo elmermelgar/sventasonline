@@ -12,25 +12,13 @@ class SecurityController extends Controller
 {
     public function loginAction(Request $request)
     {
-        /*$session = $request->getSession();
-
-        if($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)){
-            $error = $request->attributes->get(SecurityContextInterface::AUTHENTICATION_ERROR);
-
-        }else{
-            $error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
-            $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
-        }
-        return $this->render('toosistemadeventasBundle:Default:index.html.twig',
-            array('last_username' => $session->get(SecurityContextInterface::LAST_USERNAME),
-                  'error'         => $error));*/
         $em=$this->getDoctrine()->getEntityManager();
 
         if($request->isMethod("POST")){
             //Cerrando Sesion anterior si hay una nueva
             $session=$request->getSession();
             $session->clear();
-            //Parametrisacion
+            //Parametrizacion
             $user=$request->get("_username");
             $pass=$request->get("_password");
             $usuario=$em->getRepository('toosistemadeventasBundle:Usuario')->findOneBy(array('usuario'=>$user,'password'=>$pass));

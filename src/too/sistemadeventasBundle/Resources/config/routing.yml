@@ -13,13 +13,6 @@ toosistemadeventas_promociones:
 toosistemadeventas_registro:
     path:     /registro
     defaults: { _controller: toosistemadeventasBundle:Seguridad:registro }
-prueba:
-    path:     /prueba
-    defaults: { _controller: toosistemadeventasBundle:Prueba:prueba }
-
-prueba2:
-    path:     /prueba2
-    defaults: { _controller: toosistemadeventasBundle:Prueba:prueba2 }
 
 login_form:
     path:     /login

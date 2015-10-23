@@ -24,11 +24,6 @@ class DefaultController extends Controller
         return $this->render('toosistemadeventasBundle:Sistema:promociones.html.twig',array('user'=>$user));
     }
 
-    public function registroAction(Request $request)
-    {
-        $user=$this->enviarSesion($request);
-        return $this->render('toosistemadeventasBundle:Sistema:registro.html.twig',array('user'=>$user));
-    }
     public function catalogoAction(Request $request)
     {
         $user=$this->enviarSesion($request);

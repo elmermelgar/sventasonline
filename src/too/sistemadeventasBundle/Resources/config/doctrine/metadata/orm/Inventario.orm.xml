@@ -2,8 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Inventario" table="inventario">
     <indexes>
-      <index name="descarga_fk" columns="id_compra"/>
       <index name="tiene_fk" columns="id_producto"/>
+      <index name="descarga_fk" columns="id_compra"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="inventario_pk" columns="id_inventario"/>

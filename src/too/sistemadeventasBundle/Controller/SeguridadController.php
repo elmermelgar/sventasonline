@@ -12,27 +12,53 @@ class SeguridadController extends Controller
     public function registroAction(Request $request)
     {
         $em=$this->getDoctrine()->getEntityManager();
-        if($request->isMethod("POST")){
-
-            $usuario=new Usuario();
-            $usuario->setApellidoUsu($request->get('apellido'));
-            $usuario->setNombreUsu($request->get('nombre'));
-            $usuario->setCorreo($request->get('email'));
-            $usuario->setPassword($request->get('pass'));
-            $usuario->setRol(1);
-            $usuario->setUsuario($request->get('usuario'));
-
-            $em->persist($usuario);
-            $em->flush();
-
+        //Obtener la sesion
+        $user=$this->enviarSesion($request);
+        if($user){
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }
+        else{
+            if($request->isMethod("POST")){
 
+                if($this->loginAction($request->get('usuario'),$request->get('email')))
+                {
+                    $this->MensajeFlash('Usuario/Correo Duplicado');
+                    return $this->redirect($this->generateUrl('toosistemadeventas_registro'));
+                }
+                else
+                {
+                    $usuario = new Usuario();
+                    $usuario->setApellidoUsu($request->get('apellido'));
+                    $usuario->setNombreUsu($request->get('nombre'));
+                    $usuario->setCorreo($request->get('email'));
+                    $usuario->setPassword($request->get('pass'));
+                    $usuario->setRol(1);
+                    $usuario->setUsuario($request->get('usuario'));
 
-
-        return $this->render('@toosistemadeventas/Sistema/registro.html.twig',array('user'=>''));
+                    $em->persist($usuario);
+                    $em->flush();
+                }
+                return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+            }
+            return $this->render('@toosistemadeventas/Sistema/registro.html.twig',array('user'=>$user));
+        }
     }
-    private function loginAction(){
-
+    private function loginAction($user,$email){
+        $em=$this->getDoctrine()->getManager();
+        $encontrado=$em->getRepository('toosistemadeventasBundle:Usuario')->findOneBy(array('usuario'=>$user,'correo'=>$email));
+        return $encontrado;
+    }
+    private function MensajeFlash($m){
+        $this->get('session')->getFlashBag()->add(
+            'credencial',
+            ''.$m
+        );
+    }
+    private function enviarSesion($request){
+        $session=$request->getSession();
+        if($session->has('login')){
+            $login=$session->get('login');
+            return $login->getUsername();
+        }
     }
 }

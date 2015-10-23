@@ -25,6 +25,13 @@ class Producto
     /**
      * @var string
      *
+     * @ORM\Column(name="imagen", type="string", length=200, nullable=true)
+     */
+    private $imagen;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="nombre_prod", type="string", length=50, nullable=true)
      */
     private $nombreProd;
@@ -49,6 +56,13 @@ class Producto
      * @ORM\Column(name="precio_unitario", type="decimal", precision=10, scale=2, nullable=true)
      */
     private $precioUnitario;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="estado", type="integer", nullable=true)
+     */
+    private $estado;
 
     /**
      * @var \Categoria

@@ -7,10 +7,12 @@
     <id name="idProducto" type="integer" column="id_producto">
       <generator strategy="SEQUENCE"/>
     </id>
+    <field name="imagen" type="string" column="imagen" length="200" nullable="true"/>
     <field name="nombreProd" type="string" column="nombre_prod" length="50" nullable="true"/>
     <field name="descripcionProd" type="string" column="descripcion_prod" length="200" nullable="true"/>
     <field name="cantidadProd" type="integer" column="cantidad_prod" nullable="true"/>
     <field name="precioUnitario" type="decimal" column="precio_unitario" precision="10" scale="2" nullable="true"/>
+    <field name="estado" type="integer" column="estado" nullable="true"/>
     <many-to-one field="idCategoria" target-entity="Categoria">
       <join-columns>
         <join-column name="id_categoria" referenced-column-name="id_categoria"/>

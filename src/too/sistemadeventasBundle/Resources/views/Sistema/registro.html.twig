@@ -10,6 +10,14 @@
 
                         <div class="contact_form" id="contact_form"  >
                             <ul style="margin: 0 auto 0 auto;">
+                                {% for flashMessage in app.session.flashbag.get('credencial') %}
+                                    <div class="alert alert-danger fade in">
+                                    <span class="close" data-dismiss="alert">
+                                    &times;
+                                    </span>
+                                        {{ flashMessage }}
+                                    </div>
+                                {% endfor %}
                                 <li>
                                     <h2>REGISTRO DE USUARIO</h2>
 

@@ -2,13 +2,10 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Venta" table="venta">
     <indexes>
-      <index name="registra_fk" columns="id_producto"/>
       <index name="aplica_fk" columns="id_promocion"/>
+      <index name="registra_fk" columns="id_producto"/>
       <index name="involucra_fk" columns="id_cliente"/>
     </indexes>
-    <unique-constraints>
-      <unique-constraint name="venta_pk" columns="id_venta"/>
-    </unique-constraints>
     <id name="idVenta" type="integer" column="id_venta">
       <generator strategy="SEQUENCE"/>
     </id>
