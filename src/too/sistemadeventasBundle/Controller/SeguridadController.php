@@ -22,7 +22,7 @@ class SeguridadController extends Controller
 
                 if($this->loginAction($request->get('usuario'),$request->get('email')))
                 {
-                    $this->MensajeFlash('Usuario/Correo Duplicado');
+                    $this->MensajeFlash('Usuario y correo ya existe!');
                     return $this->redirect($this->generateUrl('toosistemadeventas_registro'));
                 }
                 else
@@ -37,8 +37,12 @@ class SeguridadController extends Controller
 
                     $em->persist($usuario);
                     $em->flush();
+                    $this->MensajeFlash2('Usuario creado correctamente!');
                 }
-                return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+
+
+                return $this->redirect($this->generateUrl('toosistemadeventas_registro'));
+
             }
             return $this->render('@toosistemadeventas/Sistema/registro.html.twig',array('user'=>$user));
         }
@@ -73,6 +77,12 @@ class SeguridadController extends Controller
     private function MensajeFlash($m){
         $this->get('session')->getFlashBag()->add(
             'credencial',
+            ''.$m
+        );
+    }
+    private function MensajeFlash2($m){
+        $this->get('session')->getFlashBag()->add(
+            'exito',
             ''.$m
         );
     }

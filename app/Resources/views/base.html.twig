@@ -11,7 +11,9 @@ License: Universidad de El Salvador
             <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
 
             <script src="{{ asset('js/jquery.min.js') }}"></script>
-
+            <script type="text/javascript" src="{{ asset('css/views/alertify.js') }}"></script>
+            <link href="{{ asset('css/views/alertify.core.css') }}" rel="stylesheet" type="text/css" media="all" />
+            <link href="{{ asset('css/views/alertify.default.css') }}" rel="stylesheet" type="text/css" media="all" />
             <link href="{{ asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 
 
@@ -49,13 +51,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     {% else %}
                         {% for flashMessage in app.session.flashbag.get('mensaje') %}
 
-                            <div class="alert alert-danger fade in">
-                            <span class="close" data-dismiss="alert">
-                            &times;
-                            </span>
-                                {{ flashMessage }}
-                            </div>
 
+                        <script>
+                            window.onload = function error(){
+                                alertify.error("{{ flashMessage }}.");
+                                return false;
+                            }
+                        </script>
 
                         {% endfor %}
                         <a href="#" class="sign-in">Login</a>
