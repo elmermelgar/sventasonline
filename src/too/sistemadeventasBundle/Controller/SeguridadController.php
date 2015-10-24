@@ -43,6 +43,28 @@ class SeguridadController extends Controller
             return $this->render('@toosistemadeventas/Sistema/registro.html.twig',array('user'=>$user));
         }
     }
+    public function ferAction(Request $request){
+
+            if($request->isMethod("POST"))
+            {
+                if ($_FILES["archivo"]["error"] > 0)
+
+                {
+                    return new Response('Error de Archivo');
+                }//Validando subida
+
+                else
+
+                {
+                    move_uploaded_file($_FILES["archivo"]['tmp_name'],$_SERVER['DOCUMENT_ROOT']."/sventas/web/images/".$_FILES["archivo"]['name']);
+                    $nombreArchivo = $_FILES["archivo"]['name'];
+                    return new Response('Archivo '.$nombreArchivo);
+                }
+            }
+            else
+                return $this->render('toosistemadeventasBundle::file.html.twig',array('user'=>''));
+
+    }
     private function loginAction($user,$email){
         $em=$this->getDoctrine()->getManager();
         $encontrado=$em->getRepository('toosistemadeventasBundle:Usuario')->findOneBy(array('usuario'=>$user,'correo'=>$email));
