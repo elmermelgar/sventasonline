@@ -5,6 +5,8 @@ namespace too\sistemadeventasBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use too\sistemadeventasBundle\Entity\Categoria;
+use too\sistemadeventasBundle\Entity\Producto;
 use too\sistemadeventasBundle\Entity\Usuario;
 
 class SeguridadController extends Controller
@@ -20,9 +22,10 @@ class SeguridadController extends Controller
         else{
             if($request->isMethod("POST")){
 
-                if($this->loginAction($request->get('usuario'),$request->get('email')))
+                if($this->validarUsuario($request->get('usuario'),$request->get('email')))
                 {
-                    $this->MensajeFlash('Usuario y correo ya existe!');
+                    //Nuevo Mensaje Flash
+                    $this->MensajeFlash('credencial','Usuario/Correo ya existen!');
                     return $this->redirect($this->generateUrl('toosistemadeventas_registro'));
                 }
                 else
@@ -37,7 +40,7 @@ class SeguridadController extends Controller
 
                     $em->persist($usuario);
                     $em->flush();
-                    $this->MensajeFlash2('Usuario creado correctamente!');
+                    $this->MensajeFlash('exito','Usuario creado correctamente!');
                 }
 
 
@@ -47,43 +50,62 @@ class SeguridadController extends Controller
             return $this->render('@toosistemadeventas/Sistema/registro.html.twig',array('user'=>$user));
         }
     }
-    public function ferAction(Request $request){
-
+    public function registroProductoAction(Request $request){
+            $em=$this->getDoctrine()->getManager();
+            //Verificar envio del Formulario
             if($request->isMethod("POST"))
             {
+                //Verificacion de errores en archivo
                 if ($_FILES["archivo"]["error"] > 0)
-
-                {
-                    return new Response('Error de Archivo');
-                }//Validando subida
-
+                    return new Response('Error en subida de Imagen');
                 else
-
                 {
-                    move_uploaded_file($_FILES["archivo"]['tmp_name'],$_SERVER['DOCUMENT_ROOT']."/sventas/web/images/".$_FILES["archivo"]['name']);
-                    $nombreArchivo = $_FILES["archivo"]['name'];
-                    return new Response('Archivo '.$nombreArchivo);
+                    //Verificar que el archivo sea una imagen
+                    if($this->infoTipoImagen('archivo')[0]=='image')
+                    {
+                        //Aqui susistuyan por el nombre q se va en post
+                        $nombreProducto='Microondas';
+                        //validando que no se repita el producto
+                        if($em->getRepository('toosistemadeventasBundle:Producto')->findOneBy(array('nombreProd'=>$nombreProducto)))
+                            return new Response('Producto ya ha sido registrado!!');
+                        else{
+                            $nombreImagen=$nombreProducto.$this->infoTipoImagen('archivo')[1];
+                            $prod=new Producto();
+
+                            $prod->setNombreProd($nombreProducto);
+                            //Asumo q la categoria ya esxiste quizas mediante un combo
+                            $prod->setIdCategoria($em->getRepository('toosistemadeventasBundle:Categoria')->find(1));
+                            $prod->setDescripcionProd('Microonda LG');
+                            $prod->setCantidadProd(5);
+                            $prod->setPrecioUnitario(200);
+                            $prod->setImagen($nombreImagen);
+                            $prod->setEstado(1);
+                            //Persistiendo Nvo Producto
+                            $em->persist($prod);
+                            $em->flush();
+                            //Subiendo la Imagen
+                            $this->subirImagen($nombreImagen);
+                            return new Response('Archivo '.$nombreImagen);
+                        }
+                    }
+                    else
+                        return new Response('Archivo no es una imagen. Intente Nuevamente!!');
                 }
             }
             else
                 return $this->render('toosistemadeventasBundle::file.html.twig',array('user'=>''));
-
     }
-    private function loginAction($user,$email){
+
+    private function validarUsuario($user,$email){
         $em=$this->getDoctrine()->getManager();
-        $encontrado=$em->getRepository('toosistemadeventasBundle:Usuario')->findOneBy(array('usuario'=>$user,'correo'=>$email));
+        //Nuevo metodo  =D
+        $encontrado=$em->getRepository('toosistemadeventasBundle:Usuario')->validarUser($user,$email);
         return $encontrado;
     }
-    private function MensajeFlash($m){
+    private function MensajeFlash($nombre,$mensaje){
         $this->get('session')->getFlashBag()->add(
-            'credencial',
-            ''.$m
-        );
-    }
-    private function MensajeFlash2($m){
-        $this->get('session')->getFlashBag()->add(
-            'exito',
-            ''.$m
+            ''.$nombre,
+            ''.$mensaje
         );
     }
     private function enviarSesion($request){
@@ -92,5 +114,13 @@ class SeguridadController extends Controller
             $login=$session->get('login');
             return $login->getUsername();
         }
+    }
+    private function infoTipoImagen($archivo){
+        $tipo=explode('/', $_FILES["".$archivo]["type"]);
+        $tipo[1]='.'.$tipo[1];
+        return $tipo;
+    }
+    private function subirImagen($nombreImagen){
+        move_uploaded_file($_FILES["archivo"]['tmp_name'],$_SERVER['DOCUMENT_ROOT']."/sventas/web/images/".$nombreImagen);
     }
 }

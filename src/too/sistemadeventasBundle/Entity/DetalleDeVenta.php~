@@ -47,4 +47,83 @@ class DetalleDeVenta
     private $idVenta;
 
 
+
+    /**
+     * Get idDetalle
+     *
+     * @return integer 
+     */
+    public function getIdDetalle()
+    {
+        return $this->idDetalle;
+    }
+
+    /**
+     * Set cantidadDetalle
+     *
+     * @param integer $cantidadDetalle
+     * @return DetalleDeVenta
+     */
+    public function setCantidadDetalle($cantidadDetalle)
+    {
+        $this->cantidadDetalle = $cantidadDetalle;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidadDetalle
+     *
+     * @return integer 
+     */
+    public function getCantidadDetalle()
+    {
+        return $this->cantidadDetalle;
+    }
+
+    /**
+     * Set importe
+     *
+     * @param string $importe
+     * @return DetalleDeVenta
+     */
+    public function setImporte($importe)
+    {
+        $this->importe = $importe;
+
+        return $this;
+    }
+
+    /**
+     * Get importe
+     *
+     * @return string 
+     */
+    public function getImporte()
+    {
+        return $this->importe;
+    }
+
+    /**
+     * Set idVenta
+     *
+     * @param \too\sistemadeventasBundle\Entity\Venta $idVenta
+     * @return DetalleDeVenta
+     */
+    public function setIdVenta(\too\sistemadeventasBundle\Entity\Venta $idVenta = null)
+    {
+        $this->idVenta = $idVenta;
+
+        return $this;
+    }
+
+    /**
+     * Get idVenta
+     *
+     * @return \too\sistemadeventasBundle\Entity\Venta 
+     */
+    public function getIdVenta()
+    {
+        return $this->idVenta;
+    }
 }

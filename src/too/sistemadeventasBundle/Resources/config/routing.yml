@@ -26,5 +26,5 @@ catalogo:
     path:     /catalogo
     defaults: { _controller: toosistemadeventasBundle:Default:catalogo }
 file:
-    path:     /file
-    defaults: { _controller: toosistemadeventasBundle:Seguridad:fer }
+    path:     /regPendiente
+    defaults: { _controller: toosistemadeventasBundle:Seguridad:registroProducto }
