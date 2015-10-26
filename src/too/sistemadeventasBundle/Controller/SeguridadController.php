@@ -2,14 +2,14 @@
 
 namespace too\sistemadeventasBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use too\sistemadeventasBundle\Entity\Categoria;
 use too\sistemadeventasBundle\Entity\Producto;
 use too\sistemadeventasBundle\Entity\Usuario;
+use too\sistemadeventasBundle\Modals\TOOController;
 
-class SeguridadController extends Controller
+class SeguridadController extends TOOController
 {
     public function registroAction(Request $request)
     {
@@ -21,8 +21,8 @@ class SeguridadController extends Controller
         }
         else{
             if($request->isMethod("POST")){
-
-                if($this->validarUsuario($request->get('usuario'),$request->get('email')))
+                //Validando que sea un nuevo usuario
+                if($this->validarRegistro($request->get('usuario'),$request->get('email')))
                 {
                     //Nuevo Mensaje Flash
                     $this->MensajeFlash('credencial','Usuario/Correo ya existen!');
@@ -84,7 +84,7 @@ class SeguridadController extends Controller
                             $em->persist($prod);
                             $em->flush();
                             //Subiendo la Imagen
-                            $this->subirImagen($nombreImagen);
+                            $this->subirImagen('archivo',$nombreImagen);
                             return new Response('Archivo '.$nombreImagen);
                         }
                     }
@@ -96,31 +96,4 @@ class SeguridadController extends Controller
                 return $this->render('toosistemadeventasBundle::file.html.twig',array('user'=>''));
     }
 
-    private function validarUsuario($user,$email){
-        $em=$this->getDoctrine()->getManager();
-        //Nuevo metodo  =D
-        $encontrado=$em->getRepository('toosistemadeventasBundle:Usuario')->validarUser($user,$email);
-        return $encontrado;
-    }
-    private function MensajeFlash($nombre,$mensaje){
-        $this->get('session')->getFlashBag()->add(
-            ''.$nombre,
-            ''.$mensaje
-        );
-    }
-    private function enviarSesion($request){
-        $session=$request->getSession();
-        if($session->has('login')){
-            $login=$session->get('login');
-            return $login->getUsername();
-        }
-    }
-    private function infoTipoImagen($archivo){
-        $tipo=explode('/', $_FILES["".$archivo]["type"]);
-        $tipo[1]='.'.$tipo[1];
-        return $tipo;
-    }
-    private function subirImagen($nombreImagen){
-        move_uploaded_file($_FILES["archivo"]['tmp_name'],$_SERVER['DOCUMENT_ROOT']."/sventas/web/images/".$nombreImagen);
-    }
 }
