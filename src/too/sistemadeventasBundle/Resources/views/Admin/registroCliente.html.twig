@@ -1,0 +1,92 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Registro Clientes{% endblock %}
+{% block active3 %}class="active"{% endblock active3 %}
+{% block body %}
+    <div class="content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{{ path('allUsuarios') }}">Todos</a>
+                </li>
+                <li>
+                    <a href="{{ path('crudClientes') }}">Clientes</a>
+                </li>
+                <li>
+                    <a href="{{ path('crudAdmin') }}">Administradores</a>
+                </li>
+                <li>
+                    <a href="{{ path('crudUsuarios') }}">Usuarios</a>
+                </li>
+
+                <li class="active">Agregar Nuevo Cliente</li>
+            </ol>
+            <div class="register">
+                <form method="post" style="margin: 0 auto 0 auto;" action="{{ path('nuevoCliente') }}">
+                    <div class="register-top-grid"  style="margin: -50px auto 0 auto; text-align: center;">
+                        <div class="contact_form" id="contact_form"  >
+                            <ul style="margin: 0 auto 0 auto;">
+                                {% for flashMessage in app.session.flashbag.get('credencial') %}
+                                    <script>
+                                        window.onload = function error(){
+                                            alertify.error("{{ flashMessage }}.");
+                                            return false;
+                                        }
+                                    </script>
+                                {% endfor %}
+                                {% for flashMessage in app.session.flashbag.get('exito') %}
+                                    <script>
+                                        window.onload = function notificacion(){
+                                            alertify.log("{{ flashMessage }}.");
+                                            return false;
+                                        }
+                                    </script>
+                                {% endfor %}
+
+                                <li>
+                                    <h2>REGISTRO DE CLIENTES</h2>
+
+                                </li>
+
+                                <li>
+                                    <label><span>Usuario*</span></label>
+                                    <select name="usuario" class="contact_form">
+                                        {% for usuario in usuario %}
+                                        <option name="idusuario" value="{{ usuario.idUsuario }}">{{ usuario.usuario }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </li>
+                                <li>
+                                    <label><span>Cuenta*</span></label>
+                                    <input type="text" value="5464213"  name="cuenta">
+                                </li>
+                                <li>
+                                    <label><span>Saldo*</span></label>
+                                    <input type="text"  required name="saldo">
+                                </li>
+                                <li>
+                                    <label><span>Telefono*</span></label>
+                                    <input type="text"  required name="telefono">
+                                </li>
+                                <li>
+                                    <label><span>Pais*</span></label>
+                                    <input type="text"  required name="pais">
+                                </li>
+                                <li>
+                                    <label><span>Codigo Postal*</span></label>
+                                    <input type="text"  required name="postal">
+                                </li>
+                            </ul>
+                            <div class="clearfix"> </div>
+                            <button type="submit">Registrar</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

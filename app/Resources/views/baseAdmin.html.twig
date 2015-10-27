@@ -1,0 +1,133 @@
+<!--Proyecto TOO - Sistema de Ventas
+Autor: Grupo 8
+License: Universidad de El Salvador
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Sitema de Ventas{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('css/views/alertify.js') }}"></script>
+            <link href="{{ asset('css/views/alertify.core.css') }}" rel="stylesheet" type="text/css" media="all" />
+            <link href="{{ asset('css/views/alertify.default.css') }}" rel="stylesheet" type="text/css" media="all" />
+            <link href="{{ asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+
+
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+            <meta name="keywords" content="Fashion Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+            <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+            <!--fonts-->
+            <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    <!--header-->
+    <div class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-grid">
+                    <div class="logo">
+                        <a href="#"><img src="{{ asset('images/logo.png') }}" alt=" " ></a>
+                    </div>
+                </div>
+
+                <div class="header-grid-right">
+                    {% if user %}
+                        <div style="float: right; width: 40%;">
+                            <a href="#" class="sign-ini">Bienvenido  @{{ user }}</a>
+
+                            <label>|</label>
+                            <a href="{{ path('logout') }}" class="sign-upi">Cerrar Sesión</a>
+                        </div>
+                    {% else %}
+                        {% for flashMessage in app.session.flashbag.get('mensaje') %}
+
+
+                        <script>
+                            window.onload = function error(){
+                                alertify.error("{{ flashMessage }}.");
+                                return false;
+                            }
+                        </script>
+
+                        {% endfor %}
+                        <a href="#" class="sign-in">Login</a>
+                        <form method='post' action="{{ path('login_form') }}">
+                            <input type="text" name="_username" value="Username" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';} " required>
+                            <input type="password" name="_password" value="Password" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}" required>
+                            <input type="submit" value="Ir" id="ir">
+                        </form>
+                        <label>|</label>
+                        <a href="{{ path('toosistemadeventas_registro') }}" class="sign-up">Registrarse</a>
+                    {% endif %}
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="header-top" style="background:#104259; height:7px;">
+        </div>
+        <div class="container">
+
+            <div class="header-bottom-bottom">
+                <div class="top-nav">
+                    <span class="menu"> </span>
+                    <ul>
+                        <li {% block active1 %}{% endblock active1 %}><a href="{{ path('inicioAdmin') }}">INICIO </a></li>
+                        <li {% block active2 %}{% endblock active2 %}><a href="{{ path('productos') }}" >PRODUCTOS</a></li>
+                        <li {% block active3 %}{% endblock active3 %}><a href="{{ path('crudUsuarios') }}" >USUARIOS</a></li>
+                        <li {% block active4 %}{% endblock active4 %}><a href="#" >CATEGORIAS</a></li>
+                        <li {% block active5 %}{% endblock active5 %}><a href="#" >INVENTARIO</a></li>
+                        <li {% block active6 %}{% endblock active6 %}><a href="#" >VENTAS</a></li>
+                        <li {% block active7 %}{% endblock active7 %}><a href="#" >DEVOLUCIONES</a></li>
+                    </ul>
+                    <script>
+                        $("span.menu").click(function(){
+                            $(".top-nav ul").slideToggle(500, function(){
+                            });
+                        });
+                    </script>
+
+                    <div class="clearfix"> </div>
+                </div>
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+
+        {% block body %}
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+
+
+    <div class="footer">
+        <div class="container">
+            <div class="footer-class">
+                <div class="class-footer">
+                    <ul>
+                        <li ><a href="{{ path('toosistemadeventas_inicio') }}" class="scroll">INICIO </a><label>|</label></li>
+                        <li><a href="{{ path('toosistemadeventas_promociones') }}" class="scroll">PROMOCIONES</a><label>|</label></li>
+                        <li><a href="{{ path('catalogo') }}" class="scroll">CATALOGO</a><label>|</label></li>
+                    </ul>
+                    <p class="footer-grid">&copy; 2015 Sistema de Ventas <a href="#" target="_blank"> TOO-115</a> </p>
+                </div>
+                <div class="footer-left">
+                    <a href="#"><img src="{{ asset('images/logo.png')}}" alt=" " ></a>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>

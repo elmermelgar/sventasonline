@@ -1,0 +1,101 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Usuarios!!{% endblock %}
+{% block active3 %}class="active"{% endblock active3 %}
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('credencial') %}
+        <script>
+            window.onload = function error(){
+                alertify.error("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('exito') %}
+        <script>
+            window.onload = function notificacion(){
+                alertify.log("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+<div class="content">
+    <div class="container" style="height: auto;">
+        <h1>Clientes</h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="{{ path('allUsuarios') }}">Todos</a>
+            </li>
+            <li>
+                <a href="{{ path('crudUsuarios') }}">Usuarios</a>
+            </li>
+            <li>
+                <a href="{{ path('crudAdmin') }}">Administradores</a>
+            </li>
+
+            <li class="active">Clientes</li>
+        </ol>
+        <a href="{{ path('nuevoCliente') }}" title="Agregar" class="btn btn-success">Agregar Nuevo Cliente</a>
+        <hr/>
+        <table class="table table-bordered">
+            <tbody>
+            <th>
+                Nombres
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Usuario
+            </th>
+            <th>
+                Rol
+            </th>
+            <th>
+                Cuenta
+            </th>
+            <th>
+                Saldo
+            </th>
+            <th>
+                Pais
+            </th>
+            <th>
+                Telefono
+            </th>
+            <th>
+                Codigo Postal
+            </th>
+            <th style="text-align: center;">
+                Acciones
+            </th>
+            </tbody>
+            {% for cliente in clientes %}
+                {% for detalle in detalle %}
+                <tr>
+                    <td>{{ cliente.NombreUsu }}</td>
+                    <td>{{ cliente.ApellidoUsu }}</td>
+                    <td>{{ cliente.Correo }}</td>
+                    <td>{{ cliente.Usuario }}</td>
+                    <td>Cliente</td>
+                    <td>Hay que hacer mapeo para mostrar</td>
+                    <td>{{ detalle.cuenta }}</td>
+                    <td>{{ detalle.pais }}</td>
+                    <td>{{ detalle.telefonoCli }}</td>
+                    <td>{{ detalle.codigoPostal }}</td>
+
+                    <td style="text-align: center;">
+                        <a href="{{ asset('app_dev.php/editarCliente') }}/{{ cliente.idUsuario }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Editar</a>
+                        -
+                        <a href="#" title="Eliminar" class="btn btn-danger">Dar de Baja</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock body %}

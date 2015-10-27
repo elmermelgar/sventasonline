@@ -1,0 +1,80 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Usuarios!!{% endblock %}
+{% block active3 %}class="active"{% endblock active3 %}
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('credencial') %}
+        <script>
+            window.onload = function error(){
+                alertify.error("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('exito') %}
+        <script>
+            window.onload = function notificacion(){
+                alertify.log("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+<div class="content">
+    <div class="container" style="height: auto;">
+        <h1>Usuarios</h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="{{ path('allUsuarios') }}">Todos</a>
+            </li>
+            <li>
+                <a href="{{ path('crudClientes') }}">Clientes</a>
+            </li>
+            <li>
+                <a href="{{ path('crudAdmin') }}">Administradores</a>
+            </li>
+
+            <li class="active">Usuarios</li>
+        </ol>
+
+        <hr/>
+        <table class="table table-bordered">
+            <tbody>
+            <th>
+                Nombres
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Usuario
+            </th>
+            <th>
+                Rol
+            </th>
+            <th style="text-align: center;">
+                Acciones
+            </th>
+            </tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.NombreUsu }}</td>
+                    <td>{{usuario.ApellidoUsu }}</td>
+                    <td>{{ usuario.Correo }}</td>
+                    <td>{{ usuario.Usuario }}</td>
+                    <td>
+                        Usuario
+                    </td>
+                    <td style="text-align: center;">
+                        <a href="{{ asset('app_dev.php/editarUsuario') }}/{{ usuario.idUsuario }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Editar</a>
+                        -
+                        <a href="{{ asset('app_dev.php/deleteUsuario') }}/{{ usuario.idUsuario }}" title="Eliminar" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock body %}

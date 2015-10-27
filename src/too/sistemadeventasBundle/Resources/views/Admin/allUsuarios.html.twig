@@ -1,0 +1,66 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Usuarios!!{% endblock %}
+{% block active3 %}class="active"{% endblock active3 %}
+{% block body %}
+
+<div class="content">
+    <div class="container" style="height: auto;">
+        <h1>Todos</h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="{{ path('crudClientes') }}">Clientes</a>
+            </li>
+            <li>
+                <a href="{{ path('crudAdmin') }}">Administradores</a>
+            </li>
+            <li>
+                <a href="{{ path('crudUsuarios') }}">Usuarios</a>
+            </li>
+            <li class="active">Todos</li>
+        </ol>
+        <hr/>
+        <table class="table table-responsive">
+            <tbody>
+            <th>
+                Nombres
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Usuario
+            </th>
+            <th>
+                Rol
+            </th>
+            <th style="text-align: center;">
+                Password
+            </th>
+            </tbody>
+            {% for dato in datos %}
+                <tr>
+                    <td>{{ dato.NombreUsu }}</td>
+                    <td>{{dato.ApellidoUsu }}</td>
+                    <td>{{ dato.Correo }}</td>
+                    <td>{{ dato.Usuario }}</td>
+                    <td>
+                        {% if dato.rol()==1 %}
+                            Usuario
+                        {% elseif dato.rol()==2 %}
+                           Administrador
+                            {% else %}
+                            Cliente
+                        {% endif %}
+
+                    </td>
+                    <td style="text-align: center;">{{ dato.password }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock body %}

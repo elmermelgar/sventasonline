@@ -1,0 +1,84 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Registro Usuarios{% endblock %}
+{% block active3 %}class="active"{% endblock active3 %}
+{% block body %}
+    <div class="content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{{ path('allUsuarios') }}">Todos</a>
+                </li>
+                <li>
+                    <a href="{{ path('crudClientes') }}">Clientes</a>
+                </li>
+                <li>
+                    <a href="{{ path('crudAdmin') }}">Administradores</a>
+                </li>
+                <li>
+                    <a href="{{ path('crudUsuarios') }}">Usuarios</a>
+                </li>
+
+                <li class="active">Agregar Nuevos Usuarios</li>
+            </ol>
+            <div class="register">
+                <form method="post" style="margin: 0 auto 0 auto;" action="{{ path('nuevoUsuario') }}">
+                    <div class="register-top-grid"  style="margin: -50px auto 0 auto; text-align: center;">
+                        <div class="contact_form" id="contact_form"  >
+                            <ul style="margin: 0 auto 0 auto;">
+                                {% for flashMessage in app.session.flashbag.get('credencial') %}
+                                    <script>
+                                        window.onload = function error(){
+                                            alertify.error("{{ flashMessage }}.");
+                                            return false;
+                                        }
+                                    </script>
+                                {% endfor %}
+                                {% for flashMessage in app.session.flashbag.get('exito') %}
+                                    <script>
+                                        window.onload = function notificacion(){
+                                            alertify.log("{{ flashMessage }}.");
+                                            return false;
+                                        }
+                                    </script>
+                                {% endfor %}
+
+                                <li>
+                                    <h2>REGISTRO DE USUARIOS</h2>
+
+                                </li>
+
+                                <li>
+                                    <label><span>Nombres*</span></label>
+                                    <input type="text" required name="nombre">
+                                </li>
+                                <li>
+                                    <label><span>Apellidos*</span></label>
+                                    <input type="text" required name="apellido">
+                                </li>
+                                <li>
+                                    <label><span>Email*</span></label>
+                                    <input type="email" required name="email">
+                                </li>
+                                <li>
+                                    <label> <span>Usuario*</span></label>
+                                    <input type="text" required name="usuario">
+                                </li>
+                                <li>
+                                    <label><span>Contraseña*</span></label>
+                                    <input type="password" required name="pass">
+                                </li>
+                            </ul>
+                            <div class="clearfix"> </div>
+                            <button type="submit">Registrar</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

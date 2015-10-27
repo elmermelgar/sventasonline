@@ -1,0 +1,96 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Editar Cliente{% endblock %}
+{% block active3 %}class="active"{% endblock active3 %}
+{% block body %}
+
+    <div class="content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{{ path('allUsuarios') }}">Todos</a>
+                </li>
+                <li>
+                    <a href="{{ path('crudClientes') }}">Clientes</a>
+                </li>
+                <li>
+                    <a href="{{ path('crudAdmin') }}">Administradores</a>
+                </li>
+
+                <li class="active">Editar Registro Cliente</li>
+            </ol>
+            <div class="register">
+                <form method="post" style="margin: -50px auto 0 auto;" action="{{ asset('app_dev.php/editarCliente') }}/{{ datos.idUsuario }}">
+                    <div class="register-top-grid"  style="margin: 0 auto 0 auto; text-align: center;">
+
+
+                        <div class="contact_form" id="contact_form"  >
+                            <ul style="margin: 0 auto 0 auto;">
+                                {% for flashMessage in app.session.flashbag.get('credencial') %}
+                                    <div class="alert alert-danger fade in">
+                                    <span class="close" data-dismiss="alert">
+                                    &times;
+                                    </span>
+                                        {{ flashMessage }}
+                                    </div>
+                                {% endfor %}
+                                <li>
+                                    <h2>EDITAR REGISTRO DE CLIENTE</h2>
+
+                                </li>
+
+                                <li>
+                                    <label><span>Nombres*</span></label>
+                                    <input type="text" value="{{ datos.nombreUsu }}" required name="nombre">
+                                </li>
+                                <li>
+                                    <label><span>Apellidos*</span></label>
+                                    <input type="text" value="{{ datos.apellidoUsu }}" required name="apellido">
+                                </li>
+                                <li>
+                                    <label><span>Email*</span></label>
+                                    <input type="email" value="{{ datos.correo }}" required name="email">
+                                </li>
+                                <li>
+                                    <label> <span>Usuario*</span></label>
+                                    <input type="text" value="{{ datos.usuario }}" required name="usuario">
+                                </li>
+                                <li>
+                                    <label><span>Contraseña*</span></label>
+                                    <input type="password" value="{{ datos.password }}" required name="pass">
+                                </li>
+
+                                <li>
+                                    <label><span>Cuenta*</span></label>
+                                    <input type="text" value="" required name="cuenta">
+                                </li>
+                                <li>
+                                    <label><span>Saldo*</span></label>
+                                    <input type="text" value="{{ detalle.cuenta }}" required name="saldo">
+                                </li>
+                                <li>
+                                    <label><span>Telefono*</span></label>
+                                    <input type="text" value="{{ detalle.telefonoCli }}" required name="telefono">
+                                </li>
+                                <li>
+                                    <label><span>Pais*</span></label>
+                                    <input type="text" value="{{ detalle.pais }}" required name="pais">
+                                </li>
+                                <li>
+                                    <label><span>Codigo Postal*</span></label>
+                                    <input type="text" value="{{ detalle.codigoPostal }}" required name="postal">
+                                </li>
+                            </ul>
+                            <div class="clearfix"> </div>
+                            <button type="submit">Actualizar</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

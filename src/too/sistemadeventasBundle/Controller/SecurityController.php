@@ -27,8 +27,17 @@ class SecurityController extends Controller
                 $login=new Login();
                 $login->setUsername($user);
                 $login->setPassword($pass);
+
                 $session->set('login',$login);
-                return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
+                $session->set('usuario', $usuario->getUsuario());
+
+                if($usuario->getRol()==2){
+                    return $this->render('toosistemadeventasBundle:Admin:index.html.twig',array('user'=>$user));
+                }
+                else{
+                    return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
+                }
+
                 //return $this->redirect($this->generateUrl('prueba'));
             }
             else{
