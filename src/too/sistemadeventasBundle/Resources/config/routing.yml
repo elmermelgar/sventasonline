@@ -26,6 +26,7 @@ catalogo:
     path:     /catalogo
     defaults: { _controller: toosistemadeventasBundle:Default:catalogo }
 
+
 inicioAdmin:
     path:     /inicioAdmin
     defaults: { _controller: toosistemadeventasBundle:Usuario:index }
@@ -77,3 +78,7 @@ deleteUsuario:
 deleteAdmin:
     path:     /deleteAdmin/{idUsu}
     defaults: { _controller: toosistemadeventasBundle:Usuario:deleteAdmin }
+
+file:
+    path:     /regPendiente
+    defaults: { _controller: toosistemadeventasBundle:Seguridad:registroProducto }

@@ -47,4 +47,83 @@ class Compra
     private $idProveedor;
 
 
+
+    /**
+     * Get idCompra
+     *
+     * @return integer 
+     */
+    public function getIdCompra()
+    {
+        return $this->idCompra;
+    }
+
+    /**
+     * Set fechaComp
+     *
+     * @param \DateTime $fechaComp
+     * @return Compra
+     */
+    public function setFechaComp($fechaComp)
+    {
+        $this->fechaComp = $fechaComp;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaComp
+     *
+     * @return \DateTime 
+     */
+    public function getFechaComp()
+    {
+        return $this->fechaComp;
+    }
+
+    /**
+     * Set numeroFacturaCompra
+     *
+     * @param integer $numeroFacturaCompra
+     * @return Compra
+     */
+    public function setNumeroFacturaCompra($numeroFacturaCompra)
+    {
+        $this->numeroFacturaCompra = $numeroFacturaCompra;
+
+        return $this;
+    }
+
+    /**
+     * Get numeroFacturaCompra
+     *
+     * @return integer 
+     */
+    public function getNumeroFacturaCompra()
+    {
+        return $this->numeroFacturaCompra;
+    }
+
+    /**
+     * Set idProveedor
+     *
+     * @param \too\sistemadeventasBundle\Entity\Proveedor $idProveedor
+     * @return Compra
+     */
+    public function setIdProveedor(\too\sistemadeventasBundle\Entity\Proveedor $idProveedor = null)
+    {
+        $this->idProveedor = $idProveedor;
+
+        return $this;
+    }
+
+    /**
+     * Get idProveedor
+     *
+     * @return \too\sistemadeventasBundle\Entity\Proveedor 
+     */
+    public function getIdProveedor()
+    {
+        return $this->idProveedor;
+    }
 }

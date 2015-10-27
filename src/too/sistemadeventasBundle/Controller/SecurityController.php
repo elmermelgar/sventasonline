@@ -2,13 +2,12 @@
 
 namespace too\sistemadeventasBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use too\sistemadeventasBundle\Modals\Login;
+use too\sistemadeventasBundle\Modals\TOOController;
 
-class SecurityController extends Controller
+class SecurityController extends TOOController
 {
     public function loginAction(Request $request)
     {
@@ -41,7 +40,7 @@ class SecurityController extends Controller
                 //return $this->redirect($this->generateUrl('prueba'));
             }
             else{
-                $this->MensajeFlash('Credenciales incorrectas!');
+                $this->MensajeFlash('mensaje','Credenciales incorrectas!');
                 return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
                 //return new Response('Credenciales incorrectas');
             }
@@ -55,11 +54,5 @@ class SecurityController extends Controller
         $session=$request->getSession();
         $session->clear();
         return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
-    }
-    private function MensajeFlash($m){
-        $this->get('session')->getFlashBag()->add(
-            'mensaje',
-            ''.$m
-        );
     }
 }

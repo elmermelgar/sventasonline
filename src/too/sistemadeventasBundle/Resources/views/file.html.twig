@@ -4,15 +4,21 @@
     <div class="content">
         <div class="container">
             <div class="register">
-                <form method="post" style="margin: 0 auto 0 auto;" action="{{ path('milton') }}">
+                <form method="post" style="margin: 0 auto 0 auto;" action="{{ path('file') }}" enctype="multipart/form-data">
                     <div class="register-top-grid"  style="margin: 0 auto 0 auto; text-align: center;">
-                        <h3>REGISTRO DE USUARIO</h3>
+                        {% for flashMessage in app.session.flashbag.get('credencial') %}
+                            <script>
+                                window.onload = function error(){
+                                    alertify.error("{{ flashMessage }}.");
+                                    return false;
+                                }
+                            </script>
+                        {% endfor %}
+                        <h3>REGISTRO DE PRODUCTO</h3>
                         <div class="mation">
-
                             <span>Subir archivo<label>*</label></span>
                             <input type="file" name="archivo">
                         </div>
-
                         <div class="clearfix"> </div>
                         <button type="submit">Subir</button>
                     </div>

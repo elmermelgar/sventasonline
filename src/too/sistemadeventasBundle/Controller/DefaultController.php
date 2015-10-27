@@ -4,8 +4,10 @@ namespace too\sistemadeventasBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use too\sistemadeventasBundle\Modals\TOOController;
 
-class DefaultController extends Controller
+class DefaultController extends TOOController
 {
     public function indexAction($name)
     {
@@ -28,12 +30,5 @@ class DefaultController extends Controller
     {
         $user=$this->enviarSesion($request);
         return $this->render('toosistemadeventasBundle:Sistema:catalogo.html.twig',array('user'=>$user));
-    }
-    private function enviarSesion($request){
-        $session=$request->getSession();
-        if($session->has('login')){
-            $login=$session->get('login');
-            return $login->getUsername();
-        }
     }
 }
