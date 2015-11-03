@@ -26,6 +26,7 @@ class SecurityController extends TOOController
                 $login=new Login();
                 $login->setUsername($user);
                 $login->setPassword($pass);
+                $login->setRol($usuario->getRol());
 
                 $session->set('login',$login);
                 $session->set('usuario', $usuario->getUsuario());

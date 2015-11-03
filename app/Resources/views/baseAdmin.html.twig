@@ -85,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li {% block active1 %}{% endblock active1 %}><a href="{{ path('inicioAdmin') }}">INICIO </a></li>
                         <li {% block active2 %}{% endblock active2 %}><a href="{{ path('productos') }}" >PRODUCTOS</a></li>
                         <li {% block active3 %}{% endblock active3 %}><a href="{{ path('crudUsuarios') }}" >USUARIOS</a></li>
-                        <li {% block active4 %}{% endblock active4 %}><a href="#" >CATEGORIAS</a></li>
+                        <li {% block active4 %}{% endblock active4 %}><a href="{{ path('crudCat') }}" >CATEGORIAS</a></li>
                         <li {% block active5 %}{% endblock active5 %}><a href="#" >INVENTARIO</a></li>
                         <li {% block active6 %}{% endblock active6 %}><a href="#" >VENTAS</a></li>
                         <li {% block active7 %}{% endblock active7 %}><a href="#" >DEVOLUCIONES</a></li>
@@ -115,9 +115,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="footer-class">
                 <div class="class-footer">
                     <ul>
-                        <li ><a href="{{ path('toosistemadeventas_inicio') }}" class="scroll">INICIO </a><label>|</label></li>
-                        <li><a href="{{ path('toosistemadeventas_promociones') }}" class="scroll">PROMOCIONES</a><label>|</label></li>
-                        <li><a href="{{ path('catalogo') }}" class="scroll">CATALOGO</a><label>|</label></li>
+                        <li ><a href="#" class="scroll">INICIO </a><label>|</label></li>
+                        <li><a href="#" class="scroll">PRODUCTOS</a><label>|</label></li>
+                        <li><a href="#" class="scroll">USUARIO</a><label>|</label></li>
+                        <li><a href="#" class="scroll">CATEGORIA</a><label>|</label></li>
+                        <li><a href="#" class="scroll">INVENTARIO</a><label>|</label></li>
+                        <li><a href="#" class="scroll">VENTAS</a><label>|</label></li>
+                        <li><a href="#" class="scroll">DEVOLUCIONES</a><label>|</label></li>
                     </ul>
                     <p class="footer-grid">&copy; 2015 Sistema de Ventas <a href="#" target="_blank"> TOO-115</a> </p>
                 </div>

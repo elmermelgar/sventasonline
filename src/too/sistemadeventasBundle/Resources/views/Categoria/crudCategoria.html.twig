@@ -1,0 +1,56 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Categoria{% endblock %}
+{% block active4 %}class="active"{% endblock active4 %}
+{% block body %}
+
+    {% for flashMessage in app.session.flashbag.get('fracaso') %}
+        <script>
+            window.onload = function error(){
+                alertify.error("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('exito') %}
+        <script>
+            window.onload = function notificacion(){
+                alertify.log("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+
+    <div class="content">
+        <div class="container" style="height: auto;">
+            <h1>Categoria</h1>
+            <a href="{{ path('nuevaCat') }}" title="Agregar" class="btn btn-success">Agregar Nueva Categoria</a>
+            <hr/>
+            <table class="table table-bordered">
+                <tbody>
+                <th>
+                    Nombre Categoria
+                </th>
+                <th>
+                    Descripcion Categoria
+                </th>
+                <th style="text-align: center;">
+                    Acciones
+                </th>
+                </tbody>
+                {% for cat in cat %}
+                    <tr>
+                        <td>{{ cat.nombreCat }}</td>
+                        <td>{{ cat.descripcionCat }}</td>
+                        <td style="text-align: center;">
+                            <a href="{{ asset('app_dev.php/editarCat') }}/{{ cat.idCategoria }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Editar</a>
+                            -
+                            <a href="{{ asset('app_dev.php/deleteCat') }}/{{ cat.idCategoria }}" title="Eliminar" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+
+{% endblock body %}

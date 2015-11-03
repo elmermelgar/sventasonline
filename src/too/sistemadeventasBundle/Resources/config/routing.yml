@@ -82,3 +82,19 @@ deleteAdmin:
 file:
     path:     /regPendiente
     defaults: { _controller: toosistemadeventasBundle:Seguridad:registroProducto }
+
+crudCat:
+    path:     /crudCat
+    defaults: { _controller: toosistemadeventasBundle:Categoria:crudCat }
+
+deleteCat:
+    path:     /deleteCat/{idCat}
+    defaults: { _controller: toosistemadeventasBundle:Categoria:deleteCat }
+
+editarCat:
+    path:     /editarCat/{idCat}
+    defaults: { _controller: toosistemadeventasBundle:Categoria:editarCat }
+
+nuevaCat:
+    path:     /nuevaCat
+    defaults: { _controller: toosistemadeventasBundle:Categoria:nuevaCat }

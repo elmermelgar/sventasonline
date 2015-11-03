@@ -15,7 +15,7 @@ class SeguridadController extends TOOController
     {
         $em=$this->getDoctrine()->getEntityManager();
         //Obtener la sesion
-        $user=$this->enviarSesion($request);
+        $user=$this->validarAcceso($request);
         if($user){
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }
