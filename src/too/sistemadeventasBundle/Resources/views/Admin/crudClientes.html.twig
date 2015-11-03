@@ -73,26 +73,32 @@
             </th>
             </tbody>
             {% for cliente in clientes %}
-                {% for detalle in detalle %}
+
                 <tr>
                     <td>{{ cliente.NombreUsu }}</td>
                     <td>{{ cliente.ApellidoUsu }}</td>
                     <td>{{ cliente.Correo }}</td>
                     <td>{{ cliente.Usuario }}</td>
                     <td>Cliente</td>
+
+                {% for detalle in detalle %}
+
                     <td>Hay que hacer mapeo para mostrar</td>
                     <td>{{ detalle.cuenta }}</td>
                     <td>{{ detalle.pais }}</td>
                     <td>{{ detalle.telefonoCli }}</td>
                     <td>{{ detalle.codigoPostal }}</td>
 
+
+                    {% endfor %}
                     <td style="text-align: center;">
                         <a href="{{ asset('app_dev.php/editarCliente') }}/{{ cliente.idUsuario }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Editar</a>
                         -
                         <a href="#" title="Eliminar" class="btn btn-danger">Dar de Baja</a>
                     </td>
+
                 </tr>
-                {% endfor %}
+
             {% endfor %}
         </table>
     </div>

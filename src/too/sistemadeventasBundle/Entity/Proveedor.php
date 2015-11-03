@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Proveedor
  *
- * @ORM\Table(name="proveedor")
+ * @ORM\Table(name="proveedor", uniqueConstraints={@ORM\UniqueConstraint(name="proveedor_pk", columns={"id_proveedor"})})
  * @ORM\Entity
  */
 class Proveedor

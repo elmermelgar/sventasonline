@@ -10,6 +10,7 @@ class Login
 {
     private $username;
     private $password;
+    private $rol;
 
     /**
      * @return mixed
@@ -57,6 +58,22 @@ class Login
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRol()
+    {
+        return $this->rol;
+    }
+
+    /**
+     * @param mixed $rol
+     */
+    public function setRol($rol)
+    {
+        $this->rol = $rol;
     }
 
 

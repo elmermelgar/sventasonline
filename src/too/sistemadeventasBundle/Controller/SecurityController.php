@@ -26,9 +26,10 @@ class SecurityController extends TOOController
                 $login=new Login();
                 $login->setUsername($user);
                 $login->setPassword($pass);
+                $login->setRol($usuario->getRol());
 
                 $session->set('login',$login);
-                $session->set('usuario', $usuario->getUsuario());
+                //$session->set('usuario', $usuario->getUsuario());
 
                 if($usuario->getRol()==2){
                     return $this->render('toosistemadeventasBundle:Admin:index.html.twig',array('user'=>$user));
