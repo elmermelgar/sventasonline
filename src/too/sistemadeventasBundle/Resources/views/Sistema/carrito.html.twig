@@ -1,0 +1,70 @@
+{% extends '::base.html.twig' %}
+{% block title %}Carrito!!{% endblock %}
+{% block active6 %}class="active"{% endblock active6 %}
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('credencial') %}
+        <script>
+            window.onload = function error(){
+                alertify.error("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('exito') %}
+        <script>
+            window.onload = function notificacion(){
+                alertify.log("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+<div class="content">
+    <div class="container" style="height: auto;">
+        <h1>Carrito de Compras</h1>
+
+        <a href="{{ path('catalogo') }}" title="Agregar" class="btn btn-success">Catálogo de Productos</a>
+        <hr/>
+        <table class="table table-striped">
+            <tbody>
+            <th>
+                Producto
+            </th>
+            <th>
+                Precio
+            </th>
+            <th>
+                Cantidad
+            </th>
+            <th>
+               Total
+            </th>
+            <th style="text-align: center;">
+
+            </th>
+            </tbody>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input type="number" required name="nombreProd" value=""></td>
+                    <td></td>
+                    <td style="text-align: center;">
+                        <a href="" title="Eliminar" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <b>TOTAL A PAGAR :</b>
+                    </td>
+                    <td><a href="{{ path('catalogo') }}" title="Agregar" class="btn btn-primary">Comprar</a></td>
+
+                </tr>
+
+
+        </table>
+    </div>
+</div>
+
+{% endblock body %}

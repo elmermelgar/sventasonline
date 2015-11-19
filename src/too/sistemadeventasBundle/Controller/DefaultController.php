@@ -42,4 +42,14 @@ class DefaultController extends TOOController
         var_dump($user);
         return new Response();
     }
+    public function carritoAction(Request $request)
+    {
+        $user=$this->enviarSesion($request);
+        //$datos= $this->getDoctrine()
+          //  ->getRepository('toosistemadeventasBundle:Producto')
+            //->findAll();
+        return $this->render('toosistemadeventasBundle:Sistema:carrito.html.twig',array('user'=>$user));
+
+
+    }
 }

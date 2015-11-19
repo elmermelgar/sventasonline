@@ -78,6 +78,7 @@ deleteUsuario:
 deleteAdmin:
     path:     /deleteAdmin/{idUsu}
     defaults: { _controller: toosistemadeventasBundle:Usuario:deleteAdmin }
+
 file:
     path:     /regPendiente
     defaults: { _controller: toosistemadeventasBundle:Seguridad:registroProducto }
@@ -93,6 +94,7 @@ editarProducto:
 bajarProducto:
     path:     /bajarProducto/{id}
     defaults: { _controller: toosistemadeventasBundle:Productos:bajarProducto}
-dql:
-    path:     /dql
-    defaults: { _controller: toosistemadeventasBundle:Default:DQL}
+
+carrito:
+    path:     /carrito
+    defaults: { _controller: toosistemadeventasBundle:Default:carrito }
