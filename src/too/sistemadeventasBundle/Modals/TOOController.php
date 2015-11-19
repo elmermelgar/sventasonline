@@ -56,6 +56,7 @@ class TOOController extends Controller
         $em=$this->getDoctrine()->getManager();
         //Nuevo metodo  DQL =D
         $encontrado=$em->getRepository('toosistemadeventasBundle:Usuario')->validarUser($user,$email);
+        //$encontrado=$em->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('usuario' => $user));
         return $encontrado;
     }
 }

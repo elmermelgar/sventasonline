@@ -35,6 +35,11 @@ class DefaultController extends TOOController
             ->findAll();
         return $this->render('toosistemadeventasBundle:Sistema:catalogo.html.twig',array('user'=>$user, 'datos'=>$datos));
 
-
+    }
+    public function DQLAction(){
+        $em=$this->getDoctrine()->getManager();
+        $user=$em->getRepository('toosistemadeventasBundle:Usuario')->validarUser('fer','f@b.com');
+        var_dump($user);
+        return new Response();
     }
 }

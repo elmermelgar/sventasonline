@@ -29,6 +29,7 @@ class SecurityController extends TOOController
                 $login->setRol($usuario->getRol());
 
                 $session->set('login',$login);
+
                 //$session->set('usuario', $usuario->getUsuario());
 
                 if($usuario->getRol()==2){
