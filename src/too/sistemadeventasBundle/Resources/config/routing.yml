@@ -94,3 +94,7 @@ editarProducto:
 bajarProducto:
     path:     /bajarProducto/{id}
     defaults: { _controller: toosistemadeventasBundle:Productos:bajarProducto}
+
+carrito:
+    path:     /carrito
+    defaults: { _controller: toosistemadeventasBundle:Default:carrito }
