@@ -17,7 +17,7 @@ class SeguridadController extends TOOController
         //Obtener la sesion
         $user=$this->validarAcceso($request);
         if($user){
-            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+                return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }
         else{
             if($request->isMethod("POST")){
@@ -53,6 +53,14 @@ class SeguridadController extends TOOController
     public function registroProductoAction(Request $request){
             $em=$this->getDoctrine()->getManager();
             //Verificar envio del Formulario
+
+        $validado=$this->validarAcceso($request);
+        $user=$this->enviarSesion($request);
+        $categorias=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Categoria')->findAll();
+        if(!$validado){
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+        }
+        else{
             if($request->isMethod("POST"))
             {
                 //Verificacion de errores en archivo
@@ -64,7 +72,7 @@ class SeguridadController extends TOOController
                     if($this->infoTipoImagen('archivo')[0]=='image')
                     {
                         //Aqui susistuyan por el nombre q se va en post
-                        $nombreProducto='Microondas';
+                        $nombreProducto='Elmer';
                         //validando que no se repita el producto
                         if($em->getRepository('toosistemadeventasBundle:Producto')->findOneBy(array('nombreProd'=>$nombreProducto)))
                             return new Response('Producto ya ha sido registrado!!');
@@ -75,10 +83,10 @@ class SeguridadController extends TOOController
                             $prod->setNombreProd($nombreProducto);
                             //Asumo q la categoria ya esxiste quizas mediante un combo
                             $prod->setIdCategoria($em->getRepository('toosistemadeventasBundle:Categoria')->find(1));
-                            $prod->setDescripcionProd('Microonda LG');
+                            $prod->setDescripcionProd('Mi comida');
                             $prod->setCantidadProd(5);
                             $prod->setPrecioUnitario(200);
-                            $prod->setImagen($nombreImagen);
+                            $prod->setImagen("images/".$nombreImagen);
                             $prod->setEstado(1);
                             //Persistiendo Nvo Producto
                             $em->persist($prod);
@@ -94,6 +102,7 @@ class SeguridadController extends TOOController
             }
             else
                 return $this->render('toosistemadeventasBundle::file.html.twig',array('user'=>''));
+        }
     }
 
 }

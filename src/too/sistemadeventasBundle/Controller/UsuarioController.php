@@ -2,20 +2,21 @@
 
 namespace too\sistemadeventasBundle\Controller;
 
-use Doctrine\DBAL\Types\TextType;
-use Doctrine\DBAL\Types\Type;
+
 use Proxies\__CG__\too\sistemadeventasBundle\Entity\Cliente;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use too\sistemadeventasBundle\Entity\Usuario;
+use too\sistemadeventasBundle\Modals\TOOController;
 
-class UsuarioController extends Controller
+class UsuarioController extends TOOController
 {
     public function indexAction(Request $request)
     {
+        $validado=$this->validarAcceso($request);
         $user=$this->enviarSesion($request);
-        if($user){
+        if($validado){
             return $this->render('toosistemadeventasBundle:Admin:index.html.twig',array('user'=>$user));
         }
         else{
@@ -26,8 +27,9 @@ class UsuarioController extends Controller
 
     public function usuariosAction(Request $request)
     {
+        $validado=$this->validarAcceso($request);
         $user=$this->enviarSesion($request);
-        if($user){
+        if($validado){
             $usuarios=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('rol'=>1));
             return $this->render('toosistemadeventasBundle:Admin:crudUsuarios.html.twig',array('user'=>$user,'usuarios'=>$usuarios));
         }
@@ -39,8 +41,9 @@ class UsuarioController extends Controller
 
     public function allAction(Request $request)
     {
+        $validado=$this->validarAcceso($request);
         $user=$this->enviarSesion($request);
-        if($user){
+        if($validado){
             $datos= $this->getDoctrine()
                 ->getRepository('toosistemadeventasBundle:Usuario')
                 ->findAll();
@@ -53,8 +56,9 @@ class UsuarioController extends Controller
 
     public function adminAction(Request $request)
     {
+        $validado=$this->validarAcceso($request);
         $user=$this->enviarSesion($request);
-        if($user){
+        if($validado){
             $admin=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('rol'=>2));
             return $this->render('toosistemadeventasBundle:Admin:crudAdmin.html.twig',array('user'=>$user,'admin'=>$admin));
         }
@@ -66,8 +70,9 @@ class UsuarioController extends Controller
 
     public function clientesAction(Request $request)
     {
+        $validado=$this->validarAcceso($request);
         $user=$this->enviarSesion($request);
-        if($user){
+        if($validado){
             $clientes=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('rol'=>3));
             $detalle=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Cliente')->findAll();
             return $this->render('toosistemadeventasBundle:Admin:crudClientes.html.twig',array('user'=>$user,'clientes'=>$clientes, 'detalle'=>$detalle));
@@ -84,8 +89,9 @@ class UsuarioController extends Controller
     {
         $em=$this->getDoctrine()->getManager();
         //Obtener la sesion
+        $validado=$this->validarAcceso($request);
         $user=$this->enviarSesion($request);
-        if(!$user){
+        if(!$validado){
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }
         else{
@@ -93,7 +99,7 @@ class UsuarioController extends Controller
 
                 if($this->loginAction($request->get('usuario'),$request->get('email')))
                 {
-                    $this->MensajeFlash('Usuario y correo ya existe!');
+                    $this->MensajeFlash('credencial','Usuario y correo ya existe!');
                     return $this->redirect($this->generateUrl('nuevoAdmin'));
                 }
                 else
@@ -108,7 +114,7 @@ class UsuarioController extends Controller
 
                     $em->persist($usuario);
                     $em->flush();
-                    $this->MensajeFlash2('Administrador creado correctamente!');
+                    $this->MensajeFlash('exito','Administrador creado correctamente!');
                 }
 
 
@@ -123,9 +129,10 @@ class UsuarioController extends Controller
     {
         $em=$this->getDoctrine()->getManager();
         //Obtener la sesion
+        $validado=$this->validarAcceso($request);
         $user=$this->enviarSesion($request);
         $usu=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('rol'=>1));
-        if(!$user){
+        if(!$validado){
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }
         else{
@@ -140,13 +147,14 @@ class UsuarioController extends Controller
 
                     $em->persist($cliente);
                     $em->flush();
-                    $this->MensajeFlash2('Cliente creado correctamente!');
+                    $this->MensajeFlash('exito','Cliente creado correctamente !');
 
 
 
-                return $this->redirect($this->generateUrl('crudClientes'));
+                return $this->redirect($this->generateUrl('crudClientes', array('cliente'=>$cliente->setIdUsuario($request->get('idusuario')))));
 
             }
+
             return $this->render('toosistemadeventasBundle:Admin:registroCliente.html.twig',array('user'=>$user,'usuario'=>$usu));
         }
     }
@@ -154,8 +162,9 @@ class UsuarioController extends Controller
     public function editarUsuarioAction($idUsu,Request $request)
     {
         $em=$this->getDoctrine()->getManager();
+        $validado=$this->validarAcceso($request);
         $user=$this->enviarSesion($request);
-        if(!$user){
+        if(!$validado){
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }
         $datos=$this->getDoctrine()
@@ -170,7 +179,7 @@ class UsuarioController extends Controller
 
                 if($this->loginAction($request->get('usuario'),$request->get('email')))
                 {
-                    $this->MensajeFlash('Usuario y correo ya existe!');
+                    $this->MensajeFlash('credencial','Usuario y correo ya existe!');
                     return $this->redirect($this->generateUrl('crudUsuarios'));
                 }
                 else
@@ -183,7 +192,7 @@ class UsuarioController extends Controller
                     $datos->setRol(1);
                     $datos->setUsuario($request->get('usuario'));
                     $em->flush();
-                    $this->MensajeFlash2('Usuario actualizado correctamente!');
+                    $this->MensajeFlash('exito','Usuario actualizado correctamente!');
                 }
 
 
@@ -198,8 +207,9 @@ class UsuarioController extends Controller
     public function editarClienteAction($idUsu,Request $request)
     {
         $em=$this->getDoctrine()->getManager();
+        $validado=$this->validarAcceso($request);
         $user=$this->enviarSesion($request);
-        if(!$user){
+        if(!$validado){
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }
         $datos=$this->getDoctrine()
@@ -222,7 +232,7 @@ class UsuarioController extends Controller
 
                 if($this->loginAction($request->get('usuario'),$request->get('email')))
                 {
-                    $this->MensajeFlash('Usuario y correo ya existe!');
+                    $this->MensajeFlash('credencial','Usuario y correo ya existe!');
                     return $this->redirect($this->generateUrl('crudClientes'));
                 }
                 else
@@ -239,7 +249,7 @@ class UsuarioController extends Controller
                     $detalle->setTelefonoCli($request->get('telefono'));
                     $detalle->setPais($request->get('pais'));
                     $em->flush();
-                    $this->MensajeFlash2('Cliente actualizado correctamente!');
+                    $this->MensajeFlash('exito','Cliente actualizado correctamente!');
                 }
 
 
@@ -255,8 +265,9 @@ class UsuarioController extends Controller
     {
         $em=$this->getDoctrine()->getManager();
         //Obtener la sesion
+        $validado=$this->validarAcceso($request);
         $user=$this->enviarSesion($request);
-        if(!$user){
+        if(!$validado){
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }
         $datos=$this->getDoctrine()
@@ -271,7 +282,7 @@ class UsuarioController extends Controller
 
                 if($this->loginAction($request->get('usuario'),$request->get('email')))
                 {
-                    $this->MensajeFlash('Usuario y correo ya existe!');
+                    $this->MensajeFlash('credencial','Usuario y correo ya existe!');
                     return $this->redirect($this->generateUrl('nuevoAdmin'));
                 }
                 else
@@ -287,7 +298,7 @@ class UsuarioController extends Controller
                     //$em->persist($usuario);
                    // $em->refresh($usuario);
                     $em->flush();
-                    $this->MensajeFlash2('Administrador actualizado correctamente!');
+                    $this->MensajeFlash('exito','Administrador actualizado correctamente!');
                 }
 
 
@@ -309,7 +320,7 @@ class UsuarioController extends Controller
         }
         $em->remove($usuario);
         $em->flush();
-        $this->MensajeFlash2('Usuario eliminado correctamente!');
+        $this->MensajeFlash('exito','Usuario eliminado correctamente!');
         $usuarios=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('rol'=>1));
         return $this->render('toosistemadeventasBundle:Admin:crudUsuarios.html.twig',array('user'=>$user,'usuarios'=>$usuarios));
     }
@@ -323,33 +334,16 @@ class UsuarioController extends Controller
         }
         $em->remove($usuario);
         $em->flush();
-        $this->MensajeFlash2('Administrador borrado correctamente!');
+        $this->MensajeFlash('exito','Administrador borrado correctamente!');
         $admin=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('rol'=>2));
         return $this->render('toosistemadeventasBundle:Admin:crudAdmin.html.twig',array('user'=>$user,'admin'=>$admin));
     }
 
-    private function enviarSesion($request){
-        $session=$request->getSession();
-        if($session->has('login')){
-            $login=$session->get('login');
-            return $login->getUsername();
-        }
-    }
+
     private function loginAction($user,$email){
         $em=$this->getDoctrine()->getManager();
         $encontrado=$em->getRepository('toosistemadeventasBundle:Usuario')->findOneBy(array('usuario'=>$user,'correo'=>$email));
         return $encontrado;
     }
-    private function MensajeFlash($m){
-        $this->get('session')->getFlashBag()->add(
-            'credencial',
-            ''.$m
-        );
-    }
-    private function MensajeFlash2($m){
-        $this->get('session')->getFlashBag()->add(
-            'exito',
-            ''.$m
-        );
-    }
+
 }

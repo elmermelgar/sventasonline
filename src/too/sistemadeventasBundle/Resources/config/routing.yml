@@ -83,6 +83,18 @@ file:
     path:     /regPendiente
     defaults: { _controller: toosistemadeventasBundle:Seguridad:registroProducto }
 
+nuevoProducto:
+    path:     /nuevoProducto
+    defaults: { _controller: toosistemadeventasBundle:Productos:nuevoProducto }
+
+editarProducto:
+    path:     /editarProducto/{id}
+    defaults: { _controller: toosistemadeventasBundle:Productos:editarProducto}
+
+bajarProducto:
+    path:     /bajarProducto/{id}
+    defaults: { _controller: toosistemadeventasBundle:Productos:bajarProducto}
+
 crudCat:
     path:     /crudCat
     defaults: { _controller: toosistemadeventasBundle:Categoria:crudCat }

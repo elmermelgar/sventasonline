@@ -7,10 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Producto
  *
- * @ORM\Table(name="producto", indexes={@ORM\Index(name="compuesto_fk", columns={"id_categoria"})})
+ * @ORM\Table(name="producto", uniqueConstraints={@ORM\UniqueConstraint(name="producto_pk", columns={"id_producto"})}, indexes={@ORM\Index(name="compuesto_fk", columns={"id_categoria"})})
  * @ORM\Entity
  */
-
 class Producto
 {
     /**
@@ -246,44 +245,5 @@ class Producto
     public function getIdCategoria()
     {
         return $this->idCategoria;
-    }
-
-    //SUBIDAS
-    public function getAbsolutePath() {
-        return null === $this->image ? null : $this->getUploadRootDir() . '/' . $this->image;
-    }
-
-    public function getWebPath() {
-        return null === $this->image ? null : $this->getUploadDir() . '/' . $this->image;
-    }
-
-    public function getUploadRootDir() {
-        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
-    }
-
-    protected function getUploadDir() {
-        return 'uploads';
-    }
-
-    public function upload() {
-
-        if (null === $this->getImagen()) {
-            return;
-        }
-
-        $this->getImagen()->move(
-            $this->getUploadRootDir(), $this->getImagen()->getClientOriginalName()
-        );
-
-        $this->imagen = $this->getImagen()->getClientOriginalName();
-
-        $this->file = null;
-    }
-
-    public function removeUpload()
-    {
-        if ($file = $this->getAbsolutePath()) {
-            unlink($file);
-        }
     }
 }

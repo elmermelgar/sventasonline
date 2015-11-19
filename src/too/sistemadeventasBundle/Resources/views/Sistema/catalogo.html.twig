@@ -41,117 +41,21 @@
                     </div>
                     <!---->
                     <div class="product_box1">
+                     {% for dato in datos %}
                         <div class="col-md-4 grid-4 grid-in" style="margin: 0 auto 0 auto;">
                             <a href="">
-                                <img src="{{ asset('images/po4.jpg') }}" class="img-responsive" alt="">
+                                <img src="{{ asset(dato.imagen) }}" class="img-responsive" alt="" style="width: 335px;height: 200px;">
                             </a>
                             <div class="tab_desc1">
-                                <h3><a href="#">Nombre Producto</a></h3>
-                                <p>$0.00</p>
+                                <h3><a href="#">{{ dato.nombreProd }}</a></h3>
+                                <p>${{ dato.precioUnitario }}</p>
                                 {% if user %}
                                     <a href="#" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
                                 {% endif %}
                             </div>
                         </div>
-                        <div class="col-md-4 grid-4 grid-in" style="align-content: center">
-                            <a href="#">
-                                <img src="{{ asset('images/po4.jpg') }}" class="img-responsive" alt="">
-                            </a>
-                            <div class="tab_desc1" s>
-                                <h3><a href="#">Nombre Producto</a></h3>
-                                <p>$0.00</p>
-                                {% if user %}
-                                    <a href="#" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="col-md-4 grid-4 grid-in">
-                            <a href="#">
-                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
-                            </a>
-                            <div class="tab_desc1">
-                                <h3><a href="#">Nombre Producto</a></h3>
-                                <p>$0.00</p>
-                                {% if user %}
-                                    <a href="#" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
-                                {% endif %}
-                            </div>
-                        </div>
+                        {% endfor %}
 
-                        <div class="col-md-4 grid-4 grid-in">
-                            <a href="#">
-                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
-                            </a>
-                            <div class="tab_desc1">
-                                <h3><a href="#">Nombre Producto</a></h3>
-                                <p>$0.00</p>
-                                {% if user %}
-                                    <a href="#" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
-                                {% endif %}
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 grid-4 grid-in">
-                            <a href="#">
-                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
-                            </a>
-                            <div class="tab_desc1">
-                                <h3><a href="#">Nombre Producto</a></h3>
-                                <p>$0.00</p>
-                                {% if user %}
-                                    <a href="#" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="col-md-4 grid-4 grid-in">
-                            <a href="#">
-                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
-                            </a>
-                            <div class="tab_desc1">
-                                <h3><a href="#">Nombre Producto</a></h3>
-                                <p>$0.00</p>
-                                {% if user %}
-                                    <a href="#" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="col-md-4 grid-4 grid-in">
-                            <a href="#">
-                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
-                            </a>
-                            <div class="tab_desc1">
-                                <h3><a href="#">Nombre Producto</a></h3>
-                                <p>$0.00</p>
-                                {% if user %}
-                                    <a href="#" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
-                                {% endif %}
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 grid-4 grid-in">
-                            <a href="#">
-                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
-                            </a>
-                            <div class="tab_desc1">
-                                <h3><a href="#">Nombre Producto</a></h3>
-                                <p>$0.00</p>
-                                {% if user %}
-                                    <a href="#" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="col-md-4 grid-4 grid-in">
-                            <a href="#">
-                                <img src="{{ asset('images/po4.jpg')}}" class="img-responsive" alt="">
-                            </a>
-                            <div class="tab_desc1">
-                                <h3><a href="#">Nombre Producto</a></h3>
-                                <p>$0.00</p>
-                                {% if user %}
-                                    <a href="#" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
-                                {% endif %}
-                            </div>
-                        </div>
                         <div class="clearfix"></div>
                     </div>
 

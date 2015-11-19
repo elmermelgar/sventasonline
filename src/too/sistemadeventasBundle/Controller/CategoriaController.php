@@ -4,19 +4,29 @@ namespace too\sistemadeventasBundle\Controller;
 use too\sistemadeventasBundle\Modals\TOOController;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use too\sistemadeventasBundle\Entity\Categoria;
 
 class CategoriaController extends TOOController
 {
-    public function crudCatAction()
+    public function crudCatAction(Request $request)
     {
+        $user=$this->enviarSesion($request);
+        $validado=$this->validarAcceso($request);
+        if(!$validado){
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+        }
         $em=$this->getDoctrine()->getManager();
         $cat=$em->getRepository('toosistemadeventasBundle:Categoria')->findAll();
-        return $this->render('toosistemadeventasBundle:Categoria:crudCategoria.html.twig', array('cat' => $cat, 'user' =>''));
+        return $this->render('toosistemadeventasBundle:Categoria:crudCategoria.html.twig', array('cat' => $cat, 'user' =>$user));
     }
 
     public function editarCatAction($idCat, Request $request)
     {
+        $validado=$this->validarAcceso($request);
+        if(!$validado){
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+        }
         $em=$this->getDoctrine()->getManager();
         //Obtener la sesion
         $user=$this->enviarSesion($request);
@@ -31,7 +41,7 @@ class CategoriaController extends TOOController
         else{
             if($request->isMethod("POST")){
 
-                if($this->loginAction($request->get('nombre_cat')))
+                if($this->loginAction($request->get('nombre')))
                 {
                     $this->MensajeFlash('fracaso','Nombre de la categoria ya existe');
                     /*return $this->redirect($this->generateUrl('nuevoCat'));*/
@@ -53,8 +63,12 @@ class CategoriaController extends TOOController
 
     }
 
-    public  function deleteCatAction($idCat)
+    public  function deleteCatAction($idCat, Request $request)
     {
+        $validado=$this->validarAcceso($request);
+        if(!$validado){
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+        }
         $em=$this->getDoctrine()->getManager();
         $cat=$em->getRepository('toosistemadeventasBundle:Categoria')->find($idCat);
         if(!$cat){
@@ -69,6 +83,10 @@ class CategoriaController extends TOOController
 
     public function nuevaCatAction(Request $request)
     {
+        $validado=$this->validarAcceso($request);
+        if(!$validado){
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+        }
         $em=$this->getDoctrine()->getManager();
         //Obtener la sesion
         $user=$this->enviarSesion($request);
@@ -98,16 +116,10 @@ class CategoriaController extends TOOController
         }
     }
 
-    protected function enviarSesion($request){
-        $session=$request->getSession();
-        if($session->has('login')){
-            $login=$session->get('login');
-            return $login->getUsername();
-        }
-    }
     private function loginAction($user){
         $em=$this->getDoctrine()->getManager();
-        $encontrado=$em->getRepository('toosistemadeventasBundle:Usuario')->findOneBy(array('usuario'=>$user));
+        $encontrado=$em->getRepository('toosistemadeventasBundle:Categoria')->findOneBy(array('nombreCat'=>$user));
         return $encontrado;
     }
+
 }

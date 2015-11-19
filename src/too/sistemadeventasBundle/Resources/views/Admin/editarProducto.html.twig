@@ -1,0 +1,82 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Registro Admin{% endblock %}
+{% block active2 %}class="active"{% endblock active2 %}
+{% block body %}
+    <div class="content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{{ path('productos') }}">Productos</a>
+                </li>
+
+                <li class="active">Agregar Nuevo Producto</li>
+            </ol>
+            <div class="register">
+                <form method="post" style="margin: -50px auto 0 auto;" action="{{ asset('app_dev.php/editarProducto') }}/{{ datos.idProducto }}" enctype="multipart/form-data">
+                    <div class="register-top-grid"  style="margin: 0 auto 0 auto; text-align: center;">
+
+
+                        <div class="contact_form" id="contact_form"  >
+                            <ul style="margin: 0 auto 0 auto;">
+                                {% for flashMessage in app.session.flashbag.get('credencial') %}
+                                    <script>
+                                        window.onload = function error(){
+                                            alertify.error("{{ flashMessage }}.");
+                                            return false;
+                                        }
+                                    </script>
+                                {% endfor %}
+                                {% for flashMessage in app.session.flashbag.get('exito') %}
+                                    <script>
+                                        window.onload = function notificacion(){
+                                            alertify.log("{{ flashMessage }}.");
+                                            return false;
+                                        }
+                                    </script>
+                                {% endfor %}
+                                <p style="color: red;">*Nota: Si actualiza un producto debe volver a subir la imagen</p>
+                                <li>
+                                    <h2>REGISTRO DE PRODUCTOS</h2>
+
+                                </li>
+
+                                <li>
+                                    <label><span>Nombres*</span></label>
+                                    <input type="text" required name="nombreProd" value="{{ datos.nombreProd }}">
+                                </li>
+
+                                <li>
+                                    <label><span>IMAGEN*</span></label>
+                                    <input type="file" required name="archivo" value="{{ datos.imagen }}">
+                                </li>
+                                <li>
+                                    <label><span>Descripcion*</span></label>
+                                    <input type="text" required name="descripcion" value="{{ datos.descripcionProd }}">
+                                </li>
+                                <li>
+                                    <label><span>Categoria*</span></label>
+                                    <select name="categorias" class="contact_form">
+                                        {% for categoria in categorias %}
+                                            <option value="{{ categoria.idCategoria }}">{{ categoria.nombreCat }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </li>
+                                <li>
+                                    <label><span>Precio Unitario*</span></label>
+                                    <input type="text" required name="precio" value="{{ datos.precioUnitario }}">
+                                </li>
+                            </ul>
+                            <div class="clearfix"> </div>
+                            <button type="submit">Actualizar</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

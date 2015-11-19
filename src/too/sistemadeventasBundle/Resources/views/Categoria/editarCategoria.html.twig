@@ -5,7 +5,13 @@
 
     <div class="content">
         <div class="container">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{{ path('crudCat') }}">Categoria</a>
+                </li>
 
+                <li class="active">Editar Categoria</li>
+            </ol>
             <div class="register">
                 <form method="post" style="margin: -50px auto 0 auto;" action="{{ asset('app_dev.php/editarCat') }}/{{ datos.idCategoria }}">
                     <div class="register-top-grid"  style="margin: 0 auto 0 auto; text-align: center;">

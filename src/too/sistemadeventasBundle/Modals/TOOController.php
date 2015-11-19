@@ -28,7 +28,7 @@ class TOOController extends Controller
             return $login->getUsername();
         }
     }
-    //Validacion de Logueo y nivel de acceso
+    //Validar Acceso
     protected function validarAcceso($request){
         $session=$request->getSession();
         if($session->has('login')){
