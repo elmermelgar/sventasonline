@@ -110,3 +110,7 @@ editarCat:
 nuevaCat:
     path:     /nuevaCat
     defaults: { _controller: toosistemadeventasBundle:Categoria:nuevaCat }
+    
+carrito:
+    path:     /carrito
+    defaults: { _controller: toosistemadeventasBundle:Default:carrito }

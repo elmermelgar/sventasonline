@@ -49,13 +49,14 @@ class TOOController extends Controller
     }
     //Para subir la imagen al servidor
     protected function subirImagen($archivo,$nombreImagen){
-        move_uploaded_file($_FILES["".$archivo]['tmp_name'],$_SERVER['DOCUMENT_ROOT']."/sventas/web/images/".$nombreImagen);
+        move_uploaded_file($_FILES["".$archivo]['tmp_name'],$_SERVER['DOCUMENT_ROOT']."/Proyecto_TOO/web/images/".$nombreImagen);
     }
     //Validacion de Registro o duplicado
     protected function validarRegistro($user,$email){
         $em=$this->getDoctrine()->getManager();
         //Nuevo metodo  DQL =D
         $encontrado=$em->getRepository('toosistemadeventasBundle:Usuario')->validarUser($user,$email);
+        //$encontrado=$em->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('usuario' => $user));
         return $encontrado;
     }
 }
