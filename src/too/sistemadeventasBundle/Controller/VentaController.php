@@ -13,13 +13,11 @@ class VentaController extends TOOController
     {
         $user=$this->enviarSesion($request);
         $em=$this->getDoctrine()->getManager();
-
         if($user){
-                if($this->validarCaptital($em,$user)){
+                if($this->validarCaptital($em,$user,$request)){
                     //Regitro las  ventas y descargo de invetario
                     $this->registrarVentas($em,$user);
                     return $this->redirect($this->generateUrl('catalogo'));
-                    //return new Response();
                 }
                 else
                     return new Response('Te falta $$');
@@ -48,13 +46,14 @@ class VentaController extends TOOController
             $em->flush();
         }
     }
-    public  function  validarCaptital($em,$user){
+    public  function  validarCaptital($em,$user,$request){
         $tot=$em->getRepository('toosistemadeventasBundle:Carrito')->getTotal($user);
-        $id=$em->getRepository('toosistemadeventasBundle:Usuario')->findOneBy(array('nombreUsu'=>$user));
-        $cliente=$em->getRepository('toosistemadeventasBundle:Cliente')->findOneBy(array('idUsuario'=>$id->getIdUsuario()));
-        if($cliente->getCuenta()>$tot[1])
+        $us=$em->getRepository('toosistemadeventasBundle:Usuario')->find($request->getSession()->get('login')->getId());
+        //Obtengo el cliente
+        //$cliente=$em->getRepository('toosistemadeventasBundle:Cliente')->findOneBy(array('idUsuario'=>$id->getIdUsuario()));
+        if($us->getSaldo()>$tot[1])
         {
-                $cliente->setCuenta($cliente->getCuenta()-$tot[1]);
+                $us->setSaldo($us->getSaldo()-$tot[1]);
                 $em->flush();
                 return true;
         }
