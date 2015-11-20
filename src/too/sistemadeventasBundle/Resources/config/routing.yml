@@ -131,7 +131,21 @@ deleteCarrito:
     path:     /delCar/{id}
     defaults: { _controller: toosistemadeventasBundle:Carrito:deleteCarrito }
 
+#Inventario
+
+inventario:
+    path:     /inventario
+    defaults: { _controller: toosistemadeventasBundle:Inventario:inventario }
+
+abastecer inventario:
+    path:     /newInventario
+    defaults: { _controller: toosistemadeventasBundle:Inventario:agregarInventario }
+
 #Venta
 venta:
     path:     /venta
     defaults: { _controller: toosistemadeventasBundle:Venta:venta }
+#reportes
+pdf:
+    path:     /pdf
+    defaults: { _controller: toosistemadeventasBundle:Reporte:pdfHola }
