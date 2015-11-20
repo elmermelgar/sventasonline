@@ -119,9 +119,15 @@ nuevaCat:
 carrito:
     path:     /carrito
     defaults: { _controller: toosistemadeventasBundle:Carrito:carrito }
+
 insertarCar:
     path:     /insertarCar/{id}
     defaults: { _controller: toosistemadeventasBundle:Carrito:insertar }
+
 editarCarrito:
     path:     /edCar
     defaults: { _controller: toosistemadeventasBundle:Carrito:editCarrito }
+
+deleteCarrito:
+    path:     /delCar/{id}
+    defaults: { _controller: toosistemadeventasBundle:Carrito:deleteCarrito }
