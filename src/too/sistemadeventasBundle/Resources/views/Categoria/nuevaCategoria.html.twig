@@ -1,0 +1,56 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Registro Usuarios{% endblock %}
+{% block active4 %}class="active"{% endblock active4 %}
+{% block body %}
+    <div class="content">
+        <div class="container">
+
+            <div class="register">
+                <form method="post" style="margin: 0 auto 0 auto;" action="{{ path('nuevaCat') }}">
+                    <div class="register-top-grid"  style="margin: -50px auto 0 auto; text-align: center;">
+                        <div class="contact_form" id="contact_form"  >
+                            <ul style="margin: 0 auto 0 auto;">
+                                {% for flashMessage in app.session.flashbag.get('fracaso') %}
+                                    <script>
+                                        window.onload = function error(){
+                                            alertify.error("{{ flashMessage }}.");
+                                            return false;
+                                        }
+                                    </script>
+                                {% endfor %}
+                                {% for flashMessage in app.session.flashbag.get('exito') %}
+                                    <script>
+                                        window.onload = function notificacion(){
+                                            alertify.log("{{ flashMessage }}.");
+                                            return false;
+                                        }
+                                    </script>
+                                {% endfor %}
+
+                                <li>
+                                    <h2>REGISTRO DE CATEGORIA</h2>
+
+                                </li>
+
+                                <li>
+                                    <label><span>Nombre Categoria</span></label>
+                                    <input type="text" required name="nombre">
+                                </li>
+                                <li>
+                                    <label><span>Descripcion Categoria</span></label>
+                                    <input type="text" required name="descripcion">
+                                </li>
+
+                            </ul>
+                            <div class="clearfix"> </div>
+                            <button type="submit">Registrar</button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
