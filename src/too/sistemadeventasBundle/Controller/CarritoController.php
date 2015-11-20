@@ -36,7 +36,7 @@ class CarritoController extends TOOController
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }
         else{
-            $idcar=$em->getRepository('toosistemadeventasBundle:Carrito')->findOneBy(array('idProduct'=>$id));
+            $idcar=$em->getRepository('toosistemadeventasBundle:Carrito')->findOneBy(array('idProduct'=>$id,'idUsu'=>$user));
             if($idcar)
             {
                 $idcar->setCantidad($idcar->getCantidad()+1);
