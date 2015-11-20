@@ -41,6 +41,7 @@ class TOOController extends Controller
         else
             return false;
     }
+
     //Para determinar el tipo de archivo subido
     protected function infoTipoImagen($archivo){
         $tipo=explode('/', $_FILES["".$archivo]["type"]);
