@@ -4,9 +4,6 @@
     <indexes>
       <index name="relationship_10_fk" columns="id_usuario"/>
     </indexes>
-    <unique-constraints>
-      <unique-constraint name="cliente_pk" columns="id_cliente"/>
-    </unique-constraints>
     <id name="idCliente" type="integer" column="id_cliente">
       <generator strategy="SEQUENCE"/>
     </id>

@@ -1,0 +1,71 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Registro Admin{% endblock %}
+{% block active2 %}class="active"{% endblock active2 %}
+{% block body %}
+    <div class="content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{{ path('inventario') }}">Inventario</a>
+                </li>
+
+                <li class="active">Agregar Nuevo Inventario</li>
+            </ol>
+            <div class="register">
+                <form method="post" style="margin: -50px auto 0 auto;" action="{{ asset('app_dev.php/newInventario') }}/{{ datos.idProducto }}" enctype="multipart/form-data">
+                    <div class="register-top-grid"  style="margin: 0 auto 0 auto; text-align: center;">
+
+
+                        <div class="contact_form" id="contact_form"  >
+                            <ul style="margin: 0 auto 0 auto;">
+                                {% for flashMessage in app.session.flashbag.get('credencial') %}
+                                    <script>
+                                        window.onload = function error(){
+                                            alertify.error("{{ flashMessage }}.");
+                                            return false;
+                                        }
+                                    </script>
+                                {% endfor %}
+                                {% for flashMessage in app.session.flashbag.get('exito') %}
+                                    <script>
+                                        window.onload = function notificacion(){
+                                            alertify.log("{{ flashMessage }}.");
+                                            return false;
+                                        }
+                                    </script>
+                                {% endfor %}
+
+                                <li>
+                                    <h2>REGISTRO DE INVENTARIO</h2>
+
+                                </li>
+
+                                <li>
+                                    <input type="hidden"  name="idProd" value="{{ datos.idProducto }}">
+                                    <input type="hidden"  name="nomProd" value="{{ datos.nombreProd }}">
+                                </li>
+
+                                <li>
+                                    <label><span>Inventario Minimo*</span></label>
+                                    <input type="text" required name="minimo" value="">
+                                </li>
+
+                                <li>
+                                    <label><span>Cantidad Disponible*</span></label>
+                                    <input type="text" required name="disponible" value="">
+                                </li>
+                            </ul>
+                            <div class="clearfix"> </div>
+                            <button type="submit">Guardar</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

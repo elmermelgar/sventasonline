@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Carrito" table="carrito">
-    <unique-constraints>
-      <unique-constraint name="carrito_pk" columns="id_carrito"/>
-    </unique-constraints>
     <id name="idCarrito" type="integer" column="id_carrito">
       <generator strategy="SEQUENCE"/>
     </id>

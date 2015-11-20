@@ -16,50 +16,10 @@ class ProductosController extends TOOController
         $validado=$this->validarAcceso($request);
         if($validado){
             $productos=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Producto')->findAll();
-            $total_count=$this->getTotalProductos();
-           // die(" ".$total_count);
-            $page=$request->get('page');
-            $porpagina=2;
-            $totalPaginas=ceil($total_count/$porpagina);
-            if(!is_numeric($page)){
-                $page=1;
-            }else{
-                $page=floor($page);
-            }
-            if($total_count<=$porpagina){
-                $page=1;
-            }
-            if(($page*$porpagina)>$total_count){
-                $page=$totalPaginas;
-            }
-            $offset=0;
-            if($page>1){
-                $offset=$porpagina*($page-1);
-            }
-            $em=$this->getDoctrine()
-                        ->getManager()
-                        ->createQueryBuilder('toosistemadeventasBundle:Producto')
-                        ->select('c')
-                        ->from('toosistemadeventasBundle:Producto','c')
-                        ->setFirstResult($offset)
-                        ->setMaxResults($porpagina);
-            $ems=$em->getQuery();
-            $datos=$ems->getArrayResult();
-
-            return $this->render('toosistemadeventasBundle:Admin:productos.html.twig',array('user'=>$user,'productos'=>$productos, 'datos'=>$datos, 'porpagina'=>$porpagina, 'totalPaginas'=>$totalPaginas, 'total_count'=>$total_count, 'page'=>$page));
+            return $this->render('toosistemadeventasBundle:Admin:productos.html.twig',array('user'=>$user,'productos'=>$productos));
         }
         else
             return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
-    }
-    public function getTotalProductos(){
-        $datos=$this->getDoctrine()
-                                ->getManager()
-                                ->createQueryBuilder('toosistemadeventasBundle:Producto')
-                                ->select('Count(c)')
-                                ->from('toosistemadeventasBundle:Producto','c')
-                                ->getQuery()
-                                ->getSingleScalarResult();
-        return $datos;
     }
 
     public function nuevoProductoAction(Request $request)

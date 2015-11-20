@@ -130,3 +130,13 @@ editarCarrito:
 deleteCarrito:
     path:     /delCar/{id}
     defaults: { _controller: toosistemadeventasBundle:Carrito:deleteCarrito }
+
+#Inventario
+
+inventario:
+    path:     /inventario
+    defaults: { _controller: toosistemadeventasBundle:Inventario:inventario }
+
+nuevoInventario:
+    path:     /newInventario/{id}
+    defaults: { _controller: toosistemadeventasBundle:Inventario:agregarInventario }
