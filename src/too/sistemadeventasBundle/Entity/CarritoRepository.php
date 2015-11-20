@@ -12,10 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class CarritoRepository extends EntityRepository
 {
-    public function getTotal(){
+    public function getTotal($user){
         return $this->getEntityManager()->createQuery(
-            'SELECT SUM(car.total) FROM toosistemadeventasBundle:Carrito car'
+            'SELECT SUM(car.total) FROM toosistemadeventasBundle:Carrito car WHERE car.idUsu = :user'
         )
+            ->setParameter('user',$user)
             ->getOneOrNullResult();
     }
 }

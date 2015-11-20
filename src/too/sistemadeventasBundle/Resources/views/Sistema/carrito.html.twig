@@ -21,7 +21,6 @@
 <div class="content">
     <div class="container" style="height: auto;">
         <h1>Carrito de Compras</h1>
-
         <a href="{{ path('catalogo') }}" title="Agregar" class="btn btn-success">Catálogo de Productos</a>
         <hr/>
         <table class="table table-striped">
@@ -55,7 +54,7 @@
                     </td>
                     <td>{{ carrito.total }}</td>
                     <td style="text-align: center;">
-                        <a href="" title="Eliminar" class="btn btn-danger">Eliminar</a>
+                        <a href="{{ asset('app_dev.php/delCar') }}/{{ carrito.idCarrito }}" title="Eliminar" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>
             {% endfor %}

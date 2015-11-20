@@ -14,12 +14,18 @@ class CarritoController extends TOOController
 {
     public function carritoAction(Request $request)
     {
-
         $em=$this->getDoctrine()->getManager();
-        $sum=$em->getRepository('toosistemadeventasBundle:Carrito')->getTotal();
+        $validado=$this->validarUsuario($request);
+        $sum=$em->getRepository('toosistemadeventasBundle:Carrito')->getTotal($this->enviarSesion($request));
         $user=$this->enviarSesion($request);
-        $carrito=$em->getRepository('toosistemadeventasBundle:Carrito')->findAll();
-        return $this->render('toosistemadeventasBundle:Sistema:carrito.html.twig',array('user'=>$user, 'carrito'=>$carrito,'total'=>$sum[1]));
+        if(!$validado){
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+        }
+        else {
+            $carrito = $em->getRepository('toosistemadeventasBundle:Carrito')->findBy(array('idUsu' => $this->enviarSesion($request)));
+            return $this->render('toosistemadeventasBundle:Sistema:carrito.html.twig',array('user'=>$user, 'carrito'=>$carrito,'total'=>$sum[1]));
+        }
+
     }
     public function insertarAction(Request $request, $id)
     {
@@ -67,6 +73,26 @@ class CarritoController extends TOOController
             return $this->redirect($this->generateUrl('carrito'));
         }
 
+    }
+    public function deleteCarritoAction($id, Request $request)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $validado=$this->validarUsuario($request);
+        $user=$this->enviarSesion($request);
+        if(!$validado){
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+        }
+        else {
+            $producto=$em->getRepository('toosistemadeventasBundle:Carrito')->find($id);
+            if(!$producto){
+                throw $this->createNotFoundException('No existe el productoo con el ID'.$id);
+            }
+            $em->remove($producto);
+            $em->flush();
+            $carrito = $em->getRepository('toosistemadeventasBundle:Carrito')->findBy(array('idUsu' => $this->enviarSesion($request)));
+            return $this->redirect($this->generateUrl('carrito'));
+            // return $this->render('toosistemadeventasBundle:Sistema:carrito.html.twig', array('user' => $user, 'carrito' => $carrito));
+        }
     }
 
 }
