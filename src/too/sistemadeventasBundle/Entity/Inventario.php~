@@ -36,6 +36,7 @@ class Inventario
      */
     private $idProducto;
 
+<<<<<<< HEAD
     /**
      * @var string
      *
@@ -50,5 +51,7 @@ class Inventario
      */
     private $cantidadDisponible;
 
+=======
+>>>>>>> c43466aeceb21065e975c42ef70a5034ea0a9b34
 
 }

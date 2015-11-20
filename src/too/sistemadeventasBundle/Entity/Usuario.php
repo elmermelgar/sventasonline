@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="usuario", uniqueConstraints={@ORM\UniqueConstraint(name="usuario_pk", columns={"id_usuario"})})
  * @ORM\Entity
  */
+
+
+
+
+
 /**
  * @ORM\Entity(repositoryClass="too\sistemadeventasBundle\Entity\UsuarioRepository")
  */

@@ -140,3 +140,8 @@ inventario:
 nuevoInventario:
     path:     /newInventario/{id}
     defaults: { _controller: toosistemadeventasBundle:Inventario:agregarInventario }
+
+#Venta
+venta:
+    path:     /venta
+    defaults: { _controller: toosistemadeventasBundle:Venta:venta }
