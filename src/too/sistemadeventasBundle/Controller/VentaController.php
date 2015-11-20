@@ -13,17 +13,21 @@ class VentaController extends TOOController
     {
         $user=$this->enviarSesion($request);
         $em=$this->getDoctrine()->getManager();
+        $us=$em->getRepository('toosistemadeventasBundle:Usuario')->find($request->getSession()->get('login')->getId());
         if($user){
                 if($this->validarCaptital($em,$user,$request)){
                     //Regitro las  ventas y descargo de invetario
                     $this->registrarVentas($em,$user);
                     return $this->redirect($this->generateUrl('catalogo'));
                 }
-                else
-                    return new Response('Te falta $$');
+                else{
+                    $this->MensajeFlash('credencial','Su dinero no alzanza para comprar estos productos!');
+                    return $this->redirect($this->generateUrl('carrito'));
+                }
         }
         else
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+        return new Response('Nada');
     }
     private function registrarVentas($em,$user){
         $pCarrito=$em->getRepository('toosistemadeventasBundle:Carrito')->findBy(array('idUsu'=>$user));
