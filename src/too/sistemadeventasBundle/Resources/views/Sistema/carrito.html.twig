@@ -1,9 +1,9 @@
 {% extends '::base.html.twig' %}
 {% block title %}Carrito!!{% endblock %}
-{% block active6 %}class="active"{% endblock active6 %}
+{% block active4 %}class="active"{% endblock active4 %}
 {% block body %}
     {% for flashMessage in app.session.flashbag.get('credencial') %}
-        <script>
+        <script xmlns="http://www.w3.org/1999/html">
             window.onload = function error(){
                 alertify.error("{{ flashMessage }}.");
                 return false;
@@ -42,21 +42,28 @@
 
             </th>
             </tbody>
-
+            {% for carrito in carrito %}
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td><input type="number" required name="nombreProd" value=""></td>
-                    <td></td>
+                    <td>{{ carrito.producto }}</td>
+                    <td>{{ carrito.precio }}</td>
+                    <td>
+                        <form method="post" action="{{ path('editarCarrito') }}">
+                            <input type="number" required name="cantidad_P" value="{{ carrito.cantidad }}"><input type="submit" value="Actualizar">
+                            <input type="hidden" name="id_car" value="{{ carrito.idCarrito }}" >
+                        </form>
+
+                    </td>
+                    <td>{{ carrito.total }}</td>
                     <td style="text-align: center;">
                         <a href="" title="Eliminar" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>
+            {% endfor %}
                 <tr>
                     <td></td>
                     <td></td>
                     <td>
-                        <b>TOTAL A PAGAR :</b>
+                        <b>TOTAL A PAGAR :  $ {{ total }}</b>
                     </td>
                     <td><a href="{{ path('catalogo') }}" title="Agregar" class="btn btn-primary">Comprar</a></td>
 

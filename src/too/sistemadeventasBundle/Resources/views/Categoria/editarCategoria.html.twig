@@ -1,0 +1,58 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Editar Registro{% endblock %}
+{% block active4 %}class="active"{% endblock active4 %}
+{% block body %}
+
+    <div class="content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{{ path('crudCat') }}">Categoria</a>
+                </li>
+
+                <li class="active">Editar Categoria</li>
+            </ol>
+            <div class="register">
+                <form method="post" style="margin: -50px auto 0 auto;" action="{{ asset('app_dev.php/editarCat') }}/{{ datos.idCategoria }}">
+                    <div class="register-top-grid"  style="margin: 0 auto 0 auto; text-align: center;">
+
+
+                        <div class="contact_form" id="contact_form"  >
+                            <ul style="margin: 0 auto 0 auto;">
+                                {% for flashMessage in app.session.flashbag.get('credencial') %}
+                                    <div class="alert alert-danger fade in">
+                                    <span class="close" data-dismiss="alert">
+                                    &times;
+                                    </span>
+                                        {{ flashMessage }}
+                                    </div>
+                                {% endfor %}
+                                <li>
+                                    <h2>EDITAR REGISTRO DE CATEGORIA</h2>
+
+                                </li>
+
+                                <li>
+                                    <label><span>Nombres de Categoria</span></label>
+                                    <input type="text" value="{{ datos.nombreCat }}" required name="nombre">
+                                </li>
+                                <li>
+                                    <label><span>Descripcion de Categoria</span></label>
+                                    <input type="text" value="{{ datos.descripcionCat }}" required name="descripcion">
+                                </li>
+
+                            </ul>
+                            <div class="clearfix"> </div>
+                            <button type="submit">Actualizar</button>
+
+                        </div>
+
+
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

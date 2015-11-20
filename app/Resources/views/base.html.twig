@@ -85,6 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li {% block active1 %}{% endblock active1 %}><a href="{{ path('toosistemadeventas_inicio') }}">INICIO </a></li>
                         <li {% block active2 %}{% endblock active2 %}><a href="{{ path('toosistemadeventas_promociones') }}" >PROMOCIONES</a></li>
                         <li {% block active3 %}{% endblock active3 %}><a href="{{ path('catalogo') }}" >CATÁLOGO</a></li>
+                        <li {% block active4 %}{% endblock active4 %}><a href="{{ path('carrito') }}" >CARRITO</a></li>
                     </ul>
                     <script>
                         $("span.menu").click(function(){
@@ -119,6 +120,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li ><a href="{{ path('toosistemadeventas_inicio') }}" class="scroll">INICIO </a><label>|</label></li>
                         <li><a href="{{ path('toosistemadeventas_promociones') }}" class="scroll">PROMOCIONES</a><label>|</label></li>
                         <li><a href="{{ path('catalogo') }}" class="scroll">CATALOGO</a><label>|</label></li>
+                        <li><a href="{{ path('carrito') }}" class="scroll">CARRITO</a><label>|</label></li>
                     </ul>
                     <p class="footer-grid">&copy; 2015 Sistema de Ventas <a href="#" target="_blank"> TOO-115</a> </p>
                 </div>

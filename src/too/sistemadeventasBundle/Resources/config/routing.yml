@@ -95,6 +95,33 @@ bajarProducto:
     path:     /bajarProducto/{id}
     defaults: { _controller: toosistemadeventasBundle:Productos:bajarProducto}
 
+#Categorias
+
+crudCat:
+    path:     /crudCat
+    defaults: { _controller: toosistemadeventasBundle:Categoria:crudCat }
+
+deleteCat:
+    path:     /deleteCat/{idCat}
+    defaults: { _controller: toosistemadeventasBundle:Categoria:deleteCat }
+
+editarCat:
+    path:     /editarCat/{idCat}
+    defaults: { _controller: toosistemadeventasBundle:Categoria:editarCat }
+
+nuevaCat:
+    path:     /nuevaCat
+    defaults: { _controller: toosistemadeventasBundle:Categoria:nuevaCat }
+
+#Carrito
+
+
 carrito:
     path:     /carrito
-    defaults: { _controller: toosistemadeventasBundle:Default:carrito }
+    defaults: { _controller: toosistemadeventasBundle:Carrito:carrito }
+insertarCar:
+    path:     /insertarCar/{id}
+    defaults: { _controller: toosistemadeventasBundle:Carrito:insertar }
+editarCarrito:
+    path:     /edCar
+    defaults: { _controller: toosistemadeventasBundle:Carrito:editCarrito }

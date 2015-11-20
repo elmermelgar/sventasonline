@@ -36,20 +36,6 @@ class DefaultController extends TOOController
         return $this->render('toosistemadeventasBundle:Sistema:catalogo.html.twig',array('user'=>$user, 'datos'=>$datos));
 
     }
-    public function DQLAction(){
-        $em=$this->getDoctrine()->getManager();
-        $user=$em->getRepository('toosistemadeventasBundle:Usuario')->validarUser('fer','f@b.com');
-        var_dump($user);
-        return new Response();
-    }
-    public function carritoAction(Request $request)
-    {
-        $user=$this->enviarSesion($request);
-        //$datos= $this->getDoctrine()
-          //  ->getRepository('toosistemadeventasBundle:Producto')
-            //->findAll();
-        return $this->render('toosistemadeventasBundle:Sistema:carrito.html.twig',array('user'=>$user));
 
 
-    }
 }
