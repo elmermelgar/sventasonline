@@ -37,6 +37,13 @@ class Venta
     private $total;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidad", type="integer", nullable=true)
+     */
+    private $cantidad;
+
+    /**
      * @var \Promocion
      *
      * @ORM\ManyToOne(targetEntity="Promocion")
@@ -122,6 +129,29 @@ class Venta
     public function getTotal()
     {
         return $this->total;
+    }
+
+    /**
+     * Set cantidad
+     *
+     * @param integer $cantidad
+     * @return Venta
+     */
+    public function setCantidad($cantidad)
+    {
+        $this->cantidad = $cantidad;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidad
+     *
+     * @return integer 
+     */
+    public function getCantidad()
+    {
+        return $this->cantidad;
     }
 
     /**

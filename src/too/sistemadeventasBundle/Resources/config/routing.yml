@@ -130,3 +130,8 @@ editarCarrito:
 deleteCarrito:
     path:     /delCar/{id}
     defaults: { _controller: toosistemadeventasBundle:Carrito:deleteCarrito }
+
+#Venta
+venta:
+    path:     /venta
+    defaults: { _controller: toosistemadeventasBundle:Venta:venta }

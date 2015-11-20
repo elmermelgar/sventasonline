@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 
 
+
+
+
 /**
  * @ORM\Entity(repositoryClass="too\sistemadeventasBundle\Entity\UsuarioRepository")
  */
@@ -68,6 +71,13 @@ class Usuario
      * @ORM\Column(name="correo", type="string", length=30, nullable=true)
      */
     private $correo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="saldo", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $saldo;
 
 
 
@@ -217,5 +227,28 @@ class Usuario
     public function getCorreo()
     {
         return $this->correo;
+    }
+
+    /**
+     * Set saldo
+     *
+     * @param string $saldo
+     * @return Usuario
+     */
+    public function setSaldo($saldo)
+    {
+        $this->saldo = $saldo;
+
+        return $this;
+    }
+
+    /**
+     * Get saldo
+     *
+     * @return string 
+     */
+    public function getSaldo()
+    {
+        return $this->saldo;
     }
 }

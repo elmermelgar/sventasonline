@@ -10,8 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="carrito", uniqueConstraints={@ORM\UniqueConstraint(name="carrito_pk", columns={"id_carrito"})})
  * @ORM\Entity
  */
-
-
 /**
  * @ORM\Entity(repositoryClass="too\sistemadeventasBundle\Entity\CarritoRepository")
  */
