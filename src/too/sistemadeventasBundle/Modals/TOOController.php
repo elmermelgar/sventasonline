@@ -41,6 +41,19 @@ class TOOController extends Controller
         else
             return false;
     }
+
+    protected function validarUsuario($request){
+        $session=$request->getSession();
+        if($session->has('login')){
+            $login=$session->get('login');
+            if($login->getRol()==1)
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+    }
     //Para determinar el tipo de archivo subido
     protected function infoTipoImagen($archivo){
         $tipo=explode('/', $_FILES["".$archivo]["type"]);

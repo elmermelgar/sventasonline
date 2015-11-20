@@ -95,6 +95,17 @@ bajarProducto:
     path:     /bajarProducto/{id}
     defaults: { _controller: toosistemadeventasBundle:Productos:bajarProducto}
 
+
+
+#Carrito Controller
 carrito:
     path:     /carrito
-    defaults: { _controller: toosistemadeventasBundle:Default:carrito }
+    defaults: { _controller: toosistemadeventasBundle:Carrito:carrito }
+
+insertarCarrito:
+    path:     /insertarCar/{id}
+    defaults: { _controller: toosistemadeventasBundle:Carrito:insertar }
+
+editarCarrito:
+    path:     /editarCar
+    defaults: { _controller: toosistemadeventasBundle:Carrito:editCarrito }

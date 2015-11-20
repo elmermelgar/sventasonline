@@ -1,0 +1,68 @@
+<?php
+
+namespace too\sistemadeventasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Carrito
+ *
+ * @ORM\Table(name="carrito", uniqueConstraints={@ORM\UniqueConstraint(name="carrito_pk", columns={"id_carrito"})})
+ * @ORM\Entity
+ */
+class Carrito
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_carrito", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="carrito_id_carrito_seq", allocationSize=1, initialValue=1)
+     */
+    private $idCarrito;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="id_usu", type="string", length=50, nullable=true)
+     */
+    private $idUsu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="id_product", type="string", length=50, nullable=true)
+     */
+    private $idProduct;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="producto", type="string", length=50, nullable=true)
+     */
+    private $producto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="precio", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $precio;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidad", type="integer", nullable=true)
+     */
+    private $cantidad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="total", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $total;
+
+
+}

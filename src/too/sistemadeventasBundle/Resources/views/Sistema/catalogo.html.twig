@@ -50,7 +50,7 @@
                                 <h3><a href="#">{{ dato.nombreProd }}</a></h3>
                                 <p>${{ dato.precioUnitario }}</p>
                                 {% if user %}
-                                    <a href="#" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
+                                    <a href="{{ asset('app_dev.php/insertarCar') }}/{{ dato.idProducto }}" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
                                 {% endif %}
                             </div>
                         </div>
