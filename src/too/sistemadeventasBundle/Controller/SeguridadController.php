@@ -40,12 +40,13 @@ class SeguridadController extends TOOController
                     $usuario->setRol(1);
                     $usuario->setSaldo(0);
                     $usuario->setUsuario($request->get('usuario'));
-                    //creacion de cliente
-                    $cliente=new Cliente();
-                    $cliente->setIdUsuario($usuario->getIdUsuario());
-                    $cliente->setCuenta(0);
 
                     $em->persist($usuario);
+                    $em->flush();
+                    //creacion de cliente
+                    $cliente=new Cliente();
+                    $cliente->setIdUsuario($usuario);
+                    $cliente->setCuenta(0);
                     $em->persist($cliente);
                     $em->flush();
                     $this->MensajeFlash('exito','Usuario creado correctamente!');

@@ -4,6 +4,7 @@ namespace too\sistemadeventasBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\DateTime;
 use too\sistemadeventasBundle\Entity\Venta;
 use too\sistemadeventasBundle\Modals\TOOController;
 
@@ -18,6 +19,7 @@ class VentaController extends TOOController
                 if($this->validarCaptital($em,$user,$request)){
                     //Regitro las  ventas y descargo de invetario
                     $this->registrarVentas($em,$user);
+                    $this->MensajeFlash('exito','Su compra se proceso exitosamente!');
                     return $this->redirect($this->generateUrl('catalogo'));
                 }
                 else{
@@ -39,6 +41,7 @@ class VentaController extends TOOController
             $prodV->setIdProducto($em->getRepository('toosistemadeventasBundle:Producto')->find($pcar->getIdProduct()));
             $prodV->setTotal($pcar->getTotal());
             $prodV->setCantidad($pcar->getCantidad());
+            $prodV->setFechaVen(new \DateTime("now"));
             //Obtengo el objeto de inventario que descargo del inventario
             $inv=$em->getRepository('toosistemadeventasBundle:Inventario')->findOneBy(array('idProducto'=>$prodV->getIdProducto()));
             $inv->setCantidadDisponible($inv->getCantidadDisponible()-$pcar->getCantidad());

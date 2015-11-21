@@ -10,11 +10,7 @@ use too\sistemadeventasBundle\Modals\TOOController;
 
 class InventarioController extends TOOController
 {
-    public function invetarioAction(Request $request)
-    {
-        return $this->render();
 
-    }
     public function inventarioAction( Request $request)
     {
         $user=$this->enviarSesion($request);

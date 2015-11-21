@@ -145,3 +145,12 @@ nuevoInventario:
 venta:
     path:     /venta
     defaults: { _controller: toosistemadeventasBundle:Venta:venta }
+
+#reportes
+pdf:
+    path:     /pdf
+    defaults: { _controller: toosistemadeventasBundle:Reporte:pdfHola }
+
+factura:
+    path:     /compra
+    defaults: { _controller: toosistemadeventasBundle:Reporte:factura }
