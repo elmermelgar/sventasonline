@@ -63,7 +63,11 @@
                         <td style="text-align: center;">
                             <a href="{{ asset('app_dev.php/editarProducto') }}/{{ producto.idProducto }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Editar</a>
                             -
+                            {% if producto.estado == 0 %}
+                            <a href="{{ asset('app_dev.php/bajarProducto') }}/{{ producto.idProducto }}" title="Activar" class="btn btn-success">Dar de Alta</a>
+                            {% else %}
                             <a href="{{ asset('app_dev.php/bajarProducto') }}/{{ producto.idProducto }}" title="Eliminar" class="btn btn-danger">Dar de Baja</a>
+                            {% endif %}
                         </td>
 
                     </tr>

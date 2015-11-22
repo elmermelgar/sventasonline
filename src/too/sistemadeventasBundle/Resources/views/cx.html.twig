@@ -1,0 +1,71 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    <link href="file:///c:/xampp/htdocs/sventas/web/css/bootstrap.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <section class="content">
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="box">
+                        <table>
+                            <tr>
+                                <td rowspan="1" ><img src="file:///c:/xampp/htdocs/sventas/web/images/logo.png" style="margin: 0 auto 0 auto; width: 300px; height: 100px;"></td>
+                                <td><h3 class="text-center">Tienda de Electrodomesticos <br/> NTN</h3></td>
+                                <td><h3 class="text-center" style="">&nbsp;&nbsp;&nbsp;&nbsp;N° Factura:</h3></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><p>Direccion: Colonia San Benito, Barrio el Centro, San Salvador, #4562</p></td>
+                                <td><h4>&nbsp;&nbsp;Registro:  2563S</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h4>Cliente: </h4></td>
+                                <td></td>
+                                <td>NIT:</td>
+                            </tr>
+                            <tr>
+                                <td><h4>Correo Electronico:</h4></td>
+                            </tr>
+                        </table>
+
+                        <!--Inicia Cabecera de tabla-->
+
+                        <h2 class="page-header">
+
+                            <i class="fa fa-globe"></i> Facturacion de articulos
+                        </h2>
+                        <small class="pull-left">Cliente: Fernando Bolanos </small>
+                        <small class="pull-right">Fecha: {{ hora }}</small>
+                        <!--Finaliza Cabecera de tabla-->
+
+                        <!--Inicia cuerpo de tabla-->
+                        <div class="box-body table-responsive">
+                            <table border=1 cellspacing=0 cellpadding=10 bordercolor="#000000" class="table table-responsive">
+                                <thead>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>SubTotal</th>
+                                </thead>
+                                <tbody>
+                                {% for car in car %}
+                                <tr>
+                                    <td>{{ car.producto }}</td>
+                                    <td>{{ car.producto }}</td>
+                                    <td>{{ car.cantidad }}</td>
+                                    <td>{{ car.precio }}</td>
+                                    <td>{{ car.total }}</td>
+                                </tr>
+                                </tbody>
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                            <h3 class="pull-right">        Precio de articulos {{ total }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

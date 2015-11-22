@@ -2,6 +2,7 @@
 
 namespace too\sistemadeventasBundle\Controller;
 
+use Proxies\__CG__\too\sistemadeventasBundle\Entity\Inventario;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,50 +17,10 @@ class ProductosController extends TOOController
         $validado=$this->validarAcceso($request);
         if($validado){
             $productos=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Producto')->findAll();
-            $total_count=$this->getTotalProductos();
-           // die(" ".$total_count);
-            $page=$request->get('page');
-            $porpagina=2;
-            $totalPaginas=ceil($total_count/$porpagina);
-            if(!is_numeric($page)){
-                $page=1;
-            }else{
-                $page=floor($page);
-            }
-            if($total_count<=$porpagina){
-                $page=1;
-            }
-            if(($page*$porpagina)>$total_count){
-                $page=$totalPaginas;
-            }
-            $offset=0;
-            if($page>1){
-                $offset=$porpagina*($page-1);
-            }
-            $em=$this->getDoctrine()
-                        ->getManager()
-                        ->createQueryBuilder('toosistemadeventasBundle:Producto')
-                        ->select('c')
-                        ->from('toosistemadeventasBundle:Producto','c')
-                        ->setFirstResult($offset)
-                        ->setMaxResults($porpagina);
-            $ems=$em->getQuery();
-            $datos=$ems->getArrayResult();
-
-            return $this->render('toosistemadeventasBundle:Admin:productos.html.twig',array('user'=>$user,'productos'=>$productos, 'datos'=>$datos, 'porpagina'=>$porpagina, 'totalPaginas'=>$totalPaginas, 'total_count'=>$total_count, 'page'=>$page));
+            return $this->render('toosistemadeventasBundle:Admin:productos.html.twig',array('user'=>$user,'productos'=>$productos));
         }
         else
             return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
-    }
-    public function getTotalProductos(){
-        $datos=$this->getDoctrine()
-                                ->getManager()
-                                ->createQueryBuilder('toosistemadeventasBundle:Producto')
-                                ->select('Count(c)')
-                                ->from('toosistemadeventasBundle:Producto','c')
-                                ->getQuery()
-                                ->getSingleScalarResult();
-        return $datos;
     }
 
     public function nuevoProductoAction(Request $request)
@@ -92,22 +53,27 @@ class ProductosController extends TOOController
 
                             $nombreImagen=$nombreProducto.$this->infoTipoImagen('archivo')[1];
                             $prod=new Producto();
-
                             $prod->setNombreProd($nombreProducto);
                             //Asumo q la categoria ya esxiste quizas mediante un combo
                             $prod->setIdCategoria($em->getRepository('toosistemadeventasBundle:Categoria')->find($request->get('categorias')));
                             $prod->setDescripcionProd($request->get('descripcion'));
                             $prod->setPrecioUnitario($request->get('precio'));
-                            //$prod->setCantidadProd(10);
+                            $prod->setCantidadProd(10);
                             $prod->setImagen("images/".$nombreImagen);
                             $prod->setEstado(1);
-                            //Persistiendo Nvo Producto
                             $em->persist($prod);
+                            $em->flush();
+                            //Inventario
+                            $inv=new Inventario();
+                            $inv->setIdProducto($prod->getIdProducto());
+                            //politica de la empresa
+                            $inv->setCantidadDisponible(10);
+                            //Persistiendo producto e inventario
+                            $em->persist($inv);
                             $em->flush();
                             //Subiendo la Imagen
                             $this->subirImagen('archivo',$nombreImagen);
                             $this->MensajeFlash('exito', 'Producto creado correctamente!');
-
                             return $this->redirect($this->generateUrl('productos'));
                         }
 
@@ -177,27 +143,26 @@ class ProductosController extends TOOController
             return $this->render('toosistemadeventasBundle:Admin:editarProducto.html.twig',array('user'=>$user,'categorias'=>$categorias,'datos'=>$datos));
         }
     }
-    public function bajarProductoAction($id,Request $request)
+    public function cambiarEstadoAction($id,Request $request)
     {
         $em=$this->getDoctrine()->getManager();
         //Obtener la sesion
         $validado=$this->validarAcceso($request);
-        $user=$this->enviarSesion($request);
-        $datos=$this->getDoctrine()
-            ->getRepository('toosistemadeventasBundle:Producto')
-            ->find($id);
-        if(!$validado){
+        //$user=$this->enviarSesion($request);
+        $datos=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Producto')->find($id);
+        if(!$validado)
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
-        }
-        else{
-
-
-                            $datos->setEstado(2);
-
-                            $em->flush();
-                             $this->MensajeFlash('exito', 'Producto bajado correctamente!');
-                            return $this->redirect($this->generateUrl('productos'));
-
+        else {
+            if ($datos->getEstado() == 1) {
+            $datos->setEstado(0);
+            $mensaje="Producto dado de Baja!";
+            }
+            else
+                $datos->setEstado(1);
+                $mensaje="Producto dado de Alta!";
+                $em->flush();
+                $this->MensajeFlash('exito', $mensaje);
+                return $this->redirect($this->generateUrl('productos'));
         }
     }
 

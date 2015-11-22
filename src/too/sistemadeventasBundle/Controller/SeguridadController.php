@@ -5,6 +5,7 @@ namespace too\sistemadeventasBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use too\sistemadeventasBundle\Entity\Categoria;
+use too\sistemadeventasBundle\Entity\Cliente;
 use too\sistemadeventasBundle\Entity\Producto;
 use too\sistemadeventasBundle\Entity\Usuario;
 use too\sistemadeventasBundle\Modals\TOOController;
@@ -30,15 +31,23 @@ class SeguridadController extends TOOController
                 }
                 else
                 {
+                    //creacion de Usuario
                     $usuario = new Usuario();
                     $usuario->setApellidoUsu($request->get('apellido'));
                     $usuario->setNombreUsu($request->get('nombre'));
                     $usuario->setCorreo($request->get('email'));
                     $usuario->setPassword($request->get('pass'));
                     $usuario->setRol(1);
+                    $usuario->setSaldo(rand(150,750));
                     $usuario->setUsuario($request->get('usuario'));
 
                     $em->persist($usuario);
+                    $em->flush();
+                    //creacion de cliente
+                    $cliente=new Cliente();
+                    $cliente->setIdUsuario($usuario);
+                    $cliente->setCuenta(rand(150,750));
+                    $em->persist($cliente);
                     $em->flush();
                     $this->MensajeFlash('exito','Usuario creado correctamente!');
                 }

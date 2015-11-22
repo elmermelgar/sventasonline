@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Venta
  *
- * @ORM\Table(name="venta", uniqueConstraints={@ORM\UniqueConstraint(name="venta_pk", columns={"id_venta"})}, indexes={@ORM\Index(name="registra_fk", columns={"id_producto"}), @ORM\Index(name="aplica_fk", columns={"id_promocion"}), @ORM\Index(name="involucra_fk", columns={"id_cliente"})})
+ * @ORM\Table(name="venta", indexes={@ORM\Index(name="involucra_fk", columns={"id_cliente"}), @ORM\Index(name="aplica_fk", columns={"id_promocion"}), @ORM\Index(name="registra_fk", columns={"id_producto"})})
  * @ORM\Entity
  */
 class Venta
@@ -35,6 +35,13 @@ class Venta
      * @ORM\Column(name="total", type="decimal", precision=10, scale=2, nullable=true)
      */
     private $total;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidad", type="integer", nullable=true)
+     */
+    private $cantidad;
 
     /**
      * @var \Promocion
@@ -122,6 +129,29 @@ class Venta
     public function getTotal()
     {
         return $this->total;
+    }
+
+    /**
+     * Set cantidad
+     *
+     * @param integer $cantidad
+     * @return Venta
+     */
+    public function setCantidad($cantidad)
+    {
+        $this->cantidad = $cantidad;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidad
+     *
+     * @return integer 
+     */
+    public function getCantidad()
+    {
+        return $this->cantidad;
     }
 
     /**

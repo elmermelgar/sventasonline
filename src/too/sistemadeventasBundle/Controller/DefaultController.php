@@ -30,9 +30,7 @@ class DefaultController extends TOOController
     public function catalogoAction(Request $request)
     {
         $user=$this->enviarSesion($request);
-        $datos= $this->getDoctrine()
-            ->getRepository('toosistemadeventasBundle:Producto')
-            ->findAll();
+        $datos= $this->getDoctrine()->getRepository('toosistemadeventasBundle:Producto')->findBy(array('estado'=>1));
         return $this->render('toosistemadeventasBundle:Sistema:catalogo.html.twig',array('user'=>$user, 'datos'=>$datos));
 
     }

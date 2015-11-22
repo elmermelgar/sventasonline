@@ -1,0 +1,103 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Inventarios!!{% endblock %}
+{% block active5 %}class="active"{% endblock active5 %}
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('fracaso') %}
+        <script>
+            window.onload = function error(){
+                alertify.error("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('exito') %}
+        <script>
+            window.onload = function notificacion(){
+                alertify.log("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+    <div class="content">
+        <div class="container" style="height: auto;">
+            <h1>Inventario</h1>
+
+            <hr/>
+            <table class="table table-bordered">
+                <tbody>
+                <th>
+                    Imagen
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Descripcion
+                </th>
+
+                <th>
+                    Precio Unitario
+                </th>
+                <th>
+                    Stock Unidades
+                </th>
+                <th>
+                   Estado
+                </th>
+
+                <th style="text-align: center;">
+                    Acciones
+                </th>
+                </tbody>
+                {% for producto in productos %}
+
+                    <tr>
+                        <td style="text-align: center;"><img src="{{ asset(producto.imagen) }}" alt="img1" style="width: 100px; height: 70px;"></td>
+                        <td>{{ producto.nombreProd }}</td>
+                        <td>{{ producto.descripcionProd }}</td>
+                        <td>${{ producto.precioUnitario }}</td>
+                        <td>{{ producto.cantidadProd }}</td>
+                        <td>{% if producto.estado()==1 %}
+                                Activo
+                            {% else %}
+                                Inactivo
+                            {% endif %}
+                        </td>
+                        <td style="text-align: center;">
+                            <a href="{{ asset('app_dev.php/newInventario') }}/{{ producto.idProducto }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Cargar Inventario</a>
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                <tr >
+                    <td colspan="6" style="text-align: right">
+                        <nav>
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+{% endblock body %}
