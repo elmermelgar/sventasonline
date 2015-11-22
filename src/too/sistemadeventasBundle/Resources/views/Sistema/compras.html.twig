@@ -1,6 +1,6 @@
-{% extends '::baseAdmin.html.twig' %}
-{% block title %}Productos!!{% endblock %}
-{% block active2 %}class="active"{% endblock active2 %}
+{% extends '::base.html.twig' %}
+{% block title %}Mis Compras{% endblock %}
+{% block active5 %}class="active"{% endblock active5 %}
 {% block body %}
     {% for flashMessage in app.session.flashbag.get('fracaso') %}
         <script>
@@ -20,9 +20,7 @@
     {% endfor %}
     <div class="content">
         <div class="container" style="height: auto;">
-            <h1 style="text-align: center;">Productos</h1>
-
-            <a href="{{ path('nuevoProducto') }}" title="Agregar" class="btn btn-success">Agregar Nuevo Producto</a>
+            <h1>Tus Compras</h1>
             <hr/>
             <table class="table table-bordered">
                 <tbody>
@@ -30,50 +28,33 @@
                     Imagen
                 </th>
                 <th>
-                    Nombre
+                    Producto
                 </th>
-                <th>
-                    Descripcion
-                </th>
-
                 <th>
                     Precio Unitario
                 </th>
                 <th>
-                   Estado
+                    Cantidad
                 </th>
-
+                <th>
+                    Fecha de Compra
+                </th>
                 <th style="text-align: center;">
                     Acciones
                 </th>
                 </tbody>
-                {% for producto in productos %}
-
+                {% for venta in ventas %}
                     <tr>
-                        <td style="text-align: center;"><img src="{{ asset(producto.imagen) }}" alt="img1" style="width: 100px; height: 70px;"></td>
-                        <td>{{ producto.nombreProd }}</td>
-                        <td>{{ producto.descripcionProd }}</td>
-                        <td>${{ producto.precioUnitario }}</td>
-                        <td>{% if producto.estado()==1 %}
-                                Activo
-                            {% else %}
-                                Inactivo
-                            {% endif %}
-                        </td>
+                        <td style="text-align: center;"><img src="{{ asset(venta.idProducto.imagen) }}" alt="img1" style="width: 100px; height: 70px;"></td>
+                        <td>{{ venta.idProducto.nombreProd }}</td>
+                        <td>{{ venta.idProducto.precioUnitario }}</td>
+                        <td>{{ venta.cantidad }}</td>
+                        <td>{{ venta.fechaVen.format("Y-m-d") }}</td>
                         <td style="text-align: center;">
-                            <a href="{{ asset('app_dev.php/editarProducto') }}/{{ producto.idProducto }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Editar</a>
-                            -
-                            {% if producto.estado == 0 %}
-                            <a href="{{ asset('app_dev.php/bajarProducto') }}/{{ producto.idProducto }}" title="Activar" class="btn btn-success">Dar de Alta</a>
-                            {% else %}
-                            <a href="{{ asset('app_dev.php/bajarProducto') }}/{{ producto.idProducto }}" title="Eliminar" class="btn btn-danger">Dar de Baja</a>
-                            {% endif %}
+                            <a href="{{ path('devolucion', {'id':venta.idVenta}) }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Devolver</a>
                         </td>
-
                     </tr>
-
                 {% endfor %}
-
                 <tr >
                     <td colspan="6" style="text-align: right">
                         <nav>

@@ -17,7 +17,7 @@ class CarritoController extends TOOController
         $em=$this->getDoctrine()->getManager();
         $validado=$this->validarUsuario($request);
         $sum=$em->getRepository('toosistemadeventasBundle:Carrito')->getTotal($this->enviarSesion($request));
-        $user=$this->enviarSesion($request);
+        $user=$em->getRepository('toosistemadeventasBundle:Usuario')->find($request->getSession()->get('login')->getId());
         if(!$validado){
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }

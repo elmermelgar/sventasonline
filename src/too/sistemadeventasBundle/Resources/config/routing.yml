@@ -22,66 +22,71 @@ logout:
     path:     /logout
     defaults: { _controller: toosistemadeventasBundle:Security:logout }
 
+#Catalogo
 catalogo:
     path:     /catalogo
     defaults: { _controller: toosistemadeventasBundle:Default:catalogo }
 
-
+#Administrador
 inicioAdmin:
     path:     /inicioAdmin
     defaults: { _controller: toosistemadeventasBundle:Usuario:index }
-
-productos:
-    path:     /productos
-    defaults: { _controller: toosistemadeventasBundle:Productos:productos }
-
-crudUsuarios:
-    path:     /crudUsuarios
-    defaults: { _controller: toosistemadeventasBundle:Usuario:usuarios }
 
 crudAdmin:
     path:     /crudAdmin
     defaults: { _controller: toosistemadeventasBundle:Usuario:admin }
 
-crudClientes:
-    path:     /crudClientes
-    defaults: { _controller: toosistemadeventasBundle:Usuario:clientes }
-
-allUsuarios:
-    path:     /allUsuarios
-    defaults: { _controller: toosistemadeventasBundle:Usuario:all }
-
 nuevoAdmin:
     path:     /nuevoAdmin
     defaults: { _controller: toosistemadeventasBundle:Usuario:nuevoAdmin }
-
-nuevoCliente:
-    path:     /nuevoCliente
-    defaults: { _controller: toosistemadeventasBundle:Usuario:nuevoCliente }
-
-editarUsuario:
-    path:     /editarUsuario/{idUsu}
-    defaults: { _controller: toosistemadeventasBundle:Usuario:editarUsuario }
 
 editarAdmin:
     path:     /editarAdmin/{idUsu}
     defaults: { _controller: toosistemadeventasBundle:Usuario:editarAdmin }
 
-editarCliente:
-    path:     /editarCliente/{idUsu}
-    defaults: { _controller: toosistemadeventasBundle:Usuario:editarCliente}
+deleteAdmin:
+    path:     /deleteAdmin/{idUsu}
+    defaults: { _controller: toosistemadeventasBundle:Usuario:deleteAdmin }
+
+#Usuarios
+editarUsuario:
+    path:     /editarUsuario/{idUsu}
+    defaults: { _controller: toosistemadeventasBundle:Usuario:editarUsuario }
+
+allUsuarios:
+    path:     /allUsuarios
+    defaults: { _controller: toosistemadeventasBundle:Usuario:all }
+
+crudUsuarios:
+    path:     /crudUsuarios
+    defaults: { _controller: toosistemadeventasBundle:Usuario:usuarios }
 
 deleteUsuario:
     path:     /deleteUsuario/{idUsu}
     defaults: { _controller: toosistemadeventasBundle:Usuario:deleteUsuario }
 
-deleteAdmin:
-    path:     /deleteAdmin/{idUsu}
-    defaults: { _controller: toosistemadeventasBundle:Usuario:deleteAdmin }
+#Clientes
+nuevoCliente:
+    path:     /nuevoCliente
+    defaults: { _controller: toosistemadeventasBundle:Usuario:nuevoCliente }
 
+crudClientes:
+    path:     /crudClientes
+    defaults: { _controller: toosistemadeventasBundle:Usuario:clientes }
+
+editarCliente:
+    path:     /editarCliente/{idUsu}
+    defaults: { _controller: toosistemadeventasBundle:Usuario:editarCliente}
+
+#Archivo
 file:
     path:     /regPendiente
     defaults: { _controller: toosistemadeventasBundle:Seguridad:registroProducto }
+
+#Productos
+productos:
+    path:     /productos
+    defaults: { _controller: toosistemadeventasBundle:Productos:productos }
 
 nuevoProducto:
     path:     /nuevoProducto
@@ -93,7 +98,7 @@ editarProducto:
 
 bajarProducto:
     path:     /bajarProducto/{id}
-    defaults: { _controller: toosistemadeventasBundle:Productos:bajarProducto}
+    defaults: { _controller: toosistemadeventasBundle:Productos:cambiarEstado}
 
 #Categorias
 
@@ -149,8 +154,19 @@ venta:
 #reportes
 pdf:
     path:     /pdf
-    defaults: { _controller: toosistemadeventasBundle:Reporte:pdfHola }
+    defaults: { _controller: toosistemadeventasBundle:Reporte:pdf }
 
 factura:
-    path:     /compra
+    path:     /factura
     defaults: { _controller: toosistemadeventasBundle:Reporte:factura }
+#Compras
+compras:
+    path:     /compras
+    defaults: { _controller: toosistemadeventasBundle:Venta:compras }
+#Devoluciones
+devolucion:
+    path:     /devoluciones/{id}
+    defaults: { _controller: toosistemadeventasBundle:Devoluciones:devolucion }
+c:
+    path:     /c
+    defaults: { _controller: toosistemadeventasBundle:Venta:cliente}

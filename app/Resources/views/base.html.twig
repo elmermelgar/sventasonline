@@ -43,8 +43,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="header-grid-right">
                     {% if user %}
                         <div style="float: right; width: 40%;">
+                            {% block login %}
                             <a href="#" class="sign-ini">Bienvenido  @{{ user }}</a>
-
+                            {% endblock %}
                             <label>|</label>
                             <a href="{{ path('logout') }}" class="sign-upi">Cerrar Sesión</a>
                         </div>
@@ -86,6 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li {% block active2 %}{% endblock active2 %}><a href="{{ path('toosistemadeventas_promociones') }}" >PROMOCIONES</a></li>
                         <li {% block active3 %}{% endblock active3 %}><a href="{{ path('catalogo') }}" >CATÁLOGO</a></li>
                         {% if user %} <li {% block active4 %}{% endblock active4 %}><a href="{{ path('carrito') }}" >CARRITO</a></li>{% endif %}
+                        {% if user %} <li {% block active5 %}{% endblock active5 %}><a href="{{ path('compras') }}" >COMPRAS</a></li>{% endif %}
                     </ul>
                     <script>
                         $("span.menu").click(function(){

@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
-{% block title %}Carrito!!{% endblock %}
+{% block title %}Carrito{% endblock %}
 {% block active4 %}class="active"{% endblock active4 %}
+{% block login %}<a href="#" class="sign-ini">Bienvenido  @{{ user.nombreUsu }}</a>{% endblock %}
 {% block body %}
     {% for flashMessage in app.session.flashbag.get('credencial') %}
         <script xmlns="http://www.w3.org/1999/html">
@@ -22,8 +23,7 @@
     <div class="container" style="height: auto;">
         <h1>Carrito de Compras</h1>
         <a href="{{ path('catalogo') }}" title="Agregar" class="btn btn-success">Catálogo de Productos</a>
-        <h3 style="text-align: right;">Su saldo es: $ {{ user }}</h3>
-        <hr/>
+        <h3 style="text-align: right;">Saldo Disponible: $ {{ user.saldo }}</h3>
         <table class="table table-striped">
             <tbody>
             <th>
@@ -53,7 +53,7 @@
                         </form>
 
                     </td>
-                    <td>{{ carrito.total }}</td>
+                    <td>$ {{ carrito.total }}</td>
                     <td style="text-align: center;">
                         <a href="{{ asset('app_dev.php/delCar') }}/{{ carrito.idCarrito }}" title="Eliminar" class="btn btn-danger">Eliminar</a>
                     </td>
@@ -63,13 +63,14 @@
                     <td></td>
                     <td></td>
                     <td>
-                        <b>TOTAL A PAGAR :  $ {{ total }}</b>
+                        <b>PRECIO DE ARTICULOS :  $ {{ total }}</b>
                     </td>
-                    <td><a href="{{ path('factura') }}" title="Agregar" class="btn btn-primary">Comprar</a></td>
-
+                    <td>
+                        <b>TOTAL A PAGAR :  $ {{ total*1.13}}</b>
+                    </td>
+                    <td style="text-align: center;">
+                        <a href="{{ path('factura') }}" title="Agregar" class="btn btn-primary">Comprar</a></td>
                 </tr>
-
-
         </table>
     </div>
 </div>

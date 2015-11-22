@@ -1,5 +1,5 @@
-{% extends '::baseAdmin.html.twig' %}
-{% block title %}Usuarios!!{% endblock %}
+{% extends '::base.html.twig' %}
+{% block title %}Factura{% endblock %}
 {% block active3 %}class="active"{% endblock active3 %}
 {% block body %}
     {% for flashMessage in app.session.flashbag.get('credencial') %}
@@ -29,23 +29,23 @@
             <th>Precio</th>
             <th>Cantidad</th>
             <th>SubTotal</th>
-            <th></th>
+            <th>Total</th>
             </tbody>
             {% for car in car %}
                 <tr>
                     <td>{{ car.producto }}</td>
                     <td>{{ car.producto }}</td>
                     <td>{{ car.cantidad }}</td>
-                    <td>{{ car.precio }}</td>
-                    <td>{{ car.total }}</td>
+                    <td>$ {{ car.precio }}</td>
+                    <td>$ {{ car.total }}</td>
                 </tr>
             {% endfor %}
 
         </table>
-        <a href="{{ path('pdf') }}" title="Agregar" class="btn btn-success" style="width: 300px; height: 60px; margin: 0 auto 0 auto; font-size: 35px; background: dodgerblue">Generar Factura </a>
-        -*-
-        <a href="{{ path('venta') }}" title="Agregar" class="btn btn-success" style="width: 300px; height: 60px; margin: 0 auto 15px auto; font-size: 35px;">Finalizar Compra</a>
+        <a href="{{ path('pdf') }}" title="Agregar" class="pull-left btn btn-danger" >Generar Factura </a>
+
+        <a href="{{ path('venta') }}" title="Agregar" class="pull-right btn btn-success">Finalizar Compra</a>
     </div>
 </div>
-
+<hr>
 {% endblock body %}
