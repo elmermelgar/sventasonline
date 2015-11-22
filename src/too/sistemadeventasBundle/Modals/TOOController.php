@@ -62,7 +62,7 @@ class TOOController extends Controller
     }
     //Para subir la imagen al servidor
     protected function subirImagen($archivo,$nombreImagen){
-        move_uploaded_file($_FILES["".$archivo]['tmp_name'],$_SERVER['DOCUMENT_ROOT']."/Proyecto_TOO/web/images/".$nombreImagen);
+        move_uploaded_file($_FILES["".$archivo]['tmp_name'],$_SERVER['DOCUMENT_ROOT']."/svenweb/images/".$nombreImagen);
     }
     //Validacion de Registro o duplicado
     protected function validarRegistro($user,$email){

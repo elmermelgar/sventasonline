@@ -98,6 +98,7 @@ class ProductosController extends TOOController
                             $prod->setIdCategoria($em->getRepository('toosistemadeventasBundle:Categoria')->find($request->get('categorias')));
                             $prod->setDescripcionProd($request->get('descripcion'));
                             $prod->setPrecioUnitario($request->get('precio'));
+                            //$prod->setCantidadProd(10);
                             $prod->setImagen("images/".$nombreImagen);
                             $prod->setEstado(1);
                             //Persistiendo Nvo Producto
