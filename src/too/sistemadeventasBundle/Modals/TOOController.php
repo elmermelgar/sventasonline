@@ -90,7 +90,7 @@ class TOOController extends Controller
             $prodV->setIdProducto($em->getRepository('toosistemadeventasBundle:Producto')->find($pcar->getIdProduct()));
             $prodV->setTotal($pcar->getTotal());
             $prodV->setCantidad($pcar->getCantidad());
-            $prodV->setFechaVen(new \DateTime("now"));
+            $prodV->setFechaVen(new \DateTime("now",new \DateTimeZone('America/El_Salvador')));
             //Obtengo el objeto de inventario que descargo del inventario
             $inv=$em->getRepository('toosistemadeventasBundle:Inventario')->findOneBy(array('idProducto'=>$prodV->getIdProducto()));
             $inv->setCantidadDisponible($inv->getCantidadDisponible()-$pcar->getCantidad());
@@ -130,5 +130,14 @@ class TOOController extends Controller
         }
         else
             return false;
+    }
+    //Periodo de Devolucion
+    protected function compararFechas($fechaFin){
+        $fechaInicio=new \DateTime("now",new \DateTimeZone('America/El_Salvador'));
+        $dif = date_diff($fechaFin,$fechaInicio);
+        if($dif->days+1<=10)
+            echo"Podes regresar aun";
+        else
+            echo"Sin devolucion";
     }
 }

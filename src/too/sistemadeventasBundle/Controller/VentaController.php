@@ -42,11 +42,10 @@ class VentaController extends TOOController
         return new response("");
     }
     public function comprasAction(Request $request){
-        $em=$this->getDoctrine()->getManager();
         $user=$this->enviarSesion($request);
         $validado=$this->validarUsuario($request);
         if($validado){
-            $cliente=$em->getRepository('toosistemadeventasBundle:Cliente')->find($request->getSession()->get('login')->getIdCliente());
+            $cliente=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Cliente')->find($request->getSession()->get('login')->getIdCliente());
             $ventas=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Venta')->findBy(array('idCliente'=>$cliente));
             return $this->render('toosistemadeventasBundle:Sistema:compras.html.twig',array('user'=>$user,'ventas'=>$ventas));
         }

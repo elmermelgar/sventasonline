@@ -163,6 +163,10 @@ factura:
 compras:
     path:     /compras
     defaults: { _controller: toosistemadeventasBundle:Venta:compras }
+#Devoluciones
+devolucion:
+    path:     /devoluciones/{id}
+    defaults: { _controller: toosistemadeventasBundle:Devoluciones:devolucion }
 c:
     path:     /c
     defaults: { _controller: toosistemadeventasBundle:Venta:cliente}
