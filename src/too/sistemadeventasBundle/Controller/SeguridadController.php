@@ -38,7 +38,7 @@ class SeguridadController extends TOOController
                     $usuario->setCorreo($request->get('email'));
                     $usuario->setPassword($request->get('pass'));
                     $usuario->setRol(1);
-                    $usuario->setSaldo(0);
+                    $usuario->setSaldo(rand(150,750));
                     $usuario->setUsuario($request->get('usuario'));
 
                     $em->persist($usuario);
@@ -46,7 +46,7 @@ class SeguridadController extends TOOController
                     //creacion de cliente
                     $cliente=new Cliente();
                     $cliente->setIdUsuario($usuario);
-                    $cliente->setCuenta(0);
+                    $cliente->setCuenta(rand(150,750));
                     $em->persist($cliente);
                     $em->flush();
                     $this->MensajeFlash('exito','Usuario creado correctamente!');

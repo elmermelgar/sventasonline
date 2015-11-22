@@ -8,10 +8,27 @@ namespace too\sistemadeventasBundle\Modals;
  */
 class Login
 {
+    private $id;
     private $username;
     private $password;
     private $rol;
-    private $id;
+    private $idCliente;
+
+    /**
+     * @return mixed
+     */
+    public function getIdCliente()
+    {
+        return $this->idCliente;
+    }
+
+    /**
+     * @param mixed $idCliente
+     */
+    public function setIdCliente($idCliente)
+    {
+        $this->idCliente = $idCliente;
+    }
 
     /**
      * @return mixed
