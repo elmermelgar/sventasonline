@@ -11,7 +11,7 @@
     <field name="apellidoUsu" type="string" column="apellido_usu" length="50" nullable="true"/>
     <field name="rol" type="integer" column="rol" nullable="true"/>
     <field name="usuario" type="string" column="usuario" length="30" nullable="true"/>
-    <field name="password" type="string" column="password" length="30" nullable="true"/>
+    <field name="password" type="string" column="password" length="300" nullable="true"/>
     <field name="correo" type="string" column="correo" length="30" nullable="true"/>
     <field name="saldo" type="decimal" column="saldo" precision="10" scale="2" nullable="true"/>
   </entity>

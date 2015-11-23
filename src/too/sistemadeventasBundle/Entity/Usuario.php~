@@ -53,7 +53,7 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=30, nullable=true)
+     * @ORM\Column(name="password", type="string", length=300, nullable=true)
      */
     private $password;
 

@@ -1,0 +1,40 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Devoluciones!!{% endblock %}
+{% block active7 %}class="active"{% endblock active7 %}
+{% block body %}
+
+<div class="content">
+    <div class="container" style="height: auto;">
+        <h1>Ventas</h1>
+
+        <hr/>
+        <table class="table table-responsive">
+            <tbody>
+            <th>
+                Id_Devolucion
+            </th>
+            <th>
+                Id_Venta
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Fecha
+            </th>
+
+            </tbody>
+            {% for devol in devoluciones %}
+                <tr>
+                    <td>{{ devol.idDevolucion }}</td>
+                    <td>{{ devol.idVenta }}</td>
+                    <td>{{ devol.descripcionDev }}</td>
+                    <td></td>
+
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock body %}

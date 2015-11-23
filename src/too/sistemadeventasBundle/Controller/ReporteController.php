@@ -34,4 +34,21 @@ class ReporteController extends TOOController
             return $this->redirect($this->generateUrl('carrito'));
         }
     }
+    public function reportesAction(Request $request)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $user=$this->enviarSesion($request);
+        if($this->validarCaptital($em,$user,$request)) {
+            return $this->render('toosistemadeventasBundle:Admin:reportes.html.twig', array('user'=>$user));
+        }
+    }
+    public function reportesClientesAction(Request $request)
+    {
+        $user=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Usuario')->find($request->getSession()->get('login')->getId());
+        $usuarios=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('rol'=>1));
+        $pdfGenerator=$this->get('siphoc.pdf.generator');
+        $pdfGenerator->setName('listadoporniveles.pdf');
+
+        return $pdfGenerator->displayForView('toosistemadeventasBundle:Admin:reporteClientes.html.twig',array('usuarios'=>$usuarios,'user'=>$user));
+    }
 }

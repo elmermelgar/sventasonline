@@ -151,10 +151,26 @@ venta:
     path:     /venta
     defaults: { _controller: toosistemadeventasBundle:Venta:venta }
 
+vedido:
+     path:     /vendidos
+     defaults: { _controller: toosistemadeventasBundle:Venta:vendidos }
+
+devoluciones:
+     path:     /devoluciones
+     defaults: { _controller: toosistemadeventasBundle:Venta:devoluciones }
+
 #reportes
 pdf:
     path:     /pdf
     defaults: { _controller: toosistemadeventasBundle:Reporte:pdf }
+
+reportes:
+    path:     /reportes
+    defaults: { _controller: toosistemadeventasBundle:Reporte:reportes }
+
+reporteClientes:
+    path:     /reporteClientes
+    defaults: { _controller: toosistemadeventasBundle:Reporte:reportesClientes }
 
 factura:
     path:     /factura

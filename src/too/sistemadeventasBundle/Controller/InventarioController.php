@@ -46,9 +46,9 @@ class InventarioController extends TOOController
                     $inv->setIdProducto($request->get('idProd'));
                     //$inv->setNombreproducto($request->get('nomProd'));
                     $inv->setCantidadDisponible($request->get('disponible'));
-                    $inv->setCantidadInicial($request->get('minimo'));
-
-                    $em->persist($inv);
+                    $inv->setCantidadInicial($request->get('minima'));
+                    $inv->getCantidadMaxima($request->get('maxima'));
+                    $inv->getCostoPromedio($request->get('costo'));
                     $em->flush();
 
                     $this->MensajeFlash('exito', 'Inventario Creado Correctamente!');
@@ -66,4 +66,6 @@ class InventarioController extends TOOController
             return $this->render('toosistemadeventasBundle:Admin:nuevoInventario.html.twig',array('user'=>$user,'datos'=>$datos));
         }
     }
+
+
 }

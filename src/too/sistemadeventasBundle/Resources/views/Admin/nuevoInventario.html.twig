@@ -44,15 +44,21 @@
                                     <input type="hidden"  name="idProd" value="{{ datos.idProducto }}">
                                     <input type="hidden"  name="nomProd" value="{{ datos.nombreProd }}">
                                 </li>
-
                                 <li>
-                                    <label><span>Inventario Minimo*</span></label>
-                                    <input type="text" required name="minimo" value="">
+                                    <label><span>Cantidad Minima*</span></label>
+                                    <input type="text" required name="minima">
                                 </li>
-
+                                <li>
+                                    <label><span>Cantidad Maxima*</span></label>
+                                    <input type="text" required name="maxima">
+                                </li>
                                 <li>
                                     <label><span>Cantidad Disponible*</span></label>
-                                    <input type="text" required name="disponible" value="">
+                                    <input type="text" required name="disponible">
+                                </li>
+                                <li>
+                                    <label><span>Costo del Producto*</span></label>
+                                    <input type="text" required name="costo">
                                 </li>
                             </ul>
                             <div class="clearfix"> </div>

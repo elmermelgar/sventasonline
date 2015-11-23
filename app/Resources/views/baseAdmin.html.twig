@@ -87,8 +87,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li {% block active3 %}{% endblock active3 %}><a href="{{ path('crudUsuarios') }}" >USUARIOS</a></li>
                         <li {% block active4 %}{% endblock active4 %}><a href="{{ path('crudCat') }}" >CATEGORIAS</a></li>
                         <li {% block active5 %}{% endblock active5 %}><a href="{{ path('inventario') }}" >INVENTARIO</a></li>
-                        <li {% block active6 %}{% endblock active6 %}><a href="#" >VENTAS</a></li>
-                        <li {% block active7 %}{% endblock active7 %}><a href="#" >DEVOLUCIONES</a></li>
+                        <li {% block active6 %}{% endblock active6 %}><a href="{{ path('vedido') }}" >VENTAS</a></li>
+                        <li {% block active7 %}{% endblock active7 %}><a href="{{ path('devoluciones') }}" >DEVOLUCIONES</a></li>
+                        <li {% block active8 %}{% endblock active8 %}><a href="#" >REPORTES</a></li>
                     </ul>
                     <script>
                         $("span.menu").click(function(){

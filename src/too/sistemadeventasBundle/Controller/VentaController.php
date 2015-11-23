@@ -52,4 +52,24 @@ class VentaController extends TOOController
         else
             return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
     }
+    public  function vendidosAction(Request $request){
+        $user=$this->enviarSesion($request);
+        $validado=$this->validarAcceso($request);
+        if($validado){
+            $ventas=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Venta')->findAll();
+            return $this->render('toosistemadeventasBundle:Admin:ventas.html.twig',array('user'=>$user,'ventas'=>$ventas));
+        }
+        else
+            return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
+    }
+    public  function devolucionesAction(Request $request){
+        $user=$this->enviarSesion($request);
+        $validado=$this->validarAcceso($request);
+        if($validado){
+            $devoluciones=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Devolucion')->findAll();
+            return $this->render('toosistemadeventasBundle:Admin:devoluciones.html.twig',array('user'=>$user,'devoluciones'=>$devoluciones));
+        }
+        else
+            return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
+    }
 }

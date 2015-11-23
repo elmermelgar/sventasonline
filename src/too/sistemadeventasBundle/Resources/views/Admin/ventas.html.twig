@@ -1,0 +1,46 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Ventas!!{% endblock %}
+{% block active6 %}class="active"{% endblock active6 %}
+{% block body %}
+
+<div class="content">
+    <div class="container" style="height: auto;">
+        <h1>Ventas</h1>
+
+        <hr/>
+        <table class="table table-responsive">
+            <tbody>
+            <th>
+                Id_Venta
+            </th>
+            <th>
+                Id_Cliente
+            </th>
+            <th>
+                Id_Producto
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Cantidad
+            </th>
+            <th style="text-align: center;">
+                Total
+            </th>
+            </tbody>
+            {% for ventas in ventas %}
+                <tr>
+                    <td>{{ ventas.idVenta }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ ventas.cantidad }}</td>
+                    <td style="text-align: center;">{{ ventas.total}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock body %}

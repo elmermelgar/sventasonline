@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Inventario
  *
- * @ORM\Table(name="inventario", uniqueConstraints={@ORM\UniqueConstraint(name="inventario_pk", columns={"id_inventario"})})
+ * @ORM\Table(name="inventario", uniqueConstraints={@ORM\UniqueConstraint(name="inventario_pk", columns={"id_inventario"})}, indexes={@ORM\Index(name="tiene_fk", columns={"id_producto"}), @ORM\Index(name="descarga_fk", columns={"id_compra"})})
  * @ORM\Entity
  */
 class Inventario
@@ -23,32 +23,52 @@ class Inventario
     private $idInventario;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="id_compra", type="string", length=30, nullable=true)
-     */
-    private $idCompra;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="id_producto", type="string", length=30, nullable=true)
-     */
-    private $idProducto;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cantidad_inicial", type="string", length=30, nullable=true)
+     * @ORM\Column(name="cantidad_inicial", type="integer", nullable=true)
      */
     private $cantidadInicial;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="cantidad_disponible", type="string", length=30, nullable=true)
+     * @ORM\Column(name="cantidad_disponible", type="integer", nullable=true)
      */
     private $cantidadDisponible;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="costo_promedio", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $costoPromedio;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidad_maxima", type="integer", nullable=true)
+     */
+    private $cantidadMaxima;
+
+    /**
+     * @var \Compra
+     *
+     * @ORM\ManyToOne(targetEntity="Compra")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_compra", referencedColumnName="id_compra")
+     * })
+     */
+    private $idCompra;
+
+    /**
+     * @var \Producto
+     *
+     * @ORM\ManyToOne(targetEntity="Producto")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_producto", referencedColumnName="id_producto")
+     * })
+     */
+    private $idProducto;
 
 
 
@@ -63,55 +83,9 @@ class Inventario
     }
 
     /**
-     * Set idCompra
-     *
-     * @param string $idCompra
-     * @return Inventario
-     */
-    public function setIdCompra($idCompra)
-    {
-        $this->idCompra = $idCompra;
-
-        return $this;
-    }
-
-    /**
-     * Get idCompra
-     *
-     * @return string 
-     */
-    public function getIdCompra()
-    {
-        return $this->idCompra;
-    }
-
-    /**
-     * Set idProducto
-     *
-     * @param string $idProducto
-     * @return Inventario
-     */
-    public function setIdProducto($idProducto)
-    {
-        $this->idProducto = $idProducto;
-
-        return $this;
-    }
-
-    /**
-     * Get idProducto
-     *
-     * @return string 
-     */
-    public function getIdProducto()
-    {
-        return $this->idProducto;
-    }
-
-    /**
      * Set cantidadInicial
      *
-     * @param string $cantidadInicial
+     * @param integer $cantidadInicial
      * @return Inventario
      */
     public function setCantidadInicial($cantidadInicial)
@@ -124,7 +98,7 @@ class Inventario
     /**
      * Get cantidadInicial
      *
-     * @return string 
+     * @return integer 
      */
     public function getCantidadInicial()
     {
@@ -134,7 +108,7 @@ class Inventario
     /**
      * Set cantidadDisponible
      *
-     * @param string $cantidadDisponible
+     * @param integer $cantidadDisponible
      * @return Inventario
      */
     public function setCantidadDisponible($cantidadDisponible)
@@ -147,10 +121,102 @@ class Inventario
     /**
      * Get cantidadDisponible
      *
-     * @return string 
+     * @return integer 
      */
     public function getCantidadDisponible()
     {
         return $this->cantidadDisponible;
+    }
+
+    /**
+     * Set costoPromedio
+     *
+     * @param string $costoPromedio
+     * @return Inventario
+     */
+    public function setCostoPromedio($costoPromedio)
+    {
+        $this->costoPromedio = $costoPromedio;
+
+        return $this;
+    }
+
+    /**
+     * Get costoPromedio
+     *
+     * @return string 
+     */
+    public function getCostoPromedio()
+    {
+        return $this->costoPromedio;
+    }
+
+    /**
+     * Set cantidadMaxima
+     *
+     * @param integer $cantidadMaxima
+     * @return Inventario
+     */
+    public function setCantidadMaxima($cantidadMaxima)
+    {
+        $this->cantidadMaxima = $cantidadMaxima;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidadMaxima
+     *
+     * @return integer 
+     */
+    public function getCantidadMaxima()
+    {
+        return $this->cantidadMaxima;
+    }
+
+    /**
+     * Set idCompra
+     *
+     * @param \too\sistemadeventasBundle\Entity\Compra $idCompra
+     * @return Inventario
+     */
+    public function setIdCompra(\too\sistemadeventasBundle\Entity\Compra $idCompra = null)
+    {
+        $this->idCompra = $idCompra;
+
+        return $this;
+    }
+
+    /**
+     * Get idCompra
+     *
+     * @return \too\sistemadeventasBundle\Entity\Compra 
+     */
+    public function getIdCompra()
+    {
+        return $this->idCompra;
+    }
+
+    /**
+     * Set idProducto
+     *
+     * @param \too\sistemadeventasBundle\Entity\Producto $idProducto
+     * @return Inventario
+     */
+    public function setIdProducto(\too\sistemadeventasBundle\Entity\Producto $idProducto = null)
+    {
+        $this->idProducto = $idProducto;
+
+        return $this;
+    }
+
+    /**
+     * Get idProducto
+     *
+     * @return \too\sistemadeventasBundle\Entity\Producto 
+     */
+    public function getIdProducto()
+    {
+        return $this->idProducto;
     }
 }

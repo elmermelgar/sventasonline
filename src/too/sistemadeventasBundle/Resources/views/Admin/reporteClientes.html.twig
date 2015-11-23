@@ -1,6 +1,7 @@
-{% extends '::baseAdmin.html.twig' %}
-{% block title %}Usuarios!!{% endblock %}
-{% block active3 %}class="active"{% endblock active3 %}
+{% extends 'fbase.html.twig' %}
+{% block stylesheets %}
+    <link href="file:///c:/xampp/htdocs/sventas/web/css/bootstrap.css" rel="stylesheet" type="text/css">
+{% endblock %}
 {% block body %}
     {% for flashMessage in app.session.flashbag.get('credencial') %}
         <script>
@@ -20,17 +21,17 @@
     {% endfor %}
 <div class="content">
     <div class="container" style="height: auto;">
-        <h1>Usuarios</h1>
+        <h1>Lista de Clientes Activos</h1>
         <ol class="breadcrumb">
             <li>
-                <a href="{{ path('allUsuarios') }}">Todos</a>
+                <a href="{{ path('allUsuarios') }}"></a>
             </li>
 
             <li>
-                <a href="{{ path('crudAdmin') }}">Administradores</a>
+                <a href="{{ path('crudAdmin') }}"></a>
             </li>
 
-            <li class="active">Usuarios</li>
+            <li class="active"></li>
         </ol>
         <hr/>
         <table class="table table-bordered">
@@ -50,9 +51,7 @@
             <th>
                 Rol
             </th>
-            <th style="text-align: center;">
-                Acciones
-            </th>
+
             </tbody>
             {% for usuario in usuarios %}
                 <tr>
@@ -61,13 +60,9 @@
                     <td>{{ usuario.Correo }}</td>
                     <td>{{ usuario.Usuario }}</td>
                     <td>
-                        Usuario
+                        Cliente
                     </td>
-                    <td style="text-align: center;">
-                        <a href="{{ asset('app_dev.php/editarUsuario') }}/{{ usuario.idUsuario }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Editar</a>
-                        -
-                        <input class="btn btn-danger" type="button" value="Eliminar" onClick="confirmar()" />
-                    </td>
+
                 </tr>
             {% endfor %}
         </table>

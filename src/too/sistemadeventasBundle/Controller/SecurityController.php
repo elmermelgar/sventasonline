@@ -19,7 +19,7 @@ class SecurityController extends TOOController
             $session->clear();
             //Parametrizacion
             $user=$request->get("_username");
-            $pass=$request->get("_password");
+            $pass=MD5($request->get("_password"));
             $usuario=$em->getRepository('toosistemadeventasBundle:Usuario')->findOneBy(array('usuario'=>$user,'password'=>$pass));
             if($usuario){
                 //Obteniendo Id de Cliente

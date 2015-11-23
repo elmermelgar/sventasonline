@@ -1,0 +1,21 @@
+{% extends '::baseAdmin.html.twig' %}
+{% block title %}Reportes!!{% endblock %}
+{% block active8 %}class="active"{% endblock active8 %}
+{% block body %}
+
+<div class="content">
+    <div class="container" style="height: auto;">
+        <h1>Reportes</h1>
+
+        <hr/>
+        <div style=" width: 300px;; margin: 0 auto 0 auto; text-align: center;">
+            <a href="{{ path('reporteClientes') }}" title="Reporte" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Generar Reporte de Clientes</a>
+            <br><br>
+            <a href="#" title="Reporte" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Generar Reporte de Inventario</a>
+        </div>
+       </div>
+    <br>
+
+</div>
+
+{% endblock body %}
