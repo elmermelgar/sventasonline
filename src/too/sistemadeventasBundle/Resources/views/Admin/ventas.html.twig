@@ -32,9 +32,9 @@
             {% for ventas in ventas %}
                 <tr>
                     <td>{{ ventas.idVenta }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ ventas.idCliente.idUsuario.nombreUsu }} {{ ventas.idCliente.idUsuario.apellidoUsu }}</td>
+                    <td>{{ ventas.idProducto.nombreProd }}</td>
+                    <td>{{ ventas.fechaVen.format("Y-m-d") }}</td>
                     <td>{{ ventas.cantidad }}</td>
                     <td style="text-align: center;">{{ ventas.total}}</td>
                 </tr>
