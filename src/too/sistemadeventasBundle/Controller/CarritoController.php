@@ -22,8 +22,10 @@ class CarritoController extends TOOController
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
         }
         else {
+            $tu=$em->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('usuario' => $user));
             $carrito = $em->getRepository('toosistemadeventasBundle:Carrito')->findBy(array('idUsu' => $this->enviarSesion($request)));
-            return $this->render('toosistemadeventasBundle:Sistema:carrito.html.twig',array('user'=>$user, 'carrito'=>$carrito,'total'=>$sum[1]));
+
+            return $this->render('toosistemadeventasBundle:Sistema:carrito.html.twig',array('user'=>$user, 'carrito'=>$carrito,'total'=>$sum[1], 'usuario'=>$tu));
         }
 
     }

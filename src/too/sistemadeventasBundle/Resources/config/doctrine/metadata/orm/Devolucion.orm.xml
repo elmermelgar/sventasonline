@@ -4,6 +4,9 @@
     <indexes>
       <index name="sobre_fk" columns="id_venta"/>
     </indexes>
+    <unique-constraints>
+      <unique-constraint name="devolucion_pk" columns="id_devolucion"/>
+    </unique-constraints>
     <id name="idDevolucion" type="integer" column="id_devolucion">
       <generator strategy="SEQUENCE"/>
     </id>

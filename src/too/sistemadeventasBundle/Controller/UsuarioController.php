@@ -108,7 +108,7 @@ class UsuarioController extends TOOController
                     $usuario->setApellidoUsu($request->get('apellido'));
                     $usuario->setNombreUsu($request->get('nombre'));
                     $usuario->setCorreo($request->get('email'));
-                    $usuario->setPassword($request->get('pass'));
+                    $usuario->setPassword(MD5($request->get('pass')));
                     $usuario->setRol(2);
                     $usuario->setUsuario($request->get('usuario'));
 
@@ -182,19 +182,19 @@ class UsuarioController extends TOOController
                     $this->MensajeFlash('credencial','Usuario y correo ya existe!');
                     return $this->redirect($this->generateUrl('crudUsuarios'));
                 }
-                else
-                {
+                else {
+
 
                     $datos->setApellidoUsu($request->get('apellido'));
                     $datos->setNombreUsu($request->get('nombre'));
                     $datos->setCorreo($request->get('email'));
-                    $datos->setPassword($request->get('pass'));
+                    $datos->setPassword(MD5($request->get('pass')));
                     $datos->setRol(1);
                     $datos->setUsuario($request->get('usuario'));
                     $em->flush();
-                    $this->MensajeFlash('exito','Usuario actualizado correctamente!');
-                }
+                    $this->MensajeFlash('exito', 'Usuario actualizado correctamente!');
 
+                }
 
                 return $this->redirect($this->generateUrl('crudUsuarios'));
 
@@ -280,18 +280,11 @@ class UsuarioController extends TOOController
         else{
             if($request->isMethod("POST")){
 
-                if($this->loginAction($request->get('usuario'),$request->get('email')))
-                {
-                    $this->MensajeFlash('credencial','Usuario y correo ya existe!');
-                    return $this->redirect($this->generateUrl('nuevoAdmin'));
-                }
-                else
-                {
 
                     $datos->setApellidoUsu($request->get('apellido'));
                     $datos->setNombreUsu($request->get('nombre'));
                     $datos->setCorreo($request->get('email'));
-                    $datos->setPassword($request->get('pass'));
+                    $datos->setPassword(MD5($request->get('pass')));
                     $datos->setRol(2);
                     $datos->setUsuario($request->get('usuario'));
 
@@ -299,7 +292,7 @@ class UsuarioController extends TOOController
                    // $em->refresh($usuario);
                     $em->flush();
                     $this->MensajeFlash('exito','Administrador actualizado correctamente!');
-                }
+
 
 
                 return $this->redirect($this->generateUrl('crudAdmin'));
@@ -315,8 +308,13 @@ class UsuarioController extends TOOController
         $user=$this->enviarSesion($request);
         $em=$this->getDoctrine()->getManager();
         $usuario=$em->getRepository('toosistemadeventasBundle:Usuario')->find($idUsu);
+        $cliente=$em->getRepository('toosistemadeventasBundle:Cliente')->findOneBy(array('idUsuario'=>$usuario->getIdUsuario()));
+
         if(!$usuario){
             throw $this->createNotFoundException('No existe el usuario con el ID'.$idUsu);
+        }
+        if($cliente){
+            $em->remove($cliente);
         }
         $em->remove($usuario);
         $em->flush();
@@ -336,7 +334,7 @@ class UsuarioController extends TOOController
         $em->flush();
         $this->MensajeFlash('exito','Administrador borrado correctamente!');
         $admin=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('rol'=>2));
-        return $this->render('toosistemadeventasBundle:Admin:crudAdmin.html.twig',array('user'=>$user,'admin'=>$admin));
+        return $this->redirect($this->generateUrl('crudAdmin'));
     }
 
 

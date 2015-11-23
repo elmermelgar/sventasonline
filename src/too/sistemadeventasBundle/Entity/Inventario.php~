@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Inventario
  *
- * @ORM\Table(name="inventario", uniqueConstraints={@ORM\UniqueConstraint(name="inventario_pk", columns={"id_inventario"})})
+ * @ORM\Table(name="inventario", uniqueConstraints={@ORM\UniqueConstraint(name="inventario_pk", columns={"id_inventario"})}, indexes={@ORM\Index(name="tiene_fk", columns={"id_producto"}), @ORM\Index(name="descarga_fk", columns={"id_compra"})})
  * @ORM\Entity
  */
 class Inventario
@@ -23,35 +23,52 @@ class Inventario
     private $idInventario;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="id_compra", type="string", length=30, nullable=true)
-     */
-    private $idCompra;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="id_producto", type="string", length=30, nullable=true)
-     */
-    private $idProducto;
-
-<<<<<<< HEAD
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cantidad_inicial", type="string", length=30, nullable=true)
+     * @ORM\Column(name="cantidad_inicial", type="integer", nullable=true)
      */
     private $cantidadInicial;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="cantidad_disponible", type="string", length=30, nullable=true)
+     * @ORM\Column(name="cantidad_disponible", type="integer", nullable=true)
      */
     private $cantidadDisponible;
 
-=======
->>>>>>> c43466aeceb21065e975c42ef70a5034ea0a9b34
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="costo_promedio", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $costoPromedio;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidad_maxima", type="integer", nullable=true)
+     */
+    private $cantidadMaxima;
+
+    /**
+     * @var \Compra
+     *
+     * @ORM\ManyToOne(targetEntity="Compra")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_compra", referencedColumnName="id_compra")
+     * })
+     */
+    private $idCompra;
+
+    /**
+     * @var \Producto
+     *
+     * @ORM\ManyToOne(targetEntity="Producto")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_producto", referencedColumnName="id_producto")
+     * })
+     */
+    private $idProducto;
+
 
 }

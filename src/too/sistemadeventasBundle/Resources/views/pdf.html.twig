@@ -22,7 +22,7 @@
                             <tr>
                                 <td><h4>Cliente: {{ user.nombreUsu }} {{ user.apellidoUsu }}</h4></td>
                                 <td></td>
-                                <td>NIT:</td>
+                                <td>NIT: 0563-250596-102-9</td>
                             </tr>
                             <tr>
                                 <td><h4>Correo Electronico:{{ user.correo }}</h4></td>
@@ -60,9 +60,13 @@
                                 </tbody>
                                 {% endfor %}
                             </table>
-                            <h3 class="pull-right">Precio de articulos $  {{ total }}</h3>
-                            <h3 >Iva de articulos $  {{ total*0.13 }}</h3>
-                            <h3 class="pull-right">Total a Pagar $  {{ total*1.13 }}</h3>
+                            <div style="width: 285px; float: right;">
+                                <h3 class="pull-right">Precio de articulos $  {{ total }}</h3>
+                                <h3 style="text-align: right;">Iva de articulos $  {{ total*0.13 }}</h3>
+                                ____________________________________
+                                <h3 class="pull-right">Total a Pagar $  {{ total*1.13 }}</h3>
+                            </div>
+
                         </div>
                     </div>
                 </div>

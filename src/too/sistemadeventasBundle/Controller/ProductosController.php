@@ -66,6 +66,10 @@ class ProductosController extends TOOController
                             //Inventario
                             $inv=new Inventario();
                             $inv->setIdProducto($prod->getIdProducto());
+                            $inv->setCantidadInicial($request->get('minima'));
+                            $inv->setCantidadMaxima($request->get('maxima'));
+                            $inv->setCantidadDisponible($request->get('disponible'));
+                            $inv->setCostoPromedio('costo');
                             //politica de la empresa
                             $inv->setCantidadDisponible(10);
                             //Persistiendo producto e inventario
