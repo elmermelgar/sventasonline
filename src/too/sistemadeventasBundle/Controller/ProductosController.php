@@ -2,10 +2,10 @@
 
 namespace too\sistemadeventasBundle\Controller;
 
-use Proxies\__CG__\too\sistemadeventasBundle\Entity\Inventario;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use too\sistemadeventasBundle\Entity\Inventario;
 use too\sistemadeventasBundle\Entity\Producto;
 use too\sistemadeventasBundle\Modals\TOOController;
 
@@ -65,11 +65,11 @@ class ProductosController extends TOOController
                             $em->flush();
                             //Inventario
                             $inv=new Inventario();
-                            $inv->setIdProducto($prod->getIdProducto());
+                            $inv->setIdProducto($prod);
                             $inv->setCantidadInicial($request->get('minima'));
                             $inv->setCantidadMaxima($request->get('maxima'));
                             $inv->setCantidadDisponible($request->get('disponible'));
-                            $inv->setCostoPromedio('costo');
+                            $inv->setCostoPromedio($request->get('costo'));
                             //politica de la empresa
                             $inv->setCantidadDisponible(10);
                             //Persistiendo producto e inventario
