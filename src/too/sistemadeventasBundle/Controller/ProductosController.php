@@ -80,7 +80,6 @@ class ProductosController extends TOOController
                             $this->MensajeFlash('exito', 'Producto creado correctamente!');
                             return $this->redirect($this->generateUrl('productos'));
                         }
-
                     }
                     else
                         $this->MensajeFlash('credencial', 'El Archivo no es una imagen. Intente de nuevo!');
@@ -161,9 +160,10 @@ class ProductosController extends TOOController
             $datos->setEstado(0);
             $mensaje="Producto dado de Baja!";
             }
-            else
+            else {
                 $datos->setEstado(1);
-                $mensaje="Producto dado de Alta!";
+                $mensaje = "Producto dado de Alta!";
+                }
                 $em->flush();
                 $this->MensajeFlash('exito', $mensaje);
                 return $this->redirect($this->generateUrl('productos'));
