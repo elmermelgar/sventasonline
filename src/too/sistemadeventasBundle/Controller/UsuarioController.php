@@ -308,17 +308,9 @@ class UsuarioController extends TOOController
         $user=$this->enviarSesion($request);
         $em=$this->getDoctrine()->getManager();
         $usuario=$em->getRepository('toosistemadeventasBundle:Usuario')->find($idUsu);
-        $cliente=$em->getRepository('toosistemadeventasBundle:Cliente')->findOneBy(array('idUsuario'=>$usuario->getIdUsuario()));
-
-        if(!$usuario){
-            throw $this->createNotFoundException('No existe el usuario con el ID'.$idUsu);
-        }
-        if($cliente){
-            $em->remove($cliente);
-        }
-        $em->remove($usuario);
+        $usuario->setRol(0);
         $em->flush();
-        $this->MensajeFlash('exito','Usuario eliminado correctamente!');
+        $this->MensajeFlash('exito','Usuario se dio de baja correctamente!');
         $usuarios=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('rol'=>1));
         return $this->render('toosistemadeventasBundle:Admin:crudUsuarios.html.twig',array('user'=>$user,'usuarios'=>$usuarios));
     }

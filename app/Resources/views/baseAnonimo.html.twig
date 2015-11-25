@@ -36,17 +36,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="container">
                 <div class="header-grid">
                     <div class="logo">
-                        <a href="#"><img src="{{ asset('images/logo.png') }}" alt=" " ></a>
+                        <a href="{{ path('toosistemadeventas_inicio') }}"><img src="{{ asset('images/logo.png') }}" alt=" " ></a>
                     </div>
                 </div>
 
                 <div class="header-grid-right">
                     {% if user %}
                         <div style="float: right; width: 40%;">
-                            <a href="#" class="sign-ini">Bienvenido  @{{ user }}</a>
-
+                            {% block login %}
+                            <a href="#" class="sign-ini"> @{{ user }}</a>
+                            {% endblock %}
                             <label>|</label>
-                            <a href="{{ path('logout') }}" class="sign-upi">Cerrar Sesión</a>
+                            <a href="{{ path('logout') }}" class="sign-upi">Salir</a>
                         </div>
                     {% else %}
                         {% for flashMessage in app.session.flashbag.get('mensaje') %}
@@ -81,22 +82,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="header-bottom-bottom">
                 <div class="top-nav">
                     <span class="menu"> </span>
-                    <ul>
-                        <li {% block active1 %}{% endblock active1 %}><a href="{{ path('inicioAdmin') }}">INICIO </a></li>
-                        <li {% block active2 %}{% endblock active2 %}><a href="{{ path('productos') }}" >PRODUCTOS</a></li>
-                        <li {% block active3 %}{% endblock active3 %}><a href="{{ path('crudUsuarios') }}" >USUARIOS</a></li>
-                        <li {% block active4 %}{% endblock active4 %}><a href="{{ path('crudCat') }}" >CATEGORIAS</a></li>
-                        <li {% block active5 %}{% endblock active5 %}><a href="{{ path('inventario') }}" >INVENTARIO</a></li>
-                        <li {% block active6 %}{% endblock active6 %}><a href="{{ path('vedido') }}" >VENTAS</a></li>
-                        <li {% block active7 %}{% endblock active7 %}><a href="{{ path('devoluciones') }}" >DEVOLUCIONES</a></li>
-                        <li {% block active8 %}{% endblock active8 %}><a href="{{ path('reportes') }}" >REPORTES</a></li>
-                    </ul>
-                    <script>
-                        $("span.menu").click(function(){
-                            $(".top-nav ul").slideToggle(500, function(){
-                            });
-                        });
-                    </script>
 
                     <div class="clearfix"> </div>
                 </div>
@@ -115,11 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="footer-class">
                 <div class="class-footer">
-                    <ul>
-                        <li ><a href="{{ path('inicioAdmin') }}" class="scroll">INICIO </a><label>|</label></li>
-                        <li><a href="{{ path('productos') }}" class="scroll">PRODUCTOS</a><label>|</label></li>
-                        <li><a href="{{ path('crudUsuarios') }}" class="scroll">USUARIOS</a><label>|</label></li>
-                    </ul>
+
                     <p class="footer-grid">&copy; 2015 Sistema de Ventas <a href="#" target="_blank"> TOO-115</a> </p>
                 </div>
                 <div class="footer-left">

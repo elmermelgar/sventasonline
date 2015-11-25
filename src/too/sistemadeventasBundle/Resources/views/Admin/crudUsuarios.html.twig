@@ -66,7 +66,7 @@
                     <td style="text-align: center;">
                         <a href="{{ asset('app_dev.php/editarUsuario') }}/{{ usuario.idUsuario }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Editar</a>
                         -
-                        <input class="btn btn-danger" type="button" value="Eliminar" onClick="confirmar()" />
+                        <input class="btn btn-danger" type="button" value="Dar de baja" onClick="confirmar()" />
                     </td>
                 </tr>
             {% endfor %}
@@ -78,7 +78,7 @@
 
             function confirmar(){
                 //un confirm
-                alertify.confirm("<p>Esta seguro de eliminar el Usuario.<br><br><b>ENTER</b> y <b>ESC</b> corresponden a <b>Aceptar</b> o <b>Cancelar</b></p>", function (e) {
+                alertify.confirm("<p>Esta seguro de dar de baja el Usuario.<br><br><b>ENTER</b> y <b>ESC</b> corresponden a <b>Aceptar</b> o <b>Cancelar</b></p>", function (e) {
                     if (e) {
                         location.href="{{ asset('app_dev.php/deleteUsuario') }}/{{ usuario.idUsuario }}";
                     } else { alertify.error("Has cancelado la operacion");

@@ -1,0 +1,65 @@
+{% extends 'fbase.html.twig' %}
+{% block stylesheets %}
+    <link href="file:///c:/xampp/htdocs/sventas/web/css/bootstrap.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('credencial') %}
+        <script>
+            window.onload = function error(){
+                alertify.error("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('exito') %}
+        <script>
+            window.onload = function notificacion(){
+                alertify.log("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+<div class="content">
+    <div class="container" style="height: auto;">
+        <h1>Lista de Existencia de Inventario</h1>
+        <ol class="breadcrumb">
+
+        </ol>
+        <hr/>
+        <table class="table table-bordered">
+            <tbody>
+            <th>
+                Id Inventario
+            </th>
+            <th>
+                Nombre del Producto
+            </th>
+            <th>
+                Cantidad Minima
+            </th>
+            <th>
+                Cantidad Disponible
+            </th>
+            <th>
+                Cantidad Maxima
+            </th>
+            <th>
+                Costo Promedio
+            </th>
+
+            </tbody>
+            {% for exist in existencias %}
+                <tr>
+                    <td>{{ exist.idInventario }}</td>
+                    <td>{{ exist.idProducto.nombreProd }}</td>
+                    <td>{{ exist.cantidadInicial}}</td>
+                    <td>{{ exist.cantidadDisponible }}</td>
+                    <td>{{ exist.cantidadMaxima }}</td>
+                    <td>{{ exist.costoPromedio }}</td>
+
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock body %}

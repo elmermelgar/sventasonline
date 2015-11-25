@@ -18,27 +18,9 @@
             }
         </script>
     {% endfor %}
-    {% for flashMessage in app.session.flashbag.get('notificacion') %}
-        <script>
-            window.onload = function alerta(){
-                alertify.alert("Aun tienes {{ flashMessage }} unidades disponibles para vender", function () {
-                   location.href="{{ path('inventario') }}";
-                });
-            }
-        </script>
-    {% endfor %}
-    {% for flashMessage in app.session.flashbag.get('notificacionfall') %}
-        <script>
-            window.onload = function alerta(){
-                alertify.alert("{{ flashMessage }} <b> Por favor le recomendamos cargar mas productos al inventario</b>", function () {
-                    location.href="{{ path('inventario') }}";
-                });
-            }
-        </script>
-    {% endfor %}
     <div class="content">
         <div class="container" style="height: auto;">
-            <h1>Inventario</h1>
+            <h1> verificar Inventario Inventario</h1>
 
             <hr/>
             <table class="table table-bordered">
@@ -83,8 +65,7 @@
                         </td>
                         <td style="text-align: center;">
                             <a href="{{ asset('app_dev.php/newInventario') }}/{{ producto.idProducto }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Cargar Inventario</a>
-                            <a href="{{ asset('app_dev.php/verifinventario') }}/{{ producto.idProducto }}" title="Verificar" class="btn btn-danger" >Verificar Inventario</a>
-                        </td>
+                            <a href="{{ asset('app_dev.php/verifinventario') }}/{{ producto.idProducto }}" title="Verificar" class="btn btn-danger" style="background: #0AA5E2;color: #ffffff;">Verificar Inventario</a>
 
                     </tr>
 
@@ -93,5 +74,17 @@
             </table>
         </div>
     </div>
+    {% for productos in productos %}
+        {% if productos.idProducto == inv.i %}
+    <script>
+        function alerta(){
+            //un alert
+            alertify.alert("<b>Blog Reaccion Estudio</b> probando Alertify", function () {
+                //aqui introducimos lo que haremos tras cerrar la alerta.
+                //por ejemplo -->  location.href = 'http://www.google.es/';  <-- Redireccionamos a GOOGLE.
+            });
+        }
 
+    </script>
+  {% endfor %}
 {% endblock body %}
