@@ -1,5 +1,5 @@
 {% extends '::baseAdmin.html.twig' %}
-{% block title %}Inventarios!!{% endblock %}
+{% block title %}Inventario{% endblock %}
 {% block active5 %}class="active"{% endblock active5 %}
 {% block body %}
     {% for flashMessage in app.session.flashbag.get('fracaso') %}
@@ -38,7 +38,7 @@
     {% endfor %}
     <div class="content">
         <div class="container" style="height: auto;">
-            <h1>Inventario</h1>
+            <h1>Detalle de Inventario</h1>
 
             <hr/>
             <table class="table table-bordered">
@@ -54,7 +54,7 @@
                 </th>
 
                 <th>
-                    Precio Unitario
+                    Costo Promedio
                 </th>
                 <th>
                     Stock Unidades
@@ -67,23 +67,23 @@
                     Acciones
                 </th>
                 </tbody>
-                {% for producto in productos %}
+                {% for inv in inventario %}
 
                     <tr>
-                        <td style="text-align: center;"><img src="{{ asset(producto.imagen) }}" alt="img1" style="width: 100px; height: 70px;"></td>
-                        <td>{{ producto.nombreProd }}</td>
-                        <td>{{ producto.descripcionProd }}</td>
-                        <td>${{ producto.precioUnitario }}</td>
-                        <td>{{ producto.cantidadProd }}</td>
-                        <td>{% if producto.estado()==1 %}
+                        <td style="text-align: center;"><img src="{{ asset(inv.idProducto.imagen) }}" alt="img1" style="width: 100px; height: 70px;"></td>
+                        <td>{{ inv.idProducto.nombreProd }}</td>
+                        <td>{{ inv.idProducto.descripcionProd }}</td>
+                        <td>${{ inv.costoPromedio }}</td>
+                        <td>{{ inv.cantidadDisponible }}</td>
+                        <td>{% if inv.idProducto.estado()==1 %}
                                 Activo
                             {% else %}
                                 Inactivo
                             {% endif %}
                         </td>
                         <td style="text-align: center;">
-                            <a href="{{ asset('app_dev.php/newInventario') }}/{{ producto.idProducto }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Cargar Inventario</a>
-                            <a href="{{ asset('app_dev.php/verifinventario') }}/{{ producto.idProducto }}" title="Verificar" class="btn btn-danger" >Verificar Inventario</a>
+                            <a href="{{ asset('app_dev.php/newInventario') }}/{{ inv.idProducto.idProducto }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Cargar Inventario</a>
+                            <a href="{{ asset('app_dev.php/verifinventario') }}/{{ inv.idInventario }}" title="Verificar" class="btn btn-danger" >Verificar Inventario</a>
                         </td>
 
                     </tr>

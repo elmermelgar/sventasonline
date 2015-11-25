@@ -1,15 +1,14 @@
 {% extends '::baseAnonimo.html.twig' %}
 {% block title %}Dado de Baja{% endblock %}
 {% block body %}
-
     <div class="content">
         <div class="container" style="height: auto;">
             <br><br><br><br>
-            <h2 style="color: #FD1E01;">***Este usuario a sido dado de baja, por lo tanto no puede acceder al Sistema***</h2>
+            <h3 class="text-center" style="color: #FD1E01;">**Este usuario ha sido dado de baja, por lo tanto no puede acceder al Sistema**</h3>
             <hr/>
             <br><br>
-            <div style="margin: 0 auto 0 auto; width: 300px; font-size: 30px;">
-                <a href="{{ path('logout') }}" title="Reporte" class="btn btn-default" style="background: #5FC902;color: #ffffff; height: 50px; width: 300px; font-size: 25px;">Volver al inicio</a>
+            <div style="margin: 0 auto 0 auto; width: 200px; font-size: 20px;">
+                <a href="{{ path('toosistemadeventas_inicio') }}" title="Inicio" class="btn btn-default" style="background: #5FC902;color: #ffffff; height: 50px; width: 300px; font-size: 25px;">Volver al inicio</a>
             </div>
             <br/>
             <br/>
@@ -19,5 +18,4 @@
             <br/>
         </div>
     </div>
-
 {% endblock body %}

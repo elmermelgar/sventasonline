@@ -17,8 +17,8 @@ class InventarioController extends TOOController
         $user=$this->enviarSesion($request);
         $validado=$this->validarAcceso($request);
         if($validado){
-            $productos=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Producto')->findAll();
-            return $this->render('toosistemadeventasBundle:Admin:inventario.html.twig',array('user'=>$user,'productos'=>$productos));
+            $inventario=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Inventario')->findAll();
+            return $this->render('toosistemadeventasBundle:Admin:inventario.html.twig',array('user'=>$user,'inventario'=>$inventario));
         }
         else
             return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
@@ -37,12 +37,10 @@ class InventarioController extends TOOController
         }
         else{
             if($request->isMethod("POST")){
-                //Verificar error de archivo
-
-
                 if($em->getRepository('toosistemadeventasBundle:Producto')->findOneBy(array('idProducto'=>$id)))
                 {
                     $consulta=$em->getRepository('toosistemadeventasBundle:Inventario')->findOneBy(array('idProducto'=>$datos->getIdProducto()));
+                    $prod=$em->getRepository('toosistemadeventasBundle:Producto')->find($consulta->getIdProducto()->getIdProducto());
                    if(($request->get('disponible'))>=$consulta->getCantidadInicial()){
 
                        $inicial=($consulta->getCantidadDisponible())*($consulta->getCostoPromedio());
@@ -56,6 +54,7 @@ class InventarioController extends TOOController
                        //$inv->setNombreproducto($request->get('nomProd'));
                        $inv->setCantidadDisponible($disp);
                        $inv->setCostoPromedio($final);
+                       $prod->setCantidadProd($disp);
                        $em->flush();
 
                        $this->MensajeFlash('exito', 'Inventario Actualizado Correctamente!');
@@ -82,21 +81,20 @@ class InventarioController extends TOOController
     }
     public function verificarAction($id, Request $request)
     {
-        $user=$this->enviarSesion($request);
+        //$user=$this->enviarSesion($request);
         $validado=$this->validarAcceso($request);
         if($validado){
-            $productos=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Producto')->findAll();
-            $inv=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Inventario')->findOneBy(array('idProducto'=>$id));
-            if($inv->getCantidadDisponible()<= $inv->getCantidadInicial()){
+            $inventario=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Inventario')->find($id);
+            if($inventario->getCantidadDisponible()<= $inventario->getCantidadInicial()){
                 $this->MensajeFlash('notificacionfall','El inventario de este producto ha llegado a su limite!');
             }
             else{
-                $this->MensajeFlash('notificacion', $inv->getCantidadDisponible());
+                $this->MensajeFlash('notificacion', $inventario->getCantidadDisponible());
             }
-            return $this->render('toosistemadeventasBundle:Admin:inventario.html.twig',array('user'=>$user,'productos'=>$productos, 'inv'=>$inv));
+            return $this->redirect($this->generateUrl('inventario'));
         }
         else
-            return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
+            return $this->redirect($this->generateUrl('inicioAdmin'));
     }
 
 }

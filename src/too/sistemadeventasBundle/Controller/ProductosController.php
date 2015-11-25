@@ -159,13 +159,15 @@ class ProductosController extends TOOController
             if ($datos->getEstado() == 1) {
             $datos->setEstado(0);
             $mensaje="Producto dado de Baja!";
+                $this->MensajeFlash('fracaso', $mensaje);
             }
             else {
                 $datos->setEstado(1);
                 $mensaje = "Producto dado de Alta!";
+                $this->MensajeFlash('exito', $mensaje);
                 }
                 $em->flush();
-                $this->MensajeFlash('exito', $mensaje);
+
                 return $this->redirect($this->generateUrl('productos'));
         }
     }

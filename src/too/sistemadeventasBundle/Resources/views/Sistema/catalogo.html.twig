@@ -33,13 +33,13 @@
                      {% for dato in datos %}
                         <div class="col-md-4 grid-4 grid-in" style="margin: 0 auto 0 auto;">
                             <a href="#">
-                               <div style="width: 235px;height: 150px; margin: 0 auto 0 auto;"> <img src="{{ asset(dato.imagen) }}" class="img-responsive" alt="" style="width: 210px;height: 140px;"></div>
+                               <div style="width: 235px;height: 150px; margin: 0 auto 0 auto;"> <img src="{{ asset(dato.idProducto.imagen) }}" class="img-responsive" alt="" style="width: 210px;height: 140px;"></div>
                             </a>
                             <div class="tab_desc1">
-                                <h3><a href="#">{{ dato.nombreProd }}</a></h3>
-                                <p>${{ dato.precioUnitario }}</p>
+                                <h3><a href="#">{{ dato.idProducto.nombreProd }}</a></h3>
+                                <p>${{ dato.idProducto.precioUnitario }}</p>
                                 {% if user %}
-                                    <a href="{{ asset('app_dev.php/insertarCar') }}/{{ dato.idProducto }}" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
+                                    <a href="{{ asset('app_dev.php/insertarCar') }}/{{ dato.idProducto.idProducto }}" class="to-cart"><span>Añadir a Carrito</span><img src="{{ asset('images/plus.png') }}" alt=""></a>
                                 {% endif %}
                             </div>
                         </div>

@@ -5,6 +5,7 @@ namespace too\sistemadeventasBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use too\sistemadeventasBundle\Entity\Inventario;
 use too\sistemadeventasBundle\Entity\Producto;
 use too\sistemadeventasBundle\Modals\TOOController;
 
@@ -35,7 +36,8 @@ class DefaultController extends TOOController
     public function catalogoAction(Request $request)
     {
         $user=$this->enviarSesion($request);
-        $datos= $this->getDoctrine()->getRepository('toosistemadeventasBundle:Producto')->findBy(array('estado'=>1));
+        $datos=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Inventario')->getProductosVendibles();
+        //$datos= $this->getDoctrine()->getRepository('toosistemadeventasBundle:Producto')->findBy(array('estado'=>1));
         return $this->render('toosistemadeventasBundle:Sistema:catalogo.html.twig',array('user'=>$user, 'datos'=>$datos));
 
     }
