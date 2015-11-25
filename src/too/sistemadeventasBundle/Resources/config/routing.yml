@@ -6,6 +6,10 @@ toosistemadeventas_inicio:
     path:     /inicio
     defaults: { _controller: toosistemadeventasBundle:Default:inicio }
 
+debaja:
+    path:     /usuarioNoExiste
+    defaults: { _controller: toosistemadeventasBundle:Default:baja }
+
 toosistemadeventas_promociones:
     path:     /promociones
     defaults: { _controller: toosistemadeventasBundle:Default:promociones }
@@ -142,6 +146,10 @@ inventario:
     path:     /inventario
     defaults: { _controller: toosistemadeventasBundle:Inventario:inventario }
 
+verifinventario:
+    path:     /verifinventario/{id}
+    defaults: { _controller: toosistemadeventasBundle:Inventario:verificar }
+
 nuevoInventario:
     path:     /newInventario/{id}
     defaults: { _controller: toosistemadeventasBundle:Inventario:agregarInventario }
@@ -171,6 +179,14 @@ reportes:
 reporteClientes:
     path:     /reporteClientes
     defaults: { _controller: toosistemadeventasBundle:Reporte:reportesClientes }
+
+reporteExistencias:
+    path:     /reporteExistencias
+    defaults: { _controller: toosistemadeventasBundle:Reporte:reporteExistencias }
+
+reporteVentas:
+    path:     /reporteVentas
+    defaults: { _controller: toosistemadeventasBundle:Reporte:reporteVentas }
 
 factura:
     path:     /factura

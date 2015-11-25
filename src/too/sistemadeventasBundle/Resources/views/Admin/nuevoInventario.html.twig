@@ -36,7 +36,7 @@
                                 {% endfor %}
 
                                 <li>
-                                    <h2>REGISTRO DE INVENTARIO</h2>
+                                    <h2>CARGAR AL INVENTARIO</h2>
 
                                 </li>
 
@@ -45,20 +45,12 @@
                                     <input type="hidden"  name="nomProd" value="{{ datos.nombreProd }}">
                                 </li>
                                 <li>
-                                    <label><span>Cantidad Minima*</span></label>
-                                    <input type="text" required name="minima">
-                                </li>
-                                <li>
-                                    <label><span>Cantidad Maxima*</span></label>
-                                    <input type="text" required name="maxima">
-                                </li>
-                                <li>
-                                    <label><span>Cantidad Disponible*</span></label>
-                                    <input type="text" required name="disponible">
+                                    <label><span>Cantidad A Cargar*</span></label>
+                                    <input type="text" required name="disponible" pattern="^([0-9])*" min="5" title="Debe introducir solo valores numericos">
                                 </li>
                                 <li>
                                     <label><span>Costo del Producto*</span></label>
-                                    <input type="text" required name="costo">
+                                    <input type="text" required name="costo" pattern="^(\d|-)?(\d|,)*\.?\d*" title="Debe introducir solo valores numericos">
                                 </li>
                             </ul>
                             <div class="clearfix"> </div>

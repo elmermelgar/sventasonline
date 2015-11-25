@@ -20,6 +20,11 @@ class DefaultController extends TOOController
         $user=$this->enviarSesion($request);
         return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
     }
+    public function bajaAction(Request $request)
+    {
+        $user=$this->enviarSesion($request);
+        return $this->render('toosistemadeventasBundle:Anonimo:anonimo.html.twig',array('user'=>$user));
+    }
 
     public function promocionesAction(Request $request)
     {

@@ -1,0 +1,50 @@
+{% extends 'fbase.html.twig' %}
+{% block stylesheets %}
+    <link href="file:///c:/xampp/htdocs/sventas/web/css/bootstrap.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+
+<div class="content">
+    <div class="container" style="height: auto;">
+        <h1>Informe de Ventas</h1>
+        <ol class="breadcrumb">
+
+        </ol>
+        <hr/>
+        <table class="table table-responsive">
+            <tbody>
+            <th>
+                Id_Venta
+            </th>
+            <th>
+                Cliente
+            </th>
+            <th>
+                Producto
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Cantidad
+            </th>
+            <th style="text-align: center;">
+                Total
+            </th>
+            </tbody>
+            {% for ventas in ventas %}
+                <tr>
+                    <td>{{ ventas.idVenta }}</td>
+                    <td>{{ ventas.idCliente.idUsuario.nombreUsu }} {{ ventas.idCliente.idUsuario.apellidoUsu }}</td>
+                    <td>{{ ventas.idProducto.nombreProd }}</td>
+                    <td>{{ ventas.fechaVen.format("Y-m-d") }}</td>
+                    <td style="text-align: center;">{{ ventas.cantidad }}</td>
+                    <td style="text-align: center;">{{ ventas.total}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock body %}

@@ -39,6 +39,9 @@ class SecurityController extends TOOController
                 if($usuario->getRol()==2){
                     return $this->render('toosistemadeventasBundle:Admin:index.html.twig',array('user'=>$user));
                 }
+                if($usuario->getRol()==0){
+                    return $this->render('toosistemadeventasBundle:Anonimo:anonimo.html.twig', array('user'=>$user));
+                }
                 else{
                     return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
                 }
