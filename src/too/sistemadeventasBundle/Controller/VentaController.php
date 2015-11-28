@@ -70,6 +70,6 @@ class VentaController extends TOOController
             return $this->render('toosistemadeventasBundle:Admin:devoluciones.html.twig',array('user'=>$user,'devoluciones'=>$devoluciones));
         }
         else
-            return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));
+            return $this->render('toosistemadeventasBundle:Admin:index.html.twig',array('user'=>$user));
     }
 }

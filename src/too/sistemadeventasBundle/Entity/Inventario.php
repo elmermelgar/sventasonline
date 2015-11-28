@@ -10,6 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="inventario", indexes={@ORM\Index(name="descarga_fk", columns={"id_compra"}), @ORM\Index(name="tiene_fk", columns={"id_producto"})})
  * @ORM\Entity
  */
+
+/**
+ * @ORM\Entity(repositoryClass="too\sistemadeventasBundle\Entity\InventarioRepository")
+ */
 class Inventario
 {
     /**

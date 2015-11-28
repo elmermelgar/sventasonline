@@ -39,7 +39,7 @@
                     <td>{{ devol.idVenta.cantidad }}</td>
                     <td>{{ devol.idVenta.fechaVen.format("Y-m-d") }}</td>
                     <td>{{ devol.fechaDev.format("Y-m-d")}}</td>
-                    <td>{{ devol.idVenta.idCliente.idUsuario.nombreUsu }}</td>
+                    <td>{{ devol.idVenta.idCliente.idUsuario.nombreUsu }} {{ devol.idVenta.idCliente.idUsuario.apellidoUsu }}</td>
                 </tr>
             {% endfor %}
         </table>

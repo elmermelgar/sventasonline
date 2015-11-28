@@ -17,7 +17,7 @@ class ReporteController extends TOOController
         $car=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Carrito')->findBy(array('idUsu'=>$this->enviarSesion($request)));
         $total=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Carrito')->getTotal($request->getSession()->get('login')->getUsername());
         $pdfGenerator=$this->get('siphoc.pdf.generator');
-        $pdfGenerator->setName('listadoporniveles.pdf');
+        $pdfGenerator->setName('factura-compra.pdf');
         return $pdfGenerator->displayForView('toosistemadeventasBundle::pdf.html.twig',array('car'=>$car,'total'=>$total[1],'hora'=>$hora,'user'=>$user));
         //return $this->render('toosistemadeventasBundle::pdf.html.twig',array('car'=>$car,'total'=>$total[1],'hora'=>$hora,'user'=>$user));
     }
