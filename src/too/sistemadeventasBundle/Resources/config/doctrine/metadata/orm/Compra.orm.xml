@@ -4,9 +4,6 @@
     <indexes>
       <index name="contiene_fk" columns="id_proveedor"/>
     </indexes>
-    <unique-constraints>
-      <unique-constraint name="compra_pk" columns="id_compra"/>
-    </unique-constraints>
     <id name="idCompra" type="integer" column="id_compra">
       <generator strategy="SEQUENCE"/>
     </id>

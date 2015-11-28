@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints\DateTime;
 use too\sistemadeventasBundle\Entity\Carrito;
+use too\sistemadeventasBundle\Entity\Compra;
 use too\sistemadeventasBundle\Entity\Venta;
 use too\sistemadeventasBundle\Modals\TOOController;
 
@@ -45,8 +46,8 @@ class VentaController extends TOOController
         $validado=$this->validarUsuario($request);
         if($validado){
             $cliente=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Cliente')->find($request->getSession()->get('login')->getIdCliente());
-            $ventas=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Venta')->findBy(array('idCliente'=>$cliente));
-            return $this->render('toosistemadeventasBundle:Sistema:compras.html.twig',array('user'=>$user,'ventas'=>$ventas));
+            $compras=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Venta')->findBy(array('idCliente'=>$cliente));
+            return $this->render('toosistemadeventasBundle:Sistema:compras.html.twig',array('user'=>$user,'ventas'=>$compras));
         }
         else
             return $this->render('toosistemadeventasBundle:Sistema:index.html.twig',array('user'=>$user));

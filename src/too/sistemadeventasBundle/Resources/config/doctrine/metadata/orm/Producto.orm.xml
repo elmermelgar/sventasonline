@@ -4,6 +4,9 @@
     <indexes>
       <index name="compuesto_fk" columns="id_categoria"/>
     </indexes>
+    <unique-constraints>
+      <unique-constraint name="producto_pk" columns="id_producto"/>
+    </unique-constraints>
     <id name="idProducto" type="integer" column="id_producto">
       <generator strategy="SEQUENCE"/>
     </id>

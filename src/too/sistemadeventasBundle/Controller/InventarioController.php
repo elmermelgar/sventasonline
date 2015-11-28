@@ -40,7 +40,7 @@ class InventarioController extends TOOController
                 if($em->getRepository('toosistemadeventasBundle:Producto')->findOneBy(array('idProducto'=>$id)))
                 {
                     $consulta=$em->getRepository('toosistemadeventasBundle:Inventario')->findOneBy(array('idProducto'=>$datos->getIdProducto()));
-                    $prod=$em->getRepository('toosistemadeventasBundle:Producto')->find($consulta->getIdProducto()->getIdProducto());
+                    //$prod=$em->getRepository('toosistemadeventasBundle:Producto')->find($consulta->getIdProducto()->getIdProducto());
                    if(($request->get('disponible'))>=$consulta->getCantidadInicial()){
 
                        $inicial=($consulta->getCantidadDisponible())*($consulta->getCostoPromedio());
@@ -54,7 +54,7 @@ class InventarioController extends TOOController
                        //$inv->setNombreproducto($request->get('nomProd'));
                        $inv->setCantidadDisponible($disp);
                        $inv->setCostoPromedio($final);
-                       $prod->setCantidadProd($disp);
+                       //$prod->setCantidadProd($disp);
                        $em->flush();
 
                        $this->MensajeFlash('exito', 'Inventario Actualizado Correctamente!');

@@ -7,11 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Inventario
  *
- * @ORM\Table(name="inventario", uniqueConstraints={@ORM\UniqueConstraint(name="inventario_pk", columns={"id_inventario"})}, indexes={@ORM\Index(name="tiene_fk", columns={"id_producto"}), @ORM\Index(name="descarga_fk", columns={"id_compra"})})
+ * @ORM\Table(name="inventario", indexes={@ORM\Index(name="descarga_fk", columns={"id_compra"}), @ORM\Index(name="tiene_fk", columns={"id_producto"})})
  * @ORM\Entity
- */
-/**
- * @ORM\Entity(repositoryClass="too\sistemadeventasBundle\Entity\InventarioRepository")
  */
 class Inventario
 {

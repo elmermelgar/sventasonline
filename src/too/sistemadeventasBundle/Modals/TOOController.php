@@ -85,8 +85,8 @@ class TOOController extends Controller
         //Recorro cada item del carrito del cliente
         foreach($pCarrito as $pcar){
             //Obtengo el producto
-            $pp=$em->getRepository('toosistemadeventasBundle:Producto')->find($pcar->getIdProduct());
-            $pp->setCantidadProd($pp->getCantidadProd()-$pcar->getCantidad());
+            //$pp=$em->getRepository('toosistemadeventasBundle:Producto')->find($pcar->getIdProduct());
+            //$pp->setCantidadProd($pp->getCantidadProd()-$pcar->getCantidad());
             //Creo los objetos de tipo venta
             $prodV=new Venta();
             $prodV->setIdCliente($em->getRepository('toosistemadeventasBundle:Cliente')->find($cl));

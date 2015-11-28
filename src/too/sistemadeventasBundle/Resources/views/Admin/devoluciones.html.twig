@@ -1,36 +1,45 @@
 {% extends '::baseAdmin.html.twig' %}
-{% block title %}Devoluciones!!{% endblock %}
+{% block title %}Devoluciones{% endblock %}
 {% block active7 %}class="active"{% endblock active7 %}
 {% block body %}
 
 <div class="content">
     <div class="container" style="height: auto;">
-        <h1>Ventas</h1>
-
+        <h1>Listado de Devoluciones</h1>
         <hr/>
         <table class="table table-responsive">
             <tbody>
             <th>
-                Id_Devolucion
+                # Devolucion
             </th>
             <th>
-                Id_Venta
+                Imagen
             </th>
             <th>
-                Descripcion
+                Producto
             </th>
             <th>
-                Fecha
+                Cantidad
             </th>
-
+            <th>
+                Fecha Compra
+            </th>
+            <th>
+                Fecha Devolucion
+            </th>
+            <th>
+                Cliente
+            </th>
             </tbody>
             {% for devol in devoluciones %}
                 <tr>
                     <td>{{ devol.idDevolucion }}</td>
-                    <td>{{ devol.idVenta }}</td>
-                    <td>{{ devol.descripcionDev }}</td>
-                    <td>{{ devol.fechaDev.format("Y-m-d") }}</td>
-
+                    <td style="text-align: center;"><img src="{{ asset(devol.idVenta.idProducto.imagen) }}"  style="width: 100px; height: 70px;"></td>
+                    <td>{{ devol.idVenta.idProducto.nombreProd }}</td>
+                    <td>{{ devol.idVenta.cantidad }}</td>
+                    <td>{{ devol.idVenta.fechaVen.format("Y-m-d") }}</td>
+                    <td>{{ devol.fechaDev.format("Y-m-d")}}</td>
+                    <td>{{ devol.idVenta.idCliente.idUsuario.nombreUsu }}</td>
                 </tr>
             {% endfor %}
         </table>

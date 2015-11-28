@@ -1,23 +1,26 @@
 {% extends '::baseAdmin.html.twig' %}
-{% block title %}Ventas!!{% endblock %}
+{% block title %}Ventas{% endblock %}
 {% block active6 %}class="active"{% endblock active6 %}
 {% block body %}
 
 <div class="content">
     <div class="container" style="height: auto;">
-        <h1>Ventas</h1>
+        <h1>Listado de Ventas</h1>
 
         <hr/>
         <table class="table table-responsive">
             <tbody>
             <th>
-                Id_Venta
+                #
+            </th>
+            <th style="text-align: center;">
+                Imagen
+            </th>
+            <th >
+                Producto
             </th>
             <th>
                 Id_Cliente
-            </th>
-            <th>
-                Id_Producto
             </th>
             <th>
                 Fecha
@@ -28,15 +31,24 @@
             <th style="text-align: center;">
                 Total
             </th>
+            <th>
+                Estado
+            </th>
             </tbody>
             {% for ventas in ventas %}
                 <tr>
                     <td>{{ ventas.idVenta }}</td>
-                    <td>{{ ventas.idCliente.idUsuario.nombreUsu }} {{ ventas.idCliente.idUsuario.apellidoUsu }}</td>
+                    <td style="text-align: center;"><img src="{{ asset(ventas.idProducto.imagen) }}"  style="width: 100px; height: 70px;"></td>
                     <td>{{ ventas.idProducto.nombreProd }}</td>
+                    <td>{{ ventas.idCliente.idUsuario.nombreUsu }} {{ ventas.idCliente.idUsuario.apellidoUsu }}</td>
                     <td>{{ ventas.fechaVen.format("Y-m-d") }}</td>
                     <td>{{ ventas.cantidad }}</td>
                     <td style="text-align: center;">{{ ventas.total}}</td>
+                    <td>
+                        {% if ventas.devuelto==1 %}
+                        Devuelto
+                        {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
         </table>

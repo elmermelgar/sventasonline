@@ -10,9 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="carrito")
  * @ORM\Entity
  */
-/**
- * @ORM\Entity(repositoryClass="too\sistemadeventasBundle\Entity\CarritoRepository")
- */
 class Carrito
 {
     /**

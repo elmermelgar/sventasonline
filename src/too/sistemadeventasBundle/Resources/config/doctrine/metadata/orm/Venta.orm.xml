@@ -15,6 +15,7 @@
     <field name="fechaVen" type="date" column="fecha_ven" nullable="true"/>
     <field name="total" type="decimal" column="total" precision="10" scale="2" nullable="true"/>
     <field name="cantidad" type="integer" column="cantidad" nullable="true"/>
+    <field name="devuelto" type="integer" column="devuelto" nullable="true"/>
     <many-to-one field="idProducto" target-entity="Producto">
       <join-columns>
         <join-column name="id_producto" referenced-column-name="id_producto"/>

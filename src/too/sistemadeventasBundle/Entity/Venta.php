@@ -44,6 +44,13 @@ class Venta
     private $cantidad;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="devuelto", type="integer", nullable=true)
+     */
+    private $devuelto;
+
+    /**
      * @var \Promocion
      *
      * @ORM\ManyToOne(targetEntity="Promocion")
@@ -152,6 +159,29 @@ class Venta
     public function getCantidad()
     {
         return $this->cantidad;
+    }
+
+    /**
+     * Set devuelto
+     *
+     * @param integer $devuelto
+     * @return Venta
+     */
+    public function setDevuelto($devuelto)
+    {
+        $this->devuelto = $devuelto;
+
+        return $this;
+    }
+
+    /**
+     * Get devuelto
+     *
+     * @return integer 
+     */
+    public function getDevuelto()
+    {
+        return $this->devuelto;
     }
 
     /**

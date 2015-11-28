@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Categoria
  *
- * @ORM\Table(name="categoria")
+ * @ORM\Table(name="categoria", uniqueConstraints={@ORM\UniqueConstraint(name="categoria_pk", columns={"id_categoria"})})
  * @ORM\Entity
  */
 class Categoria
@@ -37,60 +37,4 @@ class Categoria
     private $descripcionCat;
 
 
-
-    /**
-     * Get idCategoria
-     *
-     * @return integer 
-     */
-    public function getIdCategoria()
-    {
-        return $this->idCategoria;
-    }
-
-    /**
-     * Set nombreCat
-     *
-     * @param string $nombreCat
-     * @return Categoria
-     */
-    public function setNombreCat($nombreCat)
-    {
-        $this->nombreCat = $nombreCat;
-
-        return $this;
-    }
-
-    /**
-     * Get nombreCat
-     *
-     * @return string 
-     */
-    public function getNombreCat()
-    {
-        return $this->nombreCat;
-    }
-
-    /**
-     * Set descripcionCat
-     *
-     * @param string $descripcionCat
-     * @return Categoria
-     */
-    public function setDescripcionCat($descripcionCat)
-    {
-        $this->descripcionCat = $descripcionCat;
-
-        return $this;
-    }
-
-    /**
-     * Get descripcionCat
-     *
-     * @return string 
-     */
-    public function getDescripcionCat()
-    {
-        return $this->descripcionCat;
-    }
 }

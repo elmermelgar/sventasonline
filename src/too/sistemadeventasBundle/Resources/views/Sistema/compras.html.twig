@@ -51,7 +51,11 @@
                         <td>{{ venta.cantidad }}</td>
                         <td>{{ venta.fechaVen.format("Y-m-d") }}</td>
                         <td style="text-align: center;">
-                            <a href="{{ path('devolucion', {'id':venta.idVenta}) }}" title="Editar" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Devolver</a>
+                            {% if venta.devuelto==0 %}
+                            <a href="{{ path('devolucion', {'id':venta.idVenta}) }}" title="Devolver" class="btn btn-default" style="background: #0AA5E2;color: #ffffff;">Devolver</a>
+                            {% else %}
+                            Devuelto
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
