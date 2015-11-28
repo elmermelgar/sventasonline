@@ -199,6 +199,13 @@ compras:
 devolucion:
     path:     /devoluciones/{id}
     defaults: { _controller: toosistemadeventasBundle:Devoluciones:devolucion }
-c:
-    path:     /c
-    defaults: { _controller: toosistemadeventasBundle:Venta:cliente}
+#configuracion
+config:
+    path:     /configuracion
+    defaults: { _controller: toosistemadeventasBundle:Usuario:config}
+bajaUser:
+    path:     /bajaUser
+    defaults: { _controller: toosistemadeventasBundle:Usuario:BajaUSer}
+cambiarPass:
+    path:     /cambioPass
+    defaults: { _controller: toosistemadeventasBundle:Usuario:contraNueva}

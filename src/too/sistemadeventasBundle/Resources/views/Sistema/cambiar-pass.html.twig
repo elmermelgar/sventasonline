@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+{% block title %}Cambiar Contrase&ntildea{% endblock %}
+{% block body %}
+<div class="content">
+    <div class="container">
+        <div class="register">
+            <form method="post" style="margin: 0 auto 0 auto;" action="{{ path('cambiarPass') }}">
+                <div class="register-top-grid"  style="margin: 0 auto 0 auto; text-align: center;">
+                    <div class="contact_form" id="contact_form"  >
+                        <ul style="margin: 0 auto 0 auto;">
+                            {% for flashMessage in app.session.flashbag.get('error') %}
+                                <script>
+                                    window.onload = function error(){
+                                        alertify.error("{{ flashMessage }}.");
+                                        return false;
+                                    }
+                                </script>
+                            {% endfor %}
+                            {% for flashMessage in app.session.flashbag.get('exito') %}
+                                <script>
+                                    window.onload = function notificacion(){
+                                        alertify.log("{{ flashMessage }}.");
+                                        return false;
+                                    }
+                                </script>
+                            {% endfor %}
+                            <li>
+                                <h2>Cambio de contrase&ntildea</h2>
+
+                            </li>
+                            <li>
+                                <label><span>Contrase&ntildea Actual*</span></label>
+                                <input type="password" required name="pass">
+                            </li>
+                            <li>
+                                <label><span>Nueva Contrase&ntildea*</span></label>
+                                <input type="password" required name="pass-nva">
+                            </li>
+                        </ul>
+                        <div class="clearfix"> </div>
+                        <button type="submit">Cambiar</button>
+
+                    </div>
+
+
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

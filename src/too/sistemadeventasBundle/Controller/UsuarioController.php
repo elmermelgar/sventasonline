@@ -328,7 +328,53 @@ class UsuarioController extends TOOController
         $admin=$this->getDoctrine()->getRepository('toosistemadeventasBundle:Usuario')->findBy(array('rol'=>2));
         return $this->redirect($this->generateUrl('crudAdmin'));
     }
-
+    public function configAction(Request $request){
+        $user=$this->enviarSesion($request);
+        if($this->validarUsuario($request))
+            return $this->render('@toosistemadeventas/Sistema/configuracion.html.twig',array('user'=>$user));
+        else
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+    }
+    public function BajaUSerAction(Request $request){
+        $user=$this->enviarSesion($request);
+        $em=$this->getDoctrine()->getManager();
+        if($this->validarUsuario($request))
+        {
+            $usuario=$em->getRepository('toosistemadeventasBundle:Usuario')->findOneBy(array('usuario'=>$user));
+            $usuario->setRol(0);
+            $em->flush();
+            $session=$request->getSession();
+            $session->clear();
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+        }
+        else
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+    }
+    public function contraNuevaAction(Request $request){
+        $user=$this->enviarSesion($request);
+        $em=$this->getDoctrine()->getManager();
+        if($this->validarUsuario($request))
+        {
+            if($request->isMethod("POST"))
+            {
+                $usuario=$em->getRepository('toosistemadeventasBundle:Usuario')->findOneBy(array('usuario'=>$user,'password'=>MD5($request->get('pass'))));
+                if($usuario){
+                    $usuario->setPassword(MD5($request->get('pass-nva')));
+                    $em->flush();
+                    $session=$request->getSession();
+                    $session->clear();
+                    return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+                }
+                else{
+                    $this->MensajeFlash('error',"Introduzca correctamente su contrasena!");
+                    return $this->redirect($this->generateUrl('cambiarPass'));
+                }
+            }
+            return $this->render('@toosistemadeventas/Sistema/cambiar-pass.html.twig',array('user'=>$user));
+        }
+        else
+            return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
+    }
 
     private function loginAction($user,$email){
         $em=$this->getDoctrine()->getManager();

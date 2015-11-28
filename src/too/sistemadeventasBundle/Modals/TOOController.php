@@ -80,29 +80,27 @@ class TOOController extends Controller
         //obteniendo el clinte q solicita la compra
         $idCliente=$em->getRepository('toosistemadeventasBundle:Usuario')->find($request->getSession()->get('login')->getId());
         $cl=$em->getRepository('toosistemadeventasBundle:Cliente')->findOneBy(array('idUsuario'=>$idCliente));
-        //Recorriendo los prod del carrito
+        //Recorriendo los prod del carrito de mi usuario
         $pCarrito=$em->getRepository('toosistemadeventasBundle:Carrito')->findBy(array('idUsu'=>$user));
         //Recorro cada item del carrito del cliente
         foreach($pCarrito as $pcar){
             //Obtengo el producto
-            //$pp=$em->getRepository('toosistemadeventasBundle:Producto')->find($pcar->getIdProduct());
-            //$pp->setCantidadProd($pp->getCantidadProd()-$pcar->getCantidad());
-            //Creo los objetos de tipo venta
-            $prodV=new Venta();
-            $prodV->setIdCliente($em->getRepository('toosistemadeventasBundle:Cliente')->find($cl));
-            $prodV->setIdProducto($em->getRepository('toosistemadeventasBundle:Producto')->find($pcar->getIdProduct()));
-            $prodV->setTotal($pcar->getTotal());
-            $prodV->setCantidad($pcar->getCantidad());
-            $prodV->setFechaVen(new \DateTime("now",new \DateTimeZone('America/El_Salvador')));
-            //Obtengo el objeto de inventario que descargo del inventario
-            $inv=$em->getRepository('toosistemadeventasBundle:Inventario')->findOneBy(array('idProducto'=>$prodV->getIdProducto()));
-            $inv->setCantidadDisponible($inv->getCantidadDisponible()-$pcar->getCantidad());
-            //Persisto las ventas
-            $em->persist($prodV);
-            //remuevo del carrito los prod q ya registre en la venta
-            $em->remove($pcar);
-            //Guardo los cambios en inventario
-            $em->flush();
+            $pp=$em->getRepository('toosistemadeventasBundle:Producto')->find($pcar->getIdProduct());
+                $prodV=new Venta();
+                $prodV->setIdCliente($cl);
+                $prodV->setIdProducto($pp);
+                $prodV->setTotal($pcar->getTotal());
+                $prodV->setCantidad($pcar->getCantidad());
+                $prodV->setFechaVen(new \DateTime("now",new \DateTimeZone('America/El_Salvador')));
+                //Obtengo el objeto de inventario que descargo del inventario
+                $inv=$em->getRepository('toosistemadeventasBundle:Inventario')->findOneBy(array('idProducto'=>$prodV->getIdProducto()));
+                $inv->setCantidadDisponible($inv->getCantidadDisponible()-$pcar->getCantidad());
+                //Persisto las ventas
+                $em->persist($prodV);
+                //remuevo del carrito los prod q ya registre en la venta
+                $em->remove($pcar);
+                //Guardo los cambios en inventario
+                $em->flush();
         }
     }
     //Validar Capital

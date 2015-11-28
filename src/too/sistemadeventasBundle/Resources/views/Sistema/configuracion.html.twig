@@ -1,0 +1,60 @@
+{% extends '::base.html.twig' %}
+{% block title %}Configuracion{% endblock %}
+{% block active6 %}class="active"{% endblock active6 %}
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('fracaso') %}
+        <script>
+            window.onload = function error(){
+                alertify.error("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('exito') %}
+        <script>
+            window.onload = function notificacion(){
+                alertify.log("{{ flashMessage }}.");
+                return false;
+            }
+        </script>
+    {% endfor %}
+    <div class="content">
+        <div class="container" style="height: auto;">
+            <h1>Configuraciones</h1>
+            <hr/>
+            <table class="table table-bordered">
+                <tbody>
+                <th>
+                    Opciones
+                </th>
+                <th style="text-align: center;">
+                    Botones
+                </th>
+                </tbody>
+                    <tr>
+                        <td >Cambiar Contrase&ntildea</td>
+                        <td style="text-align: center;"><a class="btn btn-success" href="{{ path('cambiarPass') }}">Cambiar Contrase&ntildea</a></td>
+                    </tr>
+                    <tr>
+                        <td >Darse de Baja del Sistema</td>
+                        <td style="text-align: center;">
+                            <input class="btn btn-danger" type="button" value="Darse de baja" onClick="confirmar()" />
+                        </td>
+                    </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function confirmar(){
+            //un confirm
+            alertify.confirm("<p>Esta seguro de dar de baja el Usuario.<br><br><b>ENTER</b> y <b>ESC</b> corresponden a <b>Aceptar</b> o <b>Cancelar</b></p>", function (e) {
+                if (e) {
+                    location.href="{{ asset('app_dev.php/bajaUser') }}";
+                } else { alertify.error("Has cancelado la operacion");
+                }
+            });
+            return false
+        }
+
+    </script>
+{% endblock body %}

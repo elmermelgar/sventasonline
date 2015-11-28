@@ -32,15 +32,6 @@ class VentaController extends TOOController
         else
             return $this->redirect($this->generateUrl('toosistemadeventas_inicio'));
     }
-    public function clienteAction(Request $request){
-        $user=$this->enviarSesion($request);
-        $em=$this->getDoctrine()->getManager();
-        $this->registrarVentas($em,$user,$request);
-        //$fecha=new \DateTime("now");
-        //$fecha=$fecha->format("Y-m-d");
-        $cc=new Carrito();
-        return new response("");
-    }
     public function comprasAction(Request $request){
         $user=$this->enviarSesion($request);
         $validado=$this->validarUsuario($request);
